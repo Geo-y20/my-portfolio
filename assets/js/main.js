@@ -35,25 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   revealElements.forEach(el => observer.observe(el));
 
-  /* ----------- Theme Initialization ----------- */
-  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
-  const themeToggleBtn = document.getElementById("theme-toggle");
-
-  const applyTheme = (isDark) => {
-    document.documentElement.setAttribute("data-theme", isDark ? "dark" : "light");
-    themeToggleBtn.textContent = isDark ? "🌙" : "☀️";
-  };
-
-  applyTheme(prefersDark.matches);
-
-  prefersDark.addEventListener("change", e => applyTheme(e.matches));
-
-  // Manual Theme Toggle
-  themeToggleBtn.addEventListener("click", () => {
-    const currentTheme = document.documentElement.getAttribute("data-theme");
-    const isDark = currentTheme === "light";
-    applyTheme(isDark);
-  });
+  // Theme toggle removed (single theme)
 
   /* ----------- Scroll to Top Button ----------- */
   const scrollBtn = document.getElementById("scrollTopBtn");
@@ -62,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("scroll", () => {
     clearTimeout(scrollTimeout);
     scrollTimeout = setTimeout(() => {
-      scrollBtn.style.display = window.scrollY > 300 ? "block" : "none";
+      scrollBtn.style.display = window.scrollY > 150 ? "block" : "none";
     }, 100);
   });
 
