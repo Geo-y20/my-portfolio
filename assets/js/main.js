@@ -52,35 +52,34 @@ document.addEventListener("DOMContentLoaded", function () {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 
-  /* ----------- Typing Animation ----------- */
-  const typingText = ["AI Engineer", "ML Developer", "Data Scientist"];
-  let i = 0, j = 0, currentText = "", isDeleting = false;
-  const typingElement = document.querySelector(".typing");
-
-  function typeEffect() {
-    if (!typingElement) return;
-
-    if (!isDeleting && j <= typingText[i].length) {
-      currentText = typingText[i].substring(0, j++);
-    } else if (isDeleting && j >= 0) {
-      currentText = typingText[i].substring(0, j--);
+  /* ----------- Typing Animation (Reusable) ----------- */
+  function initTypewriter(selector, texts) {
+    const el = document.querySelector(selector);
+    if (!el || !texts || !texts.length) return;
+    let i = 0, j = 0, isDeleting = false;
+    function tick() {
+      const word = texts[i];
+      const next = isDeleting ? word.substring(0, j--) : word.substring(0, j++);
+      el.textContent = next;
+      let timeout = isDeleting ? 50 : 100;
+      if (!isDeleting && j === word.length + 1) { timeout = 900; isDeleting = true; }
+      else if (isDeleting && j === 0) { isDeleting = false; i = (i + 1) % texts.length; }
+      setTimeout(tick, timeout);
     }
-
-    typingElement.textContent = currentText;
-
-    let timeout = isDeleting ? 50 : 100;
-
-    if (!isDeleting && j === typingText[i].length + 1) {
-      timeout = 1000;
-      isDeleting = true;
-    } else if (isDeleting && j === 0) {
-      isDeleting = false;
-      i = (i + 1) % typingText.length;
-    }
-
-    setTimeout(typeEffect, timeout);
+    tick();
   }
-  typeEffect();
+
+  // Hero typing
+  initTypewriter('.typing:not(.typing-projects)', ["AI Engineer", "ML Developer", "Data Scientist"]);
+  // Projects heading typing
+  const projEl = document.querySelector('.typing-projects');
+  if (projEl) {
+    const data = projEl.getAttribute('data-texts');
+    try {
+      const texts = JSON.parse(data);
+      initTypewriter('.typing-projects', Array.isArray(texts) && texts.length ? texts : ["Projects"]);
+    } catch { initTypewriter('.typing-projects', ["Projects"]); }
+  }
 
   /* ----------- Mobile Navbar Toggle ----------- */
   const menuToggle = document.querySelector('.menu-toggle');
