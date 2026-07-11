@@ -146,9 +146,48 @@
     render();
   }
 
+  function initDiagramModal() {
+    var modal = document.getElementById('diagram-modal');
+    var img = document.getElementById('diagram-modal-img');
+    var titleEl = document.getElementById('diagram-modal-title');
+    var closeBtn = document.getElementById('diagram-modal-close');
+    var triggers = document.querySelectorAll('[data-diagram-trigger]');
+    if (!modal || !img || !titleEl || !closeBtn || !triggers.length) return;
+
+    function open(trigger) {
+      img.src = trigger.getAttribute('data-diagram');
+      img.alt = trigger.getAttribute('data-diagram-alt') || '';
+      titleEl.textContent = trigger.getAttribute('data-diagram-title') || '';
+      modal.classList.add('is-open');
+      closeBtn.focus();
+    }
+
+    function close() {
+      modal.classList.remove('is-open');
+      img.src = '';
+    }
+
+    triggers.forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        open(btn);
+      });
+    });
+
+    closeBtn.addEventListener('click', close);
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal) close();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modal.classList.contains('is-open')) close();
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     initReveal();
     initCountUp();
     initChat();
+    initDiagramModal();
   });
 })();

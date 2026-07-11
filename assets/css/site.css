@@ -135,16 +135,98 @@ body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--
   .case-grid { grid-template-columns: 1fr; }
 }
 
-/* Small architecture/data-flow thumbnail on featured case-study cards and enterprise tiles */
-.case-visual, .work-visual {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 4px;
+/* Diagram icon button: small representative icon on a summary card/tile;
+   clicking it opens the full architecture diagram in a modal. */
+.diagram-icon-btn {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 8px;
   background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--accent);
+  cursor: pointer;
+  transition: border-color .2s, transform .2s;
+  padding: 0;
 }
-.case-visual { max-height: 90px; object-fit: contain; }
-.work-visual { max-height: 70px; object-fit: contain; margin: 4px 0; }
+.diagram-icon-btn:hover { border-color: var(--accent); transform: translateY(-2px); }
+.diagram-icon-btn svg { width: 26px; height: 26px; display: block; }
+.diagram-icon-btn__label {
+  display: block;
+  font-family: var(--mono);
+  font-size: 9.5px;
+  color: var(--text-mute);
+  text-align: center;
+  margin-top: 4px;
+  letter-spacing: 0.02em;
+}
+.diagram-icon-wrap { display: inline-flex; flex-direction: column; align-items: center; gap: 0; }
+
+/* Card stretched-link pattern: the visible text link fills the whole card via
+   ::after (containing block = the card, which is position:relative — the
+   link itself is NOT positioned, so its ::after stretches to the card, not
+   just the link's own text box). The icon button sits at z-index 2, above
+   the stretched ::after's z-index 1, so it stays independently clickable. */
+.case-card, .work-card { position: relative; }
+.case-card__link, .work-card__link { display: inline-block; }
+.case-card__link::after, .work-card__link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+/* Diagram modal (click-to-expand architecture view) */
+.diagram-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(8,10,14,0.75);
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.diagram-modal.is-open { display: flex; }
+.diagram-modal__panel {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 30px 24px 24px;
+  max-width: 640px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+}
+.diagram-modal__close {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  background: none;
+  border: none;
+  color: var(--text-mute);
+  font-family: var(--mono);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 6px;
+  transition: color .2s;
+}
+.diagram-modal__close:hover { color: var(--text); }
+.diagram-modal__title {
+  font-family: var(--head);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 16px;
+  padding-right: 24px;
+}
+.diagram-modal__img { width: 100%; height: auto; display: block; }
 
 /* Enterprise project tiles: responsive, don't force-stretch shorter cards */
 .work-grid {

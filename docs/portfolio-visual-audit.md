@@ -98,6 +98,28 @@ No repository was supplied for this project in this pass — the current portfol
 
 ---
 
+## 6. Social Listening
+
+- **Repository:** https://github.com/akhnatonTradingAndDistribution/Social-Listening-
+- **Access:** Available (clone succeeded)
+- **Default branch:** `main`
+- **Mapped portfolio project:** Promoted to its own featured case study, **Social Listening Intelligence Platform** (previously a one-line "Social Listening Intelligence" tile in Additional Work — that tile has been removed now that this is a full case study).
+- **Detected stack:** Flask (wrapped by FastAPI/uvicorn as an ASGI shim via `WSGIMiddleware`), HuggingFace `transformers` + PyTorch (`AutoModelForSequenceClassification`), PostgreSQL (current production backend — most docs describe SQLite, but code is authoritative and is Postgres-only), Facebook Graph API + Instagram Graph API (official, token-based), Matplotlib/Seaborn + WeasyPrint/ReportLab for PDF reporting, Docker.
+- **Main entry points:** `website-eva-all/app.py` (Flask), `website-eva-all/fastapi_app.py` (actual ASGI entrypoint run in Docker), `predict_and_tag_postgres.py` (production ML batch job), `Scraping/social_scraper.py` (unified FB/IG scraper)
+- **Existing diagrams:** Mermaid diagrams embedded in `docs/01-architecture.md` (system architecture + module dependencies), `docs/06-data-model.md` (ERD), `docs/08-activity-diagrams.md` (6 flowcharts) — all generic, no client data, safe to redraw. No standalone diagram files.
+- **Existing screenshots:** None — only brand logo/thumbnail images in `static/images/`, not reusable.
+- **Safe assets that can be reused:** None as files (diagrams are markdown text).
+- **Architecture summary (verified flow):** Facebook + Instagram Graph API → unified scraper → normalized into a per-brand, per-platform PostgreSQL schema → fine-tuned BERT sequence-classification model tags each comment (11 raw model classes mapped to a 9-category business taxonomy: FAQ, availability, delivery issues, pricing, competition, engagement, tone, filter, positive/negative; single tag per comment) → Flask routes read via a database adapter → dashboard, cross-brand analysis and PDF report export.
+- **Confidence level:** High — verified directly against the scraper, ingestion scripts, ML tagging script, database adapter, migrations and Dockerfile, not just docs (and caught a real doc/code mismatch: docs describe SQLite, code is Postgres-only).
+- **⚠️ Correction vs. the old placeholder copy:** The previous one-line description said "Classifies **Arabic Facebook** comments into sentiment and business-relevant categories." Verified scope is broader: **Facebook *and* Instagram** (not Facebook-only), across **8+ brands**, using a **fine-tuned BERT classifier** (not a generic sentiment model) mapped to a **9-category business taxonomy** (not just sentiment).
+- **Missing information:** exact BERT base checkpoint (weights are gitignored, not in the repo).
+- **Recommended portfolio visual:** SVG of the verified flow — implemented as `images/architecture/social-listening-architecture.svg`, wired into the new case-study page and the homepage's featured case-study grid.
+- **Source files supporting this:** `Scraping/social_scraper.py`, `predict_and_tag_postgres.py`, `website-eva-all/smart_database_adapter.py`, `website-eva-all/app.py`, `website-eva-all/fastapi_app.py`, `website-eva-all/modules/comprehensive_service.py`, `migrations/full_all_brands/01_create_all_schemas_and_tables.sql`, `docs/01-architecture.md`
+
+**Security note (same pattern as the other repos, not reproduced):** `Scraping/.env` and `website-eva-all/.env` are tracked in git with live Facebook/Instagram access tokens, a DB password and an SMTP password — flagged for human review/rotation, not acted on here.
+
+---
+
 ## Non-portfolio security note
 
 Unrelated to this visual-storytelling task, but worth a one-line flag since I was asked not to silently skip findings: three of the four repos (`atr-policies-gpt`, `forecast-view`, `Text-Digitlize-System`) have a **`.env` and/or a private key file (`.pem`) tracked in git**, and `Text-Digitlize-System/docs/DATABASE.md` contains what looks like a live Postgres connection string with credentials and an internal IP. No secret values are reproduced anywhere in this report or copied to any working directory. This is a repo-hygiene matter for you/the org to address separately — not something I acted on or need to fix as part of the portfolio update.

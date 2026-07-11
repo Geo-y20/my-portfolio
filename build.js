@@ -20,6 +20,7 @@ const PAGES = [
   'pages/case-study-sheet-chat.html',
   'pages/case-study-vision-platform.html',
   'pages/case-study-learning-automation.html',
+  'pages/case-study-social-listening.html',
   'pages/all-projects.html',
 ];
 

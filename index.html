@@ -194,9 +194,13 @@
   </div>
   <div class="case-grid">
 
-    <a href="case-study-atr-gpt.html" class="case-card" style="background:var(--surface); padding:22px 24px 26px; text-decoration:none; color:var(--text); display:flex; flex-direction:column; gap:12px;">
-      <div style="font-family:var(--mono); font-size:11px; letter-spacing:0.05em; color:var(--text-mute); text-transform:uppercase;">LLM &amp; RAG</div>
-      <img src="images/architecture/atr-gpt-architecture.svg" alt="ATR GPT architecture: web interface, FastAPI backend, mode router branching to OCI GenAI, Claude and OpenAI, converging on PostgreSQL with pgvector" class="case-visual">
+    <div class="case-card" style="background:var(--surface); padding:22px 24px 26px; display:flex; flex-direction:column; gap:12px;">
+      <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:12px;">
+        <div style="font-family:var(--mono); font-size:11px; letter-spacing:0.05em; color:var(--text-mute); text-transform:uppercase; padding-top:6px;">LLM &amp; RAG</div>
+        <button type="button" class="diagram-icon-btn" data-diagram-trigger data-diagram="images/architecture/atr-gpt-architecture.svg" data-diagram-title="ATR GPT architecture" data-diagram-alt="Web interface, FastAPI backend, mode router branching to OCI GenAI, Claude and OpenAI, converging on PostgreSQL with pgvector" aria-label="View ATR GPT architecture diagram">
+          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 10h24a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H16l-6 5v-5H8a3 3 0 0 1-3-3V13a3 3 0 0 1 3-3Z"/><circle cx="14" cy="19" r="1.2" fill="currentColor" stroke="none"/><circle cx="20" cy="19" r="1.2" fill="currentColor" stroke="none"/><circle cx="26" cy="19" r="1.2" fill="currentColor" stroke="none"/></svg>
+        </button>
+      </div>
       <h3 style="font-family:var(--head); font-size:18px; font-weight:600; margin:0; line-height:1.3;">ATR GPT — Enterprise AI Assistant</h3>
       <p style="font-size:13.5px; color:var(--text-soft); margin:0; flex:1;">A RAG assistant unifying policy search and assistant chat over a shared knowledge base, backed by OCI GenAI and Claude.</p>
       <div style="font-family:var(--mono); font-size:12px; color:var(--accent);">900+ employees served</div>
@@ -205,12 +209,16 @@
         <span style="font-family:var(--mono); font-size:11px; color:var(--text-mute); border:1px solid var(--border); border-radius:14px; padding:4px 10px;">RAG</span>
         <span style="font-family:var(--mono); font-size:11px; color:var(--text-mute); border:1px solid var(--border); border-radius:14px; padding:4px 10px;">pgvector</span>
       </div>
-      <div style="font-family:var(--mono); font-size:12px; color:var(--text); margin-top:4px;">View Case Study →</div>
-    </a>
+      <a href="case-study-atr-gpt.html" class="case-card__link" style="font-family:var(--mono); font-size:12px; color:var(--text); text-decoration:none; margin-top:4px;">View Case Study →</a>
+    </div>
 
-    <a href="case-study-sales-intelligence.html" class="case-card" style="background:var(--surface); padding:22px 24px 26px; text-decoration:none; color:var(--text); display:flex; flex-direction:column; gap:12px;">
-      <div style="font-family:var(--mono); font-size:11px; letter-spacing:0.05em; color:var(--text-mute); text-transform:uppercase;">Text-to-SQL</div>
-      <img src="images/architecture/sales-intelligence-architecture.svg" alt="Sales Intelligence architecture: user question through intent interpretation, schema context selection, SQL generation, validation and execution, to a natural-language explanation" class="case-visual">
+    <div class="case-card" style="background:var(--surface); padding:22px 24px 26px; display:flex; flex-direction:column; gap:12px;">
+      <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:12px;">
+        <div style="font-family:var(--mono); font-size:11px; letter-spacing:0.05em; color:var(--text-mute); text-transform:uppercase; padding-top:6px;">Text-to-SQL</div>
+        <button type="button" class="diagram-icon-btn" data-diagram-trigger data-diagram="images/architecture/sales-intelligence-architecture.svg" data-diagram-title="Enterprise Sales Intelligence Platform architecture" data-diagram-alt="User question through intent interpretation, schema context selection, SQL generation, validation and execution, to a natural-language explanation" aria-label="View Sales Intelligence architecture diagram">
+          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="20" cy="10" rx="11" ry="4"/><path d="M9 10v10c0 2.2 4.9 4 11 4s11-1.8 11-4V10"/><path d="M9 20v10c0 2.2 4.9 4 11 4s11-1.8 11-4V20"/></svg>
+        </button>
+      </div>
       <h3 style="font-family:var(--head); font-size:18px; font-weight:600; margin:0; line-height:1.3;">Enterprise Sales Intelligence Platform</h3>
       <p style="font-size:13.5px; color:var(--text-soft); margin:0; flex:1;">Converts natural-language business questions into governed SQL over Oracle sales data.</p>
       <div style="font-family:var(--mono); font-size:12px; color:var(--accent);">~10s across 10+ tables</div>
@@ -219,12 +227,16 @@
         <span style="font-family:var(--mono); font-size:11px; color:var(--text-mute); border:1px solid var(--border); border-radius:14px; padding:4px 10px;">FastAPI</span>
         <span style="font-family:var(--mono); font-size:11px; color:var(--text-mute); border:1px solid var(--border); border-radius:14px; padding:4px 10px;">LLM</span>
       </div>
-      <div style="font-family:var(--mono); font-size:12px; color:var(--text); margin-top:4px;">View Case Study →</div>
-    </a>
+      <a href="case-study-sales-intelligence.html" class="case-card__link" style="font-family:var(--mono); font-size:12px; color:var(--text); text-decoration:none; margin-top:4px;">View Case Study →</a>
+    </div>
 
-    <a href="case-study-hr-assistant.html" class="case-card" style="background:var(--surface); padding:22px 24px 26px; text-decoration:none; color:var(--text); display:flex; flex-direction:column; gap:12px;">
-      <div style="font-family:var(--mono); font-size:11px; letter-spacing:0.05em; color:var(--text-mute); text-transform:uppercase;">RAG &amp; Local LLMs</div>
-      <img src="images/architecture/hr-assistant-architecture.svg" alt="HR Assistant architecture: Arabic and English HR documents retrieved via ChromaDB and BM25 in parallel, merged, and answered locally by Aya-Expanse 8B" class="case-visual">
+    <div class="case-card" style="background:var(--surface); padding:22px 24px 26px; display:flex; flex-direction:column; gap:12px;">
+      <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:12px;">
+        <div style="font-family:var(--mono); font-size:11px; letter-spacing:0.05em; color:var(--text-mute); text-transform:uppercase; padding-top:6px;">RAG &amp; Local LLMs</div>
+        <button type="button" class="diagram-icon-btn" data-diagram-trigger data-diagram="images/architecture/hr-assistant-architecture.svg" data-diagram-title="EVA Cosmetics Offline HR Assistant architecture" data-diagram-alt="Arabic and English HR documents retrieved via ChromaDB and BM25 in parallel, merged, and answered locally by Aya-Expanse 8B" aria-label="View HR Assistant architecture diagram">
+          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6h11l6 6v20a2 2 0 0 1-2 2H12a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Z"/><path d="M23 6v6h6"/><rect x="15" y="21" width="11" height="8" rx="1.5"/><path d="M17.5 21v-2.5a3 3 0 0 1 6 0V21"/></svg>
+        </button>
+      </div>
       <h3 style="font-family:var(--head); font-size:18px; font-weight:600; margin:0; line-height:1.3;">EVA Cosmetics Offline HR Assistant</h3>
       <p style="font-size:13.5px; color:var(--text-soft); margin:0; flex:1;">Fully offline bilingual RAG assistant for internal HR-policy retrieval.</p>
       <div style="font-family:var(--mono); font-size:12px; color:var(--accent);">Zero cloud dependency</div>
@@ -233,12 +245,16 @@
         <span style="font-family:var(--mono); font-size:11px; color:var(--text-mute); border:1px solid var(--border); border-radius:14px; padding:4px 10px;">Local LLM</span>
         <span style="font-family:var(--mono); font-size:11px; color:var(--text-mute); border:1px solid var(--border); border-radius:14px; padding:4px 10px;">Arabic NLP</span>
       </div>
-      <div style="font-family:var(--mono); font-size:12px; color:var(--text); margin-top:4px;">View Case Study →</div>
-    </a>
+      <a href="case-study-hr-assistant.html" class="case-card__link" style="font-family:var(--mono); font-size:12px; color:var(--text); text-decoration:none; margin-top:4px;">View Case Study →</a>
+    </div>
 
-    <a href="case-study-sheet-chat.html" class="case-card" style="background:var(--surface); padding:22px 24px 26px; text-decoration:none; color:var(--text); display:flex; flex-direction:column; gap:12px;">
-      <div style="font-family:var(--mono); font-size:11px; letter-spacing:0.05em; color:var(--text-mute); text-transform:uppercase;">Agentic AI</div>
-      <img src="images/architecture/sheet-chat-architecture.svg" alt="Sheet Chat architecture: file ingestion, data inspection, intent classification, conditional routing to SQL/DuckDB, visualization or data-quality checks, then a natural-language explanation" class="case-visual">
+    <div class="case-card" style="background:var(--surface); padding:22px 24px 26px; display:flex; flex-direction:column; gap:12px;">
+      <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:12px;">
+        <div style="font-family:var(--mono); font-size:11px; letter-spacing:0.05em; color:var(--text-mute); text-transform:uppercase; padding-top:6px;">Agentic AI</div>
+        <button type="button" class="diagram-icon-btn" data-diagram-trigger data-diagram="images/architecture/sheet-chat-architecture.svg" data-diagram-title="Sheet Chat architecture" data-diagram-alt="File ingestion, data inspection, intent classification, conditional routing to SQL/DuckDB, visualization or data-quality checks, then a natural-language explanation" aria-label="View Sheet Chat architecture diagram">
+          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="9" width="26" height="20" rx="2"/><path d="M7 16h26M7 22h26M16 9v20M25 9v20"/></svg>
+        </button>
+      </div>
       <h3 style="font-family:var(--head); font-size:18px; font-weight:600; margin:0; line-height:1.3;">Sheet Chat</h3>
       <p style="font-size:13.5px; color:var(--text-soft); margin:0; flex:1;">Routes spreadsheet questions to SQL, visualization, report and data-quality workflows.</p>
       <div style="font-family:var(--mono); font-size:12px; color:var(--accent);">6 workflows, one interface</div>
@@ -247,12 +263,16 @@
         <span style="font-family:var(--mono); font-size:11px; color:var(--text-mute); border:1px solid var(--border); border-radius:14px; padding:4px 10px;">DuckDB</span>
         <span style="font-family:var(--mono); font-size:11px; color:var(--text-mute); border:1px solid var(--border); border-radius:14px; padding:4px 10px;">Agentic AI</span>
       </div>
-      <div style="font-family:var(--mono); font-size:12px; color:var(--text); margin-top:4px;">View Case Study →</div>
-    </a>
+      <a href="case-study-sheet-chat.html" class="case-card__link" style="font-family:var(--mono); font-size:12px; color:var(--text); text-decoration:none; margin-top:4px;">View Case Study →</a>
+    </div>
 
-    <a href="case-study-vision-platform.html" class="case-card" style="background:var(--surface); padding:22px 24px 26px; text-decoration:none; color:var(--text); display:flex; flex-direction:column; gap:12px;">
-      <div style="font-family:var(--mono); font-size:11px; letter-spacing:0.05em; color:var(--text-mute); text-transform:uppercase;">Computer Vision</div>
-      <img src="images/architecture/vision-platform-architecture.svg" alt="Vision Platform architecture: camera feeds into fire/violence detection, license-plate recognition and face recognition, through CPU/GPU inference to real-time alerting and attendance" class="case-visual">
+    <div class="case-card" style="background:var(--surface); padding:22px 24px 26px; display:flex; flex-direction:column; gap:12px;">
+      <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:12px;">
+        <div style="font-family:var(--mono); font-size:11px; letter-spacing:0.05em; color:var(--text-mute); text-transform:uppercase; padding-top:6px;">Computer Vision</div>
+        <button type="button" class="diagram-icon-btn" data-diagram-trigger data-diagram="images/architecture/vision-platform-architecture.svg" data-diagram-title="Security &amp; Vision Intelligence Platform architecture" data-diagram-alt="Camera feeds into fire/violence detection, license-plate recognition and face recognition, through CPU/GPU inference to real-time alerting and attendance" aria-label="View Vision Platform architecture diagram">
+          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20s6.5-10 16-10 16 10 16 10-6.5 10-16 10S4 20 4 20Z"/><circle cx="20" cy="20" r="4.5"/></svg>
+        </button>
+      </div>
       <h3 style="font-family:var(--head); font-size:18px; font-weight:600; margin:0; line-height:1.3;">Security &amp; Vision Intelligence Platform</h3>
       <p style="font-size:13.5px; color:var(--text-soft); margin:0; flex:1;">On-premise vision platform for fire/violence detection, plate recognition and attendance.</p>
       <div style="font-family:var(--mono); font-size:12px; color:var(--accent);">~95% detection accuracy</div>
@@ -261,12 +281,16 @@
         <span style="font-family:var(--mono); font-size:11px; color:var(--text-mute); border:1px solid var(--border); border-radius:14px; padding:4px 10px;">OCR</span>
         <span style="font-family:var(--mono); font-size:11px; color:var(--text-mute); border:1px solid var(--border); border-radius:14px; padding:4px 10px;">Docker</span>
       </div>
-      <div style="font-family:var(--mono); font-size:12px; color:var(--text); margin-top:4px;">View Case Study →</div>
-    </a>
+      <a href="case-study-vision-platform.html" class="case-card__link" style="font-family:var(--mono); font-size:12px; color:var(--text); text-decoration:none; margin-top:4px;">View Case Study →</a>
+    </div>
 
-    <a href="case-study-learning-automation.html" class="case-card" style="background:var(--surface); padding:22px 24px 26px; text-decoration:none; color:var(--text); display:flex; flex-direction:column; gap:12px;">
-      <div style="font-family:var(--mono); font-size:11px; letter-spacing:0.05em; color:var(--text-mute); text-transform:uppercase;">Speech &amp; NLP</div>
-      <img src="images/architecture/learning-automation-architecture.svg" alt="Learning Automation architecture: audio/video input via Whisper transcription and PDF input via extraction, merging into NLP summarization, delivered through an async API" class="case-visual">
+    <div class="case-card" style="background:var(--surface); padding:22px 24px 26px; display:flex; flex-direction:column; gap:12px;">
+      <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:12px;">
+        <div style="font-family:var(--mono); font-size:11px; letter-spacing:0.05em; color:var(--text-mute); text-transform:uppercase; padding-top:6px;">Speech &amp; NLP</div>
+        <button type="button" class="diagram-icon-btn" data-diagram-trigger data-diagram="images/architecture/learning-automation-architecture.svg" data-diagram-title="AI-Powered Learning Automation Platform architecture" data-diagram-alt="Audio/video input via Whisper transcription and PDF input via extraction, merging into NLP summarization, delivered through an async API" aria-label="View Learning Automation architecture diagram">
+          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 20h3M11 14v12M16 8v24M21 14v12M26 17v6M31 20h3"/></svg>
+        </button>
+      </div>
       <h3 style="font-family:var(--head); font-size:18px; font-weight:600; margin:0; line-height:1.3;">AI-Powered Learning Automation Platform</h3>
       <p style="font-size:13.5px; color:var(--text-soft); margin:0; flex:1;">Whisper-based transcription, extraction and summarization pipeline.</p>
       <div style="font-family:var(--mono); font-size:12px; color:var(--accent);">5,000+ files processed</div>
@@ -275,8 +299,26 @@
         <span style="font-family:var(--mono); font-size:11px; color:var(--text-mute); border:1px solid var(--border); border-radius:14px; padding:4px 10px;">NLP</span>
         <span style="font-family:var(--mono); font-size:11px; color:var(--text-mute); border:1px solid var(--border); border-radius:14px; padding:4px 10px;">FastAPI</span>
       </div>
-      <div style="font-family:var(--mono); font-size:12px; color:var(--text); margin-top:4px;">View Case Study →</div>
-    </a>
+      <a href="case-study-learning-automation.html" class="case-card__link" style="font-family:var(--mono); font-size:12px; color:var(--text); text-decoration:none; margin-top:4px;">View Case Study →</a>
+    </div>
+
+    <div class="case-card" style="background:var(--surface); padding:22px 24px 26px; display:flex; flex-direction:column; gap:12px;">
+      <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:12px;">
+        <div style="font-family:var(--mono); font-size:11px; letter-spacing:0.05em; color:var(--text-mute); text-transform:uppercase; padding-top:6px;">Social Analytics &amp; NLP</div>
+        <button type="button" class="diagram-icon-btn" data-diagram-trigger data-diagram="images/architecture/social-listening-architecture.svg" data-diagram-title="Social Listening Intelligence architecture" data-diagram-alt="Facebook and Instagram Graph API comments through a unified scraper into PostgreSQL per brand and platform, a BERT classifier mapping 11 classes to 9 categories, and a dashboard with PDF reports" aria-label="View Social Listening architecture diagram">
+          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 9h17a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3H16l-5 4v-4H7a3 3 0 0 1-3-3v-9a3 3 0 0 1 3-3Z"/><path d="M27 15h3a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3h-1v3l-3.5-3"/></svg>
+        </button>
+      </div>
+      <h3 style="font-family:var(--head); font-size:18px; font-weight:600; margin:0; line-height:1.3;">Social Listening Intelligence Platform</h3>
+      <p style="font-size:13.5px; color:var(--text-soft); margin:0; flex:1;">Classifies Facebook and Instagram comments across brands with a fine-tuned BERT model into a 9-category taxonomy.</p>
+      <div style="font-family:var(--mono); font-size:12px; color:var(--accent);">8+ brands, 2 platforms</div>
+      <div style="display:flex; flex-wrap:wrap; gap:6px;">
+        <span style="font-family:var(--mono); font-size:11px; color:var(--text-mute); border:1px solid var(--border); border-radius:14px; padding:4px 10px;">BERT</span>
+        <span style="font-family:var(--mono); font-size:11px; color:var(--text-mute); border:1px solid var(--border); border-radius:14px; padding:4px 10px;">PostgreSQL</span>
+        <span style="font-family:var(--mono); font-size:11px; color:var(--text-mute); border:1px solid var(--border); border-radius:14px; padding:4px 10px;">Social Analytics</span>
+      </div>
+      <a href="case-study-social-listening.html" class="case-card__link" style="font-family:var(--mono); font-size:12px; color:var(--text); text-decoration:none; margin-top:4px;">View Case Study →</a>
+    </div>
 
   </div>
 </section>
@@ -376,27 +418,34 @@
   <div style="font-family:var(--mono); font-size:11.5px; color:var(--text-mute); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:14px;">Enterprise</div>
   <div class="work-grid" style="margin-bottom:40px;">
     <div class="work-card" style="background:var(--surface); padding:20px 20px 22px; display:flex; flex-direction:column; gap:10px; min-height:150px;">
-      <h4 style="font-family:var(--head); font-size:14.5px; font-weight:600; margin:0;">Product-Label OCR</h4>
-      <img src="images/architecture/automation-ocr-architecture.svg" alt="Product-label OCR architecture: label image upload, preprocessing, Google Vision OCR with Arabic and English hints, field extraction and validation, structured output" class="work-visual">
+      <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:10px;">
+        <h4 style="font-family:var(--head); font-size:14.5px; font-weight:600; margin:0;">Product-Label OCR</h4>
+        <button type="button" class="diagram-icon-btn" data-diagram-trigger data-diagram="images/architecture/automation-ocr-architecture.svg" data-diagram-title="Product-Label OCR architecture" data-diagram-alt="Label image upload, preprocessing, Google Vision OCR with Arabic and English hints, field extraction and validation, structured output" aria-label="View Product-Label OCR architecture diagram" style="width:40px; height:40px; flex-shrink:0;">
+          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="10" width="26" height="20" rx="2"/><path d="M12 14v12M16 14v12M20 14v6M24 14v12M28 14v6"/></svg>
+        </button>
+      </div>
       <p style="font-size:12.5px; color:var(--text-mute); margin:0; flex:1;">Bilingual (Arabic/English) OCR extracting batch, manufacturing-date, expiry-date and quantity fields from product labels.</p>
       <div style="font-family:var(--mono); font-size:11px; color:var(--accent-2);">Google Vision · OCR</div>
     </div>
     <div class="work-card" style="background:var(--surface); padding:20px 20px 22px; display:flex; flex-direction:column; gap:10px; min-height:150px;">
-      <h4 style="font-family:var(--head); font-size:14.5px; font-weight:600; margin:0;">Forecasting &amp; Decision Intelligence</h4>
-      <img src="images/architecture/forecast-view-architecture.svg" alt="Forecast View architecture: SKU mapping and panel build, per-SKU model selection between Ridge regression and LightGBM with ETS/Croston fallback, forecast and root-cause metrics, LLM explanation, FastAPI dashboard" class="work-visual">
+      <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:10px;">
+        <h4 style="font-family:var(--head); font-size:14.5px; font-weight:600; margin:0;">Forecasting &amp; Decision Intelligence</h4>
+        <button type="button" class="diagram-icon-btn" data-diagram-trigger data-diagram="images/architecture/forecast-view-architecture.svg" data-diagram-title="Forecast View architecture — reconstructed from the project implementation" data-diagram-alt="SKU mapping and panel build, per-SKU model selection between Ridge regression and LightGBM with ETS/Croston fallback, forecast and root-cause metrics, LLM explanation, FastAPI dashboard" aria-label="View Forecasting architecture diagram" style="width:40px; height:40px; flex-shrink:0;">
+          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 30h28"/><path d="M8 26l7-8 6 4 9-12"/><circle cx="8" cy="26" r="1.3" fill="currentColor" stroke="none"/><circle cx="15" cy="18" r="1.3" fill="currentColor" stroke="none"/><circle cx="21" cy="22" r="1.3" fill="currentColor" stroke="none"/><circle cx="30" cy="10" r="1.3" fill="currentColor" stroke="none"/></svg>
+        </button>
+      </div>
       <p style="font-size:12.5px; color:var(--text-mute); margin:0; flex:1;">Custom Prophet-style Ridge regression and LightGBM ensemble models for supply-chain demand forecasting, with LLM-generated root-cause explanations.</p>
       <div style="font-family:var(--mono); font-size:11px; color:var(--accent-2);">LightGBM · Forecasting</div>
     </div>
     <div class="work-card" style="background:var(--surface); padding:20px 20px 22px; display:flex; flex-direction:column; gap:10px; min-height:150px;">
-      <h4 style="font-family:var(--head); font-size:14.5px; font-weight:600; margin:0;">Bilingual Product-Content &amp; Regulatory Layout Platform</h4>
-      <img src="images/architecture/text-digitalize-architecture.svg" alt="Bilingual product-content platform architecture: document upload, storage, parsing via PyMuPDF or LLM vision, AI field extraction, Claude-generated bilingual GSO-compliant layout, compliance quality gate, cached output" class="work-visual">
+      <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:10px;">
+        <h4 style="font-family:var(--head); font-size:14.5px; font-weight:600; margin:0;">Bilingual Product-Content &amp; Regulatory Layout Platform</h4>
+        <button type="button" class="diagram-icon-btn" data-diagram-trigger data-diagram="images/architecture/text-digitalize-architecture.svg" data-diagram-title="Bilingual Product-Content &amp; Regulatory Layout Platform architecture" data-diagram-alt="Document upload, storage, parsing via PyMuPDF or LLM vision, AI field extraction, Claude-generated bilingual GSO-compliant layout, compliance quality gate, cached output" aria-label="View Bilingual Product-Content Platform architecture diagram" style="width:40px; height:40px; flex-shrink:0;">
+          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 6h13l7 7v21a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2Z"/><path d="M23 6v7h7"/><circle cx="17" cy="23" r="6"/><path d="M11 23h12M17 17a9 9 0 0 1 0 12 9 9 0 0 1 0-12Z"/></svg>
+        </button>
+      </div>
       <p style="font-size:12.5px; color:var(--text-mute); margin:0; flex:1;">Ingests product spec documents and uses Claude to generate GSO-compliant bilingual marketing layouts, gated by an automated compliance check.</p>
       <div style="font-family:var(--mono); font-size:11px; color:var(--accent-2);">Claude · Document Intelligence</div>
-    </div>
-    <div class="work-card" style="background:var(--surface); padding:20px 20px 22px; display:flex; flex-direction:column; gap:10px; min-height:150px;">
-      <h4 style="font-family:var(--head); font-size:14.5px; font-weight:600; margin:0;">Social Listening Intelligence</h4>
-      <p style="font-size:12.5px; color:var(--text-mute); margin:0; flex:1;">Classifies Arabic Facebook comments into sentiment and business-relevant categories.</p>
-      <div style="font-family:var(--mono); font-size:11px; color:var(--accent-2);">Arabic NLP</div>
     </div>
     <div class="work-card" style="background:var(--surface); padding:20px 20px 22px; display:flex; flex-direction:column; gap:10px; min-height:150px;">
       <h4 style="font-family:var(--head); font-size:14.5px; font-weight:600; margin:0;">Supply-Chain Analytics &amp; BI</h4>
@@ -627,6 +676,15 @@
     </div>
   </div>
   <button data-chat-toggle class="chat-toggle" style="background:var(--accent); color:var(--bg); border:none; border-radius:24px; padding:14px 20px; font-family:var(--mono); font-size:13px; font-weight:500; cursor:pointer; box-shadow:0 10px 30px rgba(0,0,0,0.4); animation:chatPulse 3s ease-in-out infinite;">Ask AI</button>
+</div>
+
+<!-- ARCHITECTURE DIAGRAM MODAL (opened by any [data-diagram-trigger] icon button) -->
+<div id="diagram-modal" class="diagram-modal" role="dialog" aria-modal="true" aria-labelledby="diagram-modal-title">
+  <div class="diagram-modal__panel">
+    <button id="diagram-modal-close" class="diagram-modal__close" aria-label="Close architecture diagram">×</button>
+    <div id="diagram-modal-title" class="diagram-modal__title"></div>
+    <img id="diagram-modal-img" class="diagram-modal__img" src="" alt="">
+  </div>
 </div>
 
 <script src="assets/js/site.js"></script>
