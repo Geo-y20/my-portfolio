@@ -1,14 +1,14 @@
-// Stitches partials/*.html into index.template.html to produce the deployed,
-// plain static index.html, then assembles public/ — the directory Vercel
-// serves as static output (outputDirectory in vercel.json). api/ is deployed
-// separately as serverless functions regardless of outputDirectory.
-// Run `npm run build` after editing any partial.
+// Stitches partials/*.html into index.template.html and assembles public/ —
+// the single build output, and the directory Vercel serves as static output
+// (outputDirectory in vercel.json). api/ is deployed separately as
+// serverless functions regardless of outputDirectory.
+// Run `npm run build` after editing any partial, then preview public/
+// directly (e.g. `npx serve public`, or just open public/index.html).
 const fs = require('fs');
 const path = require('path');
 
 const ROOT = __dirname;
 const TEMPLATE_PATH = path.join(ROOT, 'index.template.html');
-const OUTPUT_PATH = path.join(ROOT, 'index.html');
 const PUBLIC_DIR = path.join(ROOT, 'public');
 const STATIC_ASSETS = ['assets', 'images', 'robots.txt', 'sitemap.xml', 'George_Youhana_Resume.pdf'];
 
@@ -25,9 +25,6 @@ function build() {
     return fs.readFileSync(partialPath, 'utf8').replace(/\n$/, '');
   });
 
-  fs.writeFileSync(OUTPUT_PATH, output, 'utf8');
-  console.log(`Built ${path.relative(ROOT, OUTPUT_PATH)} from ${path.relative(ROOT, TEMPLATE_PATH)} + partials/`);
-
   fs.rmSync(PUBLIC_DIR, { recursive: true, force: true });
   fs.mkdirSync(PUBLIC_DIR, { recursive: true });
   fs.writeFileSync(path.join(PUBLIC_DIR, 'index.html'), output, 'utf8');
@@ -37,7 +34,7 @@ function build() {
       fs.cpSync(src, path.join(PUBLIC_DIR, asset), { recursive: true });
     }
   }
-  console.log(`Assembled Vercel static output in ${path.relative(ROOT, PUBLIC_DIR)}/`);
+  console.log(`Built ${path.relative(ROOT, PUBLIC_DIR)}/ from ${path.relative(ROOT, TEMPLATE_PATH)} + partials/`);
 }
 
 build();

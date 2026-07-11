@@ -1,12 +1,12 @@
 # my-portfolio
 
-George Youhana's personal portfolio site — static HTML, CSS, and vanilla JS (no framework, no client-side build step for the deployed page).
+George Youhana's personal portfolio site — static HTML, CSS, and vanilla JS (no framework, no client-side templating at runtime).
 
 ## Editing content
 
-`index.html` is a **generated file** — don't edit it directly, your changes will be overwritten. Edit the section partials instead:
+There is no tracked `index.html` — it's a **generated file**, written only to the gitignored `public/` build output. Edit the section partials instead:
 
-```
+```text
 partials/
   head-meta.html      <meta> tags + JSON-LD (inside <head>)
   chat-widget.html     floating AI chat button + panel
@@ -22,13 +22,13 @@ partials/
 
 The overall page shell (`<head>`/`<body>` wrapper, script tags) lives in `index.template.html`, which references each partial via `<!-- include: partials/x.html -->` markers.
 
-After editing any partial (or the template), regenerate `index.html`:
+After editing any partial (or the template), rebuild:
 
-```
+```sh
 npm run build
 ```
 
-This runs `build.js`, a small dependency-free Node script that stitches the partials into the template and writes the result to `index.html` — the file that actually gets deployed. There is no client-side templating at runtime; the shipped page is plain static HTML.
+This runs `build.js`, a small dependency-free Node script that stitches the partials into the template and assembles `public/` — `public/index.html` plus copies of `assets/`, `images/`, `robots.txt`, `sitemap.xml`, and the resume PDF. `public/` is the single build output: it's what Vercel deploys (`outputDirectory` in `vercel.json`) and what you should preview locally (open `public/index.html` directly, or `npx serve public`). Don't edit anything inside `public/` — it's regenerated from scratch on every build and is gitignored.
 
 ## Chatbot
 
