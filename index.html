@@ -64,7 +64,10 @@
 <!-- NAV -->
 <nav class="site-nav" style="position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:18px clamp(20px,4vw,64px); background:rgba(14,17,22,0.85); backdrop-filter:blur(10px); border-bottom:1px solid var(--border-soft);">
   <a href="#home" style="font-family:var(--mono); font-size:13px; letter-spacing:0.06em; color:var(--text); text-decoration:none; font-weight:500;">GEORGE_YOUHANA</a>
-  <div class="site-nav__links" style="display:flex; align-items:center; gap:clamp(12px,2vw,28px); font-family:var(--mono); font-size:12.5px; letter-spacing:0.02em;">
+  <button type="button" id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="site-nav-links">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <div id="site-nav-links" class="site-nav__links" style="display:flex; align-items:center; gap:clamp(12px,2vw,28px); font-family:var(--mono); font-size:12.5px; letter-spacing:0.02em;">
     <span class="nav-indicator" aria-hidden="true"></span>
     <a href="#home" class="nav-link" style="color:var(--text-soft); text-decoration:none;">Home</a>
     <a href="#about" class="nav-link" style="color:var(--text-soft); text-decoration:none;">About</a>
@@ -84,18 +87,18 @@
     <div style="font-family:var(--mono); font-size:12.5px; letter-spacing:0.08em; color:var(--accent); margin-bottom:18px; text-transform:uppercase;"><span id="hero-eyebrow-text" data-full-text="AI Engineer — LLM Systems · RAG · Agentic AI">AI Engineer — LLM Systems · RAG · Agentic AI</span><span id="hero-eyebrow-cursor" class="typewriter-cursor">&nbsp;</span></div>
     <h1 data-scramble style="font-family:var(--head); font-size:clamp(34px,5vw,56px); line-height:1.08; font-weight:600; margin:0 0 22px; letter-spacing:-0.01em;">Production AI systems for real business operations.</h1>
     <p style="font-size:17px; color:var(--text-soft); max-width:58ch; margin:0 0 26px;">I design and deploy enterprise AI — RAG assistants, Text-to-SQL platforms, agentic data analysis, computer vision and OCR pipelines — from architecture through deployment and monitoring.</p>
-    <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px;">
+    <div class="hero-tags-row" style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px;">
       <span class="stagger-item" style="--i:0; font-family:var(--mono); font-size:12px; color:var(--text-soft); border:1px solid var(--border); border-radius:20px; padding:6px 13px;">LLM &amp; RAG</span>
       <span class="stagger-item" style="--i:1; font-family:var(--mono); font-size:12px; color:var(--text-soft); border:1px solid var(--border); border-radius:20px; padding:6px 13px;">Agentic AI</span>
       <span class="stagger-item" style="--i:2; font-family:var(--mono); font-size:12px; color:var(--text-soft); border:1px solid var(--border); border-radius:20px; padding:6px 13px;">Text-to-SQL</span>
       <span class="stagger-item" style="--i:3; font-family:var(--mono); font-size:12px; color:var(--text-soft); border:1px solid var(--border); border-radius:20px; padding:6px 13px;">Computer Vision</span>
       <span class="stagger-item" style="--i:4; font-family:var(--mono); font-size:12px; color:var(--text-soft); border:1px solid var(--border); border-radius:20px; padding:6px 13px;">Arabic NLP</span>
     </div>
-    <div style="display:flex; align-items:center; gap:8px; margin-bottom:32px;">
+    <div class="hero-status-row" style="display:flex; align-items:center; gap:8px; margin-bottom:32px;">
       <span class="status-dot" aria-hidden="true"></span>
       <span style="font-family:var(--mono); font-size:12px; color:var(--text-soft);">Available for new AI engineering engagements</span>
     </div>
-    <div style="display:flex; flex-wrap:wrap; align-items:center; gap:20px;">
+    <div class="hero-cta-row" style="display:flex; flex-wrap:wrap; align-items:center; gap:20px;">
       <a href="#case-studies" class="btn-primary" style="font-family:var(--mono); font-size:13px; background:var(--accent); color:var(--bg); padding:12px 22px; border-radius:3px; text-decoration:none; font-weight:500; display:inline-block;">View Case Studies</a>
       <a href="George_Youhana_Resume.pdf" download class="btn-outline" style="font-family:var(--mono); font-size:13px; background:transparent; color:var(--text); border:1px solid var(--border); padding:12px 22px; border-radius:3px; text-decoration:none; display:inline-block;">Download Resume</a>
       <a href="#projects" class="text-link" style="color:var(--text-soft);">Explore Projects</a>
@@ -110,28 +113,28 @@
 
 <!-- SELECTED IMPACT -->
 <section data-reveal style="padding:clamp(40px,6vw,64px) clamp(20px,4vw,64px); max-width:1280px; margin:0 auto; border-bottom:1px solid var(--border-soft);">
-  <div style="display:grid; grid-template-columns:repeat(6,1fr); gap:0; border-top:1px solid var(--border-soft);">
-    <div style="padding:22px 14px 0; border-right:1px solid var(--border-soft);">
+  <div class="stats-grid" style="display:grid; gap:0; border-top:1px solid var(--border-soft);">
+    <div class="stat-item" style="padding:22px 14px 0;">
       <div data-count="900" data-prefix="" data-suffix="+" style="font-family:var(--mono); font-size:clamp(24px,3vw,34px); color:var(--accent); font-weight:500; letter-spacing:-0.01em;">0+</div>
       <div style="font-size:13px; color:var(--text-mute); margin-top:8px; max-width:16ch;">employees served by an internal AI assistant</div>
     </div>
-    <div style="padding:22px 14px 0; border-right:1px solid var(--border-soft);">
+    <div class="stat-item" style="padding:22px 14px 0;">
       <div data-count="20" data-prefix="" data-suffix="+" style="font-family:var(--mono); font-size:clamp(24px,3vw,34px); color:var(--accent); font-weight:500; letter-spacing:-0.01em;">0+</div>
       <div style="font-size:13px; color:var(--text-mute); margin-top:8px; max-width:16ch;">knowledge sources integrated</div>
     </div>
-    <div style="padding:22px 14px 0; border-right:1px solid var(--border-soft);">
+    <div class="stat-item" style="padding:22px 14px 0;">
       <div data-count="5000" data-prefix="" data-suffix="+" style="font-family:var(--mono); font-size:clamp(24px,3vw,34px); color:var(--accent-3); font-weight:500; letter-spacing:-0.01em;">0+</div>
       <div style="font-size:13px; color:var(--text-mute); margin-top:8px; max-width:16ch;">files processed by an automation platform</div>
     </div>
-    <div style="padding:22px 14px 0; border-right:1px solid var(--border-soft);">
+    <div class="stat-item" style="padding:22px 14px 0;">
       <div data-count="10" data-prefix="~" data-suffix="s" style="font-family:var(--mono); font-size:clamp(24px,3vw,34px); color:var(--accent-2); font-weight:500; letter-spacing:-0.01em;">~0s</div>
       <div style="font-size:13px; color:var(--text-mute); margin-top:8px; max-width:16ch;">Text-to-SQL response latency</div>
     </div>
-    <div style="padding:22px 14px 0; border-right:1px solid var(--border-soft);">
+    <div class="stat-item" style="padding:22px 14px 0;">
       <div data-count="95" data-prefix="~" data-suffix="%" style="font-family:var(--mono); font-size:clamp(24px,3vw,34px); color:var(--accent-3); font-weight:500; letter-spacing:-0.01em;">~0%</div>
       <div style="font-size:13px; color:var(--text-mute); margin-top:8px; max-width:16ch;">fire &amp; violence detection accuracy</div>
     </div>
-    <div style="padding:22px 14px 0;">
+    <div class="stat-item" style="padding:22px 14px 0;">
       <div data-count="90" data-prefix="~" data-suffix="%" style="font-family:var(--mono); font-size:clamp(24px,3vw,34px); color:var(--accent-3); font-weight:500; letter-spacing:-0.01em;">~0%</div>
       <div style="font-size:13px; color:var(--text-mute); margin-top:8px; max-width:16ch;">license-plate recognition accuracy</div>
     </div>
@@ -139,7 +142,7 @@
 </section>
 
 <!-- ABOUT -->
-<section id="about" data-reveal style="scroll-margin-top:70px; padding:clamp(56px,8vw,96px) clamp(20px,4vw,64px); max-width:1280px; margin:0 auto; border-bottom:1px solid var(--border-soft); display:grid; grid-template-columns:0.9fr 1.1fr; gap:56px;">
+<section id="about" data-reveal class="split-grid" style="scroll-margin-top:70px; padding:clamp(56px,8vw,96px) clamp(20px,4vw,64px); max-width:1280px; margin:0 auto; border-bottom:1px solid var(--border-soft); display:grid; gap:56px;">
   <div>
     <div style="font-family:var(--mono); font-size:12px; letter-spacing:0.08em; color:var(--text-mute); text-transform:uppercase; margin-bottom:14px;">01 · About</div>
     <h2 data-scramble style="font-family:var(--head); font-size:clamp(24px,3vw,32px); font-weight:600; margin:0; letter-spacing:-0.01em;">AI engineering focused on practical implementation.</h2>
@@ -167,7 +170,7 @@
 <!-- CORE EXPERTISE -->
 <section data-reveal style="padding:clamp(56px,8vw,96px) clamp(20px,4vw,64px); max-width:1280px; margin:0 auto; border-bottom:1px solid var(--border-soft);">
   <div style="font-family:var(--mono); font-size:12px; letter-spacing:0.08em; color:var(--text-mute); text-transform:uppercase; margin-bottom:14px;">02 · Core Expertise</div>
-  <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:1px; background:var(--border-soft); border:1px solid var(--border-soft);">
+  <div class="expertise-grid" style="display:grid; gap:1px; background:var(--border-soft); border:1px solid var(--border-soft);">
     <div class="expertise-card stagger-item" style="--i:0; background:var(--bg); padding:26px 22px;">
       <h3 style="font-family:var(--head); font-size:16px; font-weight:600; margin:0 0 10px; color:var(--text);">LLM Systems &amp; RAG</h3>
       <p style="font-size:13.5px; color:var(--text-mute); margin:0;">Enterprise assistants connecting language models to internal documents, policies and departmental knowledge.</p>
@@ -334,7 +337,7 @@
 <section id="experience" data-reveal style="scroll-margin-top:70px; padding:clamp(56px,8vw,96px) clamp(20px,4vw,64px); max-width:1280px; margin:0 auto; border-bottom:1px solid var(--border-soft);">
   <div style="font-family:var(--mono); font-size:12px; letter-spacing:0.08em; color:var(--text-mute); text-transform:uppercase; margin-bottom:32px;">04 · Professional Experience</div>
 
-  <div style="display:grid; grid-template-columns:0.9fr 1.1fr; gap:40px; padding-bottom:36px; border-bottom:1px solid var(--border-soft); margin-bottom:36px;">
+  <div class="split-grid" style="display:grid; gap:40px; padding-bottom:36px; border-bottom:1px solid var(--border-soft); margin-bottom:36px;">
     <div>
       <h3 style="font-family:var(--head); font-size:20px; font-weight:600; margin:0 0 6px;">AI Engineer</h3>
       <div style="font-size:14.5px; color:var(--text-soft); margin-bottom:8px;">Akhnaton Trading and Distribution — EVA Group</div>
@@ -351,62 +354,62 @@
   </div>
 
   <div style="display:flex; flex-direction:column; gap:0;">
-    <div class="role-row" style="display:grid; grid-template-columns:0.9fr 1.1fr; gap:40px; padding:16px 0; border-bottom:1px solid var(--border-soft);">
+    <div class="role-row split-grid" style="display:grid; gap:40px; padding:16px 0; border-bottom:1px solid var(--border-soft);">
       <div style="display:flex; flex-direction:column; gap:2px;">
         <div style="font-size:14.5px; color:var(--text); font-weight:500;">Freelance AI Engineer</div>
         <div style="font-size:13px; color:var(--text-mute);">Upwork</div>
       </div>
-      <div style="display:flex; align-items:baseline; gap:18px;">
+      <div class="role-meta" style="display:flex; align-items:baseline; gap:18px;">
         <div style="font-family:var(--mono); font-size:11.5px; color:var(--text-mute); white-space:nowrap;">2024 — Present</div>
         <div style="font-size:13.5px; color:var(--text-soft);">Machine learning, NLP, computer vision and automation projects for freelance clients.</div>
       </div>
     </div>
-    <div class="role-row" style="display:grid; grid-template-columns:0.9fr 1.1fr; gap:40px; padding:16px 0; border-bottom:1px solid var(--border-soft);">
+    <div class="role-row split-grid" style="display:grid; gap:40px; padding:16px 0; border-bottom:1px solid var(--border-soft);">
       <div style="display:flex; flex-direction:column; gap:2px;">
         <div style="font-size:14.5px; color:var(--text); font-weight:500;">Co-Founder &amp; Graduation Project Mentor</div>
         <div style="font-size:13px; color:var(--text-mute);">Guido</div>
       </div>
-      <div style="display:flex; align-items:baseline; gap:18px;">
+      <div class="role-meta" style="display:flex; align-items:baseline; gap:18px;">
         <div style="font-family:var(--mono); font-size:11.5px; color:var(--text-mute); white-space:nowrap;">2022 — Present</div>
         <div style="font-size:13.5px; color:var(--text-soft);">Supporting AI and software projects from concept through implementation.</div>
       </div>
     </div>
-    <div class="role-row" style="display:grid; grid-template-columns:0.9fr 1.1fr; gap:40px; padding:16px 0; border-bottom:1px solid var(--border-soft);">
+    <div class="role-row split-grid" style="display:grid; gap:40px; padding:16px 0; border-bottom:1px solid var(--border-soft);">
       <div style="display:flex; flex-direction:column; gap:2px;">
         <div style="font-size:14.5px; color:var(--text); font-weight:500;">Data Science Freelance Coach</div>
         <div style="font-size:13px; color:var(--text-mute);">Digital Egypt Pioneers Initiative &amp; Elharefa</div>
       </div>
-      <div style="display:flex; align-items:baseline; gap:18px;">
+      <div class="role-meta" style="display:flex; align-items:baseline; gap:18px;">
         <div style="font-family:var(--mono); font-size:11.5px; color:var(--text-mute); white-space:nowrap;">Oct 2024 — Feb 2025</div>
         <div style="font-size:13.5px; color:var(--text-soft);">Mentored two 8-week cohorts of up to 25 students on data science careers and freelancing.</div>
       </div>
     </div>
-    <div class="role-row" style="display:grid; grid-template-columns:0.9fr 1.1fr; gap:40px; padding:16px 0; border-bottom:1px solid var(--border-soft);">
+    <div class="role-row split-grid" style="display:grid; gap:40px; padding:16px 0; border-bottom:1px solid var(--border-soft);">
       <div style="display:flex; flex-direction:column; gap:2px;">
         <div style="font-size:14.5px; color:var(--text); font-weight:500;">Course &amp; Coding Instructor</div>
         <div style="font-size:13px; color:var(--text-mute);">iSchool</div>
       </div>
-      <div style="display:flex; align-items:baseline; gap:18px;">
+      <div class="role-meta" style="display:flex; align-items:baseline; gap:18px;">
         <div style="font-family:var(--mono); font-size:11.5px; color:var(--text-mute); white-space:nowrap;">Aug 2024 — Jan 2025</div>
         <div style="font-size:13.5px; color:var(--text-soft);">Taught coding to grades 4–6 through project-based, interactive lessons.</div>
       </div>
     </div>
-    <div class="role-row" style="display:grid; grid-template-columns:0.9fr 1.1fr; gap:40px; padding:16px 0; border-bottom:1px solid var(--border-soft);">
+    <div class="role-row split-grid" style="display:grid; gap:40px; padding:16px 0; border-bottom:1px solid var(--border-soft);">
       <div style="display:flex; flex-direction:column; gap:2px;">
         <div style="font-size:14.5px; color:var(--text); font-weight:500;">Machine Learning Engineer</div>
         <div style="font-size:13px; color:var(--text-mute);">GuruHub (Contract)</div>
       </div>
-      <div style="display:flex; align-items:baseline; gap:18px;">
+      <div class="role-meta" style="display:flex; align-items:baseline; gap:18px;">
         <div style="font-family:var(--mono); font-size:11.5px; color:var(--text-mute); white-space:nowrap;">Apr — Jul 2024</div>
         <div style="font-size:13.5px; color:var(--text-soft);">Designed ML learning roadmaps for an education platform.</div>
       </div>
     </div>
-    <div class="role-row" style="display:grid; grid-template-columns:0.9fr 1.1fr; gap:40px; padding:16px 0; border-bottom:1px solid var(--border-soft);">
+    <div class="role-row split-grid" style="display:grid; gap:40px; padding:16px 0; border-bottom:1px solid var(--border-soft);">
       <div style="display:flex; flex-direction:column; gap:2px;">
         <div style="font-size:14.5px; color:var(--text); font-weight:500;">AI Developer Intern</div>
         <div style="font-size:13px; color:var(--text-mute);">Elegant Textile Engineering — A&amp;M Programming</div>
       </div>
-      <div style="display:flex; align-items:baseline; gap:18px;">
+      <div class="role-meta" style="display:flex; align-items:baseline; gap:18px;">
         <div style="font-family:var(--mono); font-size:11.5px; color:var(--text-mute); white-space:nowrap;">Jul — Aug 2023</div>
         <div style="font-size:13.5px; color:var(--text-soft);">Built a ~94%-accuracy textile-production model with a four-member agile team.</div>
       </div>
@@ -462,7 +465,7 @@
   </div>
 
   <div style="font-family:var(--mono); font-size:11.5px; color:var(--text-mute); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:14px;">Research &amp; Applied</div>
-  <div style="display:grid; grid-template-columns:repeat(6,1fr); gap:1px; background:var(--border-soft); border:1px solid var(--border-soft);">
+  <div class="research-grid" style="display:grid; gap:1px; background:var(--border-soft); border:1px solid var(--border-soft);">
     <div class="work-card stagger-item" style="--i:0; background:var(--surface); padding:18px 16px; display:flex; flex-direction:column; gap:8px; min-height:130px;">
       <h4 style="font-family:var(--head); font-size:13px; font-weight:600; margin:0; line-height:1.3;">Arabic Sign Language Robotic System</h4>
       <p style="font-size:11.5px; color:var(--text-mute); margin:0; flex:1;">Gesture recognition driving an Arduino robotic arm.</p>
@@ -499,7 +502,7 @@
 <!-- SKILLS -->
 <section id="skills" data-reveal style="scroll-margin-top:70px; padding:clamp(56px,8vw,96px) clamp(20px,4vw,64px); max-width:1280px; margin:0 auto; border-bottom:1px solid var(--border-soft);">
   <div style="font-family:var(--mono); font-size:12px; letter-spacing:0.08em; color:var(--text-mute); text-transform:uppercase; margin-bottom:32px;">06 · Technical Skills</div>
-  <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:32px 40px;">
+  <div class="skills-grid" style="display:grid; gap:32px 40px;">
     <div>
       <div style="font-family:var(--head); font-size:14px; font-weight:600; color:var(--text); margin-bottom:12px;">LLM Engineering</div>
       <div style="display:flex; flex-wrap:wrap; gap:6px;">
@@ -606,7 +609,7 @@
 </section>
 
 <!-- EDUCATION -->
-<section id="education" data-reveal style="scroll-margin-top:70px; padding:clamp(56px,8vw,96px) clamp(20px,4vw,64px); max-width:1280px; margin:0 auto; border-bottom:1px solid var(--border-soft); display:grid; grid-template-columns:0.9fr 1.1fr; gap:56px;">
+<section id="education" data-reveal class="split-grid" style="scroll-margin-top:70px; padding:clamp(56px,8vw,96px) clamp(20px,4vw,64px); max-width:1280px; margin:0 auto; border-bottom:1px solid var(--border-soft); display:grid; gap:56px;">
   <div>
     <div style="font-family:var(--mono); font-size:12px; letter-spacing:0.08em; color:var(--text-mute); text-transform:uppercase; margin-bottom:14px;">07 · Education</div>
     <h2 data-scramble style="font-family:var(--head); font-size:clamp(22px,2.6vw,28px); font-weight:600; margin:0; letter-spacing:-0.01em;">Bachelor of Science in Artificial Intelligence</h2>
@@ -629,7 +632,7 @@
 
 <!-- CONTACT -->
 <section id="contact" data-reveal style="scroll-margin-top:70px; padding:clamp(56px,8vw,110px) clamp(20px,4vw,64px); max-width:1280px; margin:0 auto;">
-  <div style="display:grid; grid-template-columns:0.9fr 1.1fr; gap:56px;">
+  <div class="split-grid" style="display:grid; gap:56px;">
     <div>
       <div style="font-family:var(--mono); font-size:12px; letter-spacing:0.08em; color:var(--text-mute); text-transform:uppercase; margin-bottom:14px;">08 · Contact</div>
       <h2 data-scramble style="font-family:var(--head); font-size:clamp(26px,3.4vw,38px); font-weight:600; margin:0 0 16px; letter-spacing:-0.01em;">Open to select AI engineering work.</h2>
@@ -667,7 +670,7 @@
 </footer>
 
 <!-- CHATBOT WIDGET -->
-<div style="position:fixed; bottom:24px; right:24px; z-index:100; display:flex; flex-direction:column; align-items:flex-end; gap:12px; font-family:var(--sans);">
+<div class="chat-widget" style="position:fixed; bottom:24px; right:24px; z-index:100; display:flex; flex-direction:column; align-items:flex-end; gap:12px; font-family:var(--sans);">
   <div id="gy-chat-panel" style="display:none; width:340px; max-width:calc(100vw - 48px); height:460px; background:var(--surface); border:1px solid var(--border); border-radius:10px; box-shadow:0 20px 50px rgba(0,0,0,0.45); flex-direction:column; overflow:hidden; animation:chatPop .25s cubic-bezier(.16,1,.3,1) both;">
     <div style="display:flex; align-items:center; justify-content:space-between; padding:14px 16px; border-bottom:1px solid var(--border-soft);">
       <div>

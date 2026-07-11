@@ -365,7 +365,11 @@
 
     var lines = [
       '$ initializing session...',
-      '$ loading models: gpt · claude · llama...',
+      '$ loading models: oci genai · claude · openai · aya-expanse...',
+      '$ mounting retrieval layer: pgvector + chromadb + bm25...',
+      '$ starting vision & speech pipelines: yolo · whisper...',
+      '$ deploying services: fastapi · docker · azure...',
+      '$ indexing case studies... 7 loaded',
       '$ connecting knowledge base... done',
       '$ ready.'
     ];
@@ -409,15 +413,34 @@
     });
   }
 
+  function buildCircuitPath(width, period) {
+    var segments = Math.max(2, Math.round(width / period));
+    var step = width / segments;
+    var bumpWidth = Math.min(36, step * 0.5);
+    var quarter = bumpWidth / 4;
+    var d = 'M0 7';
+    for (var i = 0; i < segments; i++) {
+      var flatEnd = (i + 1) * step - bumpWidth;
+      d += ' H' + flatEnd.toFixed(1);
+      d += ' L' + (flatEnd + quarter).toFixed(1) + ' 2';
+      d += ' L' + (flatEnd + quarter * 2).toFixed(1) + ' 12';
+      d += ' L' + (flatEnd + quarter * 3).toFixed(1) + ' 2';
+      d += ' L' + (flatEnd + quarter * 4).toFixed(1) + ' 7';
+    }
+    d += ' H' + width;
+    return d;
+  }
+
   function initCircuitDividers() {
     if (prefersReducedMotion() || typeof IntersectionObserver === 'undefined') return;
     var sections = document.querySelectorAll('section[data-reveal]');
     if (!sections.length) return;
-    var d = 'M0 7 H60 L68 2 L76 12 L84 2 L92 12 L100 7 H400';
+    var viewWidth = 800;
+    var d = buildCircuitPath(viewWidth, 130);
     sections.forEach(function (sec) {
       var divider = document.createElement('div');
       divider.className = 'circuit-divider';
-      divider.innerHTML = '<svg viewBox="0 0 400 14" preserveAspectRatio="none" aria-hidden="true"><path d="' + d + '"/></svg>';
+      divider.innerHTML = '<svg viewBox="0 0 ' + viewWidth + ' 14" preserveAspectRatio="none" aria-hidden="true"><path d="' + d + '"/></svg>';
       sec.parentNode.insertBefore(divider, sec);
     });
     var obs = new IntersectionObserver(function (entries) {
@@ -631,10 +654,38 @@
     });
   }
 
+  function initMobileNav() {
+    var toggle = document.getElementById('nav-toggle');
+    var links = document.getElementById('site-nav-links');
+    if (!toggle || !links) return;
+
+    function setOpen(open) {
+      links.classList.toggle('is-open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+
+    toggle.addEventListener('click', function (e) {
+      e.stopPropagation();
+      setOpen(!links.classList.contains('is-open'));
+    });
+    links.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () { setOpen(false); });
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') setOpen(false);
+    });
+    document.addEventListener('click', function (e) {
+      if (links.classList.contains('is-open') && !links.contains(e.target) && e.target !== toggle && !toggle.contains(e.target)) {
+        setOpen(false);
+      }
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     initReveal();
     initCountUp();
     initProgressBar();
+    initMobileNav();
     initBootSequence();
     initTypewriter();
     initNeuralBackground();

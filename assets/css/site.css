@@ -104,11 +104,18 @@ body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--
   transform: none;
 }
 
-/* Small-viewport nav: allow wrapping instead of overflow since there's no hamburger menu */
-@media (max-width: 720px) {
-  .site-nav { flex-wrap: wrap; row-gap: 10px; }
-  .site-nav__links { flex-wrap: wrap; row-gap: 8px; }
+/* Mobile nav toggle (hamburger) — hidden on desktop, shown under 860px */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text);
+  padding: 8px 10px;
+  cursor: pointer;
+  flex-shrink: 0;
 }
+.nav-toggle svg { width: 18px; height: 18px; display: block; }
 
 /* Lower-emphasis hero CTA text links (Explore Projects / Contact Me) */
 .text-link {
@@ -442,8 +449,8 @@ body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--
   fill: none;
   stroke: var(--accent);
   stroke-width: 1.2;
-  stroke-dasharray: 420;
-  stroke-dashoffset: 420;
+  stroke-dasharray: 2200;
+  stroke-dashoffset: 2200;
   opacity: 0.45;
   transition: stroke-dashoffset 1.2s ease-out;
 }
@@ -552,4 +559,133 @@ body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--
   font-family: var(--mono);
   font-size: 10.5px;
   color: var(--text-mute);
+}
+
+/* ============================================================
+   Responsive layout — phones (iOS/Android) and tablets.
+   Most section grids are laid out via inline grid-template-columns;
+   the ones that need to reflow below desktop widths have that one
+   property moved into a class here so a media query can own it.
+   ============================================================ */
+
+/* Reusable grids (class supplies grid-template-columns; inline
+   style on the element keeps display/gap/background/etc.) */
+.stats-grid { grid-template-columns: repeat(6, 1fr); }
+.stats-grid .stat-item { border-right: 1px solid var(--border-soft); }
+.stats-grid .stat-item:last-child { border-right: none; }
+
+.split-grid { grid-template-columns: 0.9fr 1.1fr; }
+
+.expertise-grid { grid-template-columns: repeat(5, 1fr); }
+.research-grid { grid-template-columns: repeat(6, 1fr); }
+.skills-grid { grid-template-columns: repeat(3, 1fr); }
+
+.meta-row { grid-template-columns: 140px 1fr; }
+.results-grid-3 { grid-template-columns: repeat(3, 1fr); }
+.results-grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+/* Simple case-study/archive nav (no hamburger — only 2 items):
+   let it wrap rather than overflow on very narrow phones. */
+nav:not(.site-nav) { flex-wrap: wrap; row-gap: 8px; }
+
+/* Case-study footer prev/next nav: stack on narrow phones instead
+   of squeezing two long links onto one row. */
+@media (max-width: 640px) {
+  .case-footer-nav { flex-direction: column !important; align-items: flex-start !important; gap: 12px !important; }
+}
+
+/* Tablet (~900px and down): the widest fixed grids get real breathing room */
+@media (max-width: 900px) {
+  .hero-section { grid-template-columns: 1fr !important; }
+  .stats-grid { grid-template-columns: repeat(3, 1fr); }
+  .stats-grid .stat-item { border-right: 1px solid var(--border-soft); border-bottom: 1px solid var(--border-soft); padding-bottom: 16px !important; }
+  .stats-grid .stat-item:nth-child(3n) { border-right: none; }
+  .stats-grid .stat-item:nth-child(n+4) { border-bottom: none; }
+  .expertise-grid { grid-template-columns: repeat(2, 1fr); }
+  .research-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Small tablet / large phone */
+@media (max-width: 800px) {
+  .split-grid { grid-template-columns: 1fr; gap: 24px !important; }
+  .skills-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 700px) {
+  .role-meta { flex-wrap: wrap; row-gap: 6px; }
+}
+
+/* Phones */
+@media (max-width: 640px) {
+  .results-grid-3, .results-grid-4 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .meta-row { grid-template-columns: 1fr; gap: 4px !important; }
+}
+@media (max-width: 560px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .stats-grid .stat-item:nth-child(3n) { border-right: 1px solid var(--border-soft); }
+  .stats-grid .stat-item:nth-child(2n) { border-right: none; }
+  .stats-grid .stat-item:nth-child(n+4) { border-bottom: 1px solid var(--border-soft); }
+  .stats-grid .stat-item:nth-child(n+5) { border-bottom: none; }
+  .research-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .expertise-grid { grid-template-columns: 1fr; }
+  .skills-grid { grid-template-columns: 1fr; }
+  .diagram-modal__panel { padding: 26px 16px 18px; }
+}
+@media (max-width: 380px) {
+  .results-grid-3, .results-grid-4 { grid-template-columns: 1fr; }
+}
+
+/* Hero CTA cluster: tighten the vertical rhythm and button size on
+   small phones so tags/status/buttons don't read as one crowded block */
+@media (max-width: 560px) {
+  .hero-tags-row { margin-bottom: 14px !important; gap: 6px !important; }
+  .hero-status-row { margin-bottom: 20px !important; }
+  .hero-cta-row { gap: 10px 16px !important; }
+  .hero-cta-row .btn-primary, .hero-cta-row .btn-outline {
+    padding: 10px 16px !important;
+    font-size: 12.5px !important;
+  }
+}
+
+/* Floating chat widget: smaller footprint and tighter inset on phones
+   so it reads clearly as a floating control instead of overlapping
+   whatever section happens to be scrolled underneath it. */
+@media (max-width: 480px) {
+  .chat-widget { bottom: 14px !important; right: 14px !important; }
+  .chat-widget .chat-toggle { padding: 10px 16px !important; font-size: 12px !important; }
+}
+
+/* Mobile nav: collapse the link list into a slide-down panel under
+   a hamburger toggle instead of wrapping 8 links across the bar. */
+@media (max-width: 860px) {
+  .nav-toggle { display: inline-flex; align-items: center; justify-content: center; }
+  .site-nav__links {
+    position: fixed;
+    top: 62px;
+    left: 0;
+    right: 0;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0 !important;
+    background: var(--bg-alt);
+    border-bottom: 1px solid var(--border-soft);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .3s ease;
+    z-index: 60;
+  }
+  .site-nav__links.is-open { max-height: 420px; overflow-y: auto; }
+  .site-nav__links .nav-link, .site-nav__links .btn-primary {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px clamp(20px,4vw,64px) !important;
+    margin: 0 !important;
+    border-bottom: 1px solid var(--border-soft);
+    border-radius: 0 !important;
+    text-align: left;
+  }
+  .nav-indicator { display: none; }
 }
