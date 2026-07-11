@@ -292,3 +292,91 @@ body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--
   font-style: italic;
   margin-top: 6px;
 }
+
+/* ============================================================
+   Motion / "catchy" layer — scroll progress bar, neural-network
+   hero background, typewriter eyebrow, staggered card reveals,
+   CTA shimmer. All continuous/looping motion is gated behind
+   prefers-reduced-motion below.
+   ============================================================ */
+
+/* Scroll progress bar */
+#progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-3));
+  z-index: 300;
+  transition: width .1s linear;
+}
+
+/* Neural-network hero background canvas */
+.hero-section { position: relative; overflow: hidden; }
+.hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.55;
+}
+.hero-content { position: relative; z-index: 1; }
+
+/* Typewriter eyebrow */
+.typewriter-cursor {
+  display: inline-block;
+  width: 2px;
+  margin-left: 2px;
+  background: var(--accent);
+  animation: caretBlink 1s step-end infinite;
+}
+.typewriter-cursor.is-done { animation-duration: 1s; }
+
+/* Staggered entrance for grid children: each item sets --i (its index) via
+   inline style; the section's own [data-reveal].is-visible toggle (already
+   in site.js) drives the cascade — no extra JS needed. */
+.stagger-item {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity .5s cubic-bezier(.16,1,.3,1), transform .5s cubic-bezier(.16,1,.3,1);
+  transition-delay: calc(var(--i, 0) * 70ms);
+}
+[data-reveal].is-visible .stagger-item { opacity: 1; transform: none; }
+
+/* Primary CTA shimmer sweep */
+.btn-primary { position: relative; overflow: hidden; }
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.35), transparent);
+  transform: skewX(-20deg);
+  animation: shimmerSweep 3.4s ease-in-out infinite;
+}
+
+@keyframes caretBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes shimmerSweep {
+  0% { left: -60%; }
+  45%, 100% { left: 130%; }
+}
+
+/* Respect OS-level reduced-motion preference: kill looping/decorative motion,
+   keep one-shot state transitions (reveal, hover) which are brief and useful. */
+@media (prefers-reduced-motion: reduce) {
+  /* !important needed: chatPulse/heroIn are set via inline style="animation:…"
+     in the HTML, which otherwise outranks a plain class selector here. */
+  .chat-toggle, [style*="heroIn"] { animation: none !important; }
+  .btn-primary::before { display: none; }
+  .typewriter-cursor { animation: none; }
+  .hero-canvas { display: none; }
+}

@@ -59,6 +59,7 @@
 </script>
 </head>
 <body>
+<div id="progress-bar" aria-hidden="true"></div>
 
 <!-- NAV -->
 <nav class="site-nav" style="position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:18px clamp(20px,4vw,64px); background:rgba(14,17,22,0.85); backdrop-filter:blur(10px); border-bottom:1px solid var(--border-soft);">
@@ -76,17 +77,18 @@
 </nav>
 
 <!-- HERO -->
-<section id="home" style="scroll-margin-top:70px; padding:clamp(56px,10vw,110px) clamp(20px,4vw,64px) clamp(56px,8vw,96px); display:grid; grid-template-columns:1.3fr 0.7fr; gap:56px; align-items:center; max-width:1280px; margin:0 auto; border-bottom:1px solid var(--border-soft);">
-  <div style="animation:heroIn .8s cubic-bezier(.16,1,.3,1) both;">
-    <div style="font-family:var(--mono); font-size:12.5px; letter-spacing:0.08em; color:var(--accent); margin-bottom:18px; text-transform:uppercase;">AI Engineer — LLM Systems · RAG · Agentic AI</div>
+<section id="home" class="hero-section" style="scroll-margin-top:70px; padding:clamp(56px,10vw,110px) clamp(20px,4vw,64px) clamp(56px,8vw,96px); display:grid; grid-template-columns:1.3fr 0.7fr; gap:56px; align-items:center; max-width:1280px; margin:0 auto; border-bottom:1px solid var(--border-soft);">
+  <canvas class="hero-canvas" aria-hidden="true"></canvas>
+  <div class="hero-content" style="animation:heroIn .8s cubic-bezier(.16,1,.3,1) both;">
+    <div style="font-family:var(--mono); font-size:12.5px; letter-spacing:0.08em; color:var(--accent); margin-bottom:18px; text-transform:uppercase;"><span id="hero-eyebrow-text" data-full-text="AI Engineer — LLM Systems · RAG · Agentic AI">AI Engineer — LLM Systems · RAG · Agentic AI</span><span id="hero-eyebrow-cursor" class="typewriter-cursor">&nbsp;</span></div>
     <h1 style="font-family:var(--head); font-size:clamp(34px,5vw,56px); line-height:1.08; font-weight:600; margin:0 0 22px; letter-spacing:-0.01em;">Production AI systems for real business operations.</h1>
     <p style="font-size:17px; color:var(--text-soft); max-width:58ch; margin:0 0 26px;">I design and deploy enterprise AI — RAG assistants, Text-to-SQL platforms, agentic data analysis, computer vision and OCR pipelines — from architecture through deployment and monitoring.</p>
     <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:32px;">
-      <span style="font-family:var(--mono); font-size:12px; color:var(--text-soft); border:1px solid var(--border); border-radius:20px; padding:6px 13px;">LLM &amp; RAG</span>
-      <span style="font-family:var(--mono); font-size:12px; color:var(--text-soft); border:1px solid var(--border); border-radius:20px; padding:6px 13px;">Agentic AI</span>
-      <span style="font-family:var(--mono); font-size:12px; color:var(--text-soft); border:1px solid var(--border); border-radius:20px; padding:6px 13px;">Text-to-SQL</span>
-      <span style="font-family:var(--mono); font-size:12px; color:var(--text-soft); border:1px solid var(--border); border-radius:20px; padding:6px 13px;">Computer Vision</span>
-      <span style="font-family:var(--mono); font-size:12px; color:var(--text-soft); border:1px solid var(--border); border-radius:20px; padding:6px 13px;">Arabic NLP</span>
+      <span class="stagger-item" style="--i:0; font-family:var(--mono); font-size:12px; color:var(--text-soft); border:1px solid var(--border); border-radius:20px; padding:6px 13px;">LLM &amp; RAG</span>
+      <span class="stagger-item" style="--i:1; font-family:var(--mono); font-size:12px; color:var(--text-soft); border:1px solid var(--border); border-radius:20px; padding:6px 13px;">Agentic AI</span>
+      <span class="stagger-item" style="--i:2; font-family:var(--mono); font-size:12px; color:var(--text-soft); border:1px solid var(--border); border-radius:20px; padding:6px 13px;">Text-to-SQL</span>
+      <span class="stagger-item" style="--i:3; font-family:var(--mono); font-size:12px; color:var(--text-soft); border:1px solid var(--border); border-radius:20px; padding:6px 13px;">Computer Vision</span>
+      <span class="stagger-item" style="--i:4; font-family:var(--mono); font-size:12px; color:var(--text-soft); border:1px solid var(--border); border-radius:20px; padding:6px 13px;">Arabic NLP</span>
     </div>
     <div style="display:flex; flex-wrap:wrap; align-items:center; gap:20px;">
       <a href="#case-studies" class="btn-primary" style="font-family:var(--mono); font-size:13px; background:var(--accent); color:var(--bg); padding:12px 22px; border-radius:3px; text-decoration:none; font-weight:500; display:inline-block;">View Case Studies</a>
@@ -95,9 +97,9 @@
       <a href="#contact" class="text-link" style="color:var(--accent-2);">Contact Me</a>
     </div>
   </div>
-  <div style="width:min(280px,100%); aspect-ratio:1; margin:0 auto; position:relative; animation:heroIn .9s cubic-bezier(.16,1,.3,1) .15s both;">
+  <div class="hero-content" style="width:min(280px,100%); aspect-ratio:1; margin:0 auto; position:relative; animation:heroIn .9s cubic-bezier(.16,1,.3,1) .15s both;">
     <div style="position:absolute; inset:-10px; border:1px solid var(--border); border-radius:50%;"></div>
-    <img src="images/profile-hero.jpg" width="280" height="280" alt="George Youhana, AI Engineer, headshot" loading="eager" fetchpriority="high" style="width:100%; height:100%; object-fit:cover; border-radius:50%;">
+    <img src="images/profile-hero.jpg" width="280" height="280" alt="George Youhana, AI Engineer, headshot" loading="eager" fetchpriority="high" style="width:100%; height:100%; object-fit:cover; border-radius:50%; position:relative; z-index:1;">
   </div>
 </section>
 
@@ -161,23 +163,23 @@
 <section data-reveal style="padding:clamp(56px,8vw,96px) clamp(20px,4vw,64px); max-width:1280px; margin:0 auto; border-bottom:1px solid var(--border-soft);">
   <div style="font-family:var(--mono); font-size:12px; letter-spacing:0.08em; color:var(--text-mute); text-transform:uppercase; margin-bottom:14px;">02 · Core Expertise</div>
   <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:1px; background:var(--border-soft); border:1px solid var(--border-soft);">
-    <div class="expertise-card" style="background:var(--bg); padding:26px 22px;">
+    <div class="expertise-card stagger-item" style="--i:0; background:var(--bg); padding:26px 22px;">
       <h3 style="font-family:var(--head); font-size:16px; font-weight:600; margin:0 0 10px; color:var(--text);">LLM Systems &amp; RAG</h3>
       <p style="font-size:13.5px; color:var(--text-mute); margin:0;">Enterprise assistants connecting language models to internal documents, policies and departmental knowledge.</p>
     </div>
-    <div class="expertise-card" style="background:var(--bg); padding:26px 22px;">
+    <div class="expertise-card stagger-item" style="--i:1; background:var(--bg); padding:26px 22px;">
       <h3 style="font-family:var(--head); font-size:16px; font-weight:600; margin:0 0 10px; color:var(--text);">Agentic AI &amp; Text-to-SQL</h3>
       <p style="font-size:13.5px; color:var(--text-mute); margin:0;">Workflows that classify intent, route tasks, query databases and explain results.</p>
     </div>
-    <div class="expertise-card" style="background:var(--bg); padding:26px 22px;">
+    <div class="expertise-card stagger-item" style="--i:2; background:var(--bg); padding:26px 22px;">
       <h3 style="font-family:var(--head); font-size:16px; font-weight:600; margin:0 0 10px; color:var(--text);">Computer Vision &amp; OCR</h3>
       <p style="font-size:13.5px; color:var(--text-mute); margin:0;">Real-time vision for security monitoring, recognition and attendance, plus OCR and document-intelligence pipelines.</p>
     </div>
-    <div class="expertise-card" style="background:var(--bg); padding:26px 22px;">
+    <div class="expertise-card stagger-item" style="--i:3; background:var(--bg); padding:26px 22px;">
       <h3 style="font-family:var(--head); font-size:16px; font-weight:600; margin:0 0 10px; color:var(--text);">Arabic &amp; English NLP</h3>
       <p style="font-size:13.5px; color:var(--text-mute); margin:0;">Bilingual retrieval, summarization, classification and employee support.</p>
     </div>
-    <div class="expertise-card" style="background:var(--bg); padding:26px 22px;">
+    <div class="expertise-card stagger-item" style="--i:4; background:var(--bg); padding:26px 22px;">
       <h3 style="font-family:var(--head); font-size:16px; font-weight:600; margin:0 0 10px; color:var(--text);">AI APIs &amp; Deployment</h3>
       <p style="font-size:13.5px; color:var(--text-mute); margin:0;">FastAPI, Docker, Azure, local LLM serving, logging and monitoring.</p>
     </div>
@@ -194,7 +196,7 @@
   </div>
   <div class="case-grid">
 
-    <div class="case-card" style="background:var(--surface); padding:22px 24px 26px; display:flex; flex-direction:column; gap:12px;">
+    <div class="case-card stagger-item" style="--i:0; background:var(--surface); padding:22px 24px 26px; display:flex; flex-direction:column; gap:12px;">
       <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:12px;">
         <div style="font-family:var(--mono); font-size:11px; letter-spacing:0.05em; color:var(--text-mute); text-transform:uppercase; padding-top:6px;">LLM &amp; RAG</div>
         <button type="button" class="diagram-icon-btn" data-diagram-trigger data-diagram="images/architecture/atr-gpt-architecture.svg" data-diagram-title="ATR GPT architecture" data-diagram-alt="Web interface, FastAPI backend, mode router branching to OCI GenAI, Claude and OpenAI, converging on PostgreSQL with pgvector" aria-label="View ATR GPT architecture diagram">
@@ -212,7 +214,7 @@
       <a href="case-study-atr-gpt.html" class="case-card__link" style="font-family:var(--mono); font-size:12px; color:var(--text); text-decoration:none; margin-top:4px;">View Case Study →</a>
     </div>
 
-    <div class="case-card" style="background:var(--surface); padding:22px 24px 26px; display:flex; flex-direction:column; gap:12px;">
+    <div class="case-card stagger-item" style="--i:1; background:var(--surface); padding:22px 24px 26px; display:flex; flex-direction:column; gap:12px;">
       <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:12px;">
         <div style="font-family:var(--mono); font-size:11px; letter-spacing:0.05em; color:var(--text-mute); text-transform:uppercase; padding-top:6px;">Text-to-SQL</div>
         <button type="button" class="diagram-icon-btn" data-diagram-trigger data-diagram="images/architecture/sales-intelligence-architecture.svg" data-diagram-title="Enterprise Sales Intelligence Platform architecture" data-diagram-alt="User question through intent interpretation, schema context selection, SQL generation, validation and execution, to a natural-language explanation" aria-label="View Sales Intelligence architecture diagram">
@@ -230,7 +232,7 @@
       <a href="case-study-sales-intelligence.html" class="case-card__link" style="font-family:var(--mono); font-size:12px; color:var(--text); text-decoration:none; margin-top:4px;">View Case Study →</a>
     </div>
 
-    <div class="case-card" style="background:var(--surface); padding:22px 24px 26px; display:flex; flex-direction:column; gap:12px;">
+    <div class="case-card stagger-item" style="--i:2; background:var(--surface); padding:22px 24px 26px; display:flex; flex-direction:column; gap:12px;">
       <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:12px;">
         <div style="font-family:var(--mono); font-size:11px; letter-spacing:0.05em; color:var(--text-mute); text-transform:uppercase; padding-top:6px;">RAG &amp; Local LLMs</div>
         <button type="button" class="diagram-icon-btn" data-diagram-trigger data-diagram="images/architecture/hr-assistant-architecture.svg" data-diagram-title="EVA Cosmetics Offline HR Assistant architecture" data-diagram-alt="Arabic and English HR documents retrieved via ChromaDB and BM25 in parallel, merged, and answered locally by Aya-Expanse 8B" aria-label="View HR Assistant architecture diagram">
@@ -248,7 +250,7 @@
       <a href="case-study-hr-assistant.html" class="case-card__link" style="font-family:var(--mono); font-size:12px; color:var(--text); text-decoration:none; margin-top:4px;">View Case Study →</a>
     </div>
 
-    <div class="case-card" style="background:var(--surface); padding:22px 24px 26px; display:flex; flex-direction:column; gap:12px;">
+    <div class="case-card stagger-item" style="--i:3; background:var(--surface); padding:22px 24px 26px; display:flex; flex-direction:column; gap:12px;">
       <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:12px;">
         <div style="font-family:var(--mono); font-size:11px; letter-spacing:0.05em; color:var(--text-mute); text-transform:uppercase; padding-top:6px;">Agentic AI</div>
         <button type="button" class="diagram-icon-btn" data-diagram-trigger data-diagram="images/architecture/sheet-chat-architecture.svg" data-diagram-title="Sheet Chat architecture" data-diagram-alt="File ingestion, data inspection, intent classification, conditional routing to SQL/DuckDB, visualization or data-quality checks, then a natural-language explanation" aria-label="View Sheet Chat architecture diagram">
@@ -266,7 +268,7 @@
       <a href="case-study-sheet-chat.html" class="case-card__link" style="font-family:var(--mono); font-size:12px; color:var(--text); text-decoration:none; margin-top:4px;">View Case Study →</a>
     </div>
 
-    <div class="case-card" style="background:var(--surface); padding:22px 24px 26px; display:flex; flex-direction:column; gap:12px;">
+    <div class="case-card stagger-item" style="--i:4; background:var(--surface); padding:22px 24px 26px; display:flex; flex-direction:column; gap:12px;">
       <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:12px;">
         <div style="font-family:var(--mono); font-size:11px; letter-spacing:0.05em; color:var(--text-mute); text-transform:uppercase; padding-top:6px;">Computer Vision</div>
         <button type="button" class="diagram-icon-btn" data-diagram-trigger data-diagram="images/architecture/vision-platform-architecture.svg" data-diagram-title="Security &amp; Vision Intelligence Platform architecture" data-diagram-alt="Camera feeds into fire/violence detection, license-plate recognition and face recognition, through CPU/GPU inference to real-time alerting and attendance" aria-label="View Vision Platform architecture diagram">
@@ -284,7 +286,7 @@
       <a href="case-study-vision-platform.html" class="case-card__link" style="font-family:var(--mono); font-size:12px; color:var(--text); text-decoration:none; margin-top:4px;">View Case Study →</a>
     </div>
 
-    <div class="case-card" style="background:var(--surface); padding:22px 24px 26px; display:flex; flex-direction:column; gap:12px;">
+    <div class="case-card stagger-item" style="--i:5; background:var(--surface); padding:22px 24px 26px; display:flex; flex-direction:column; gap:12px;">
       <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:12px;">
         <div style="font-family:var(--mono); font-size:11px; letter-spacing:0.05em; color:var(--text-mute); text-transform:uppercase; padding-top:6px;">Speech &amp; NLP</div>
         <button type="button" class="diagram-icon-btn" data-diagram-trigger data-diagram="images/architecture/learning-automation-architecture.svg" data-diagram-title="AI-Powered Learning Automation Platform architecture" data-diagram-alt="Audio/video input via Whisper transcription and PDF input via extraction, merging into NLP summarization, delivered through an async API" aria-label="View Learning Automation architecture diagram">
@@ -302,7 +304,7 @@
       <a href="case-study-learning-automation.html" class="case-card__link" style="font-family:var(--mono); font-size:12px; color:var(--text); text-decoration:none; margin-top:4px;">View Case Study →</a>
     </div>
 
-    <div class="case-card" style="background:var(--surface); padding:22px 24px 26px; display:flex; flex-direction:column; gap:12px;">
+    <div class="case-card stagger-item" style="--i:6; background:var(--surface); padding:22px 24px 26px; display:flex; flex-direction:column; gap:12px;">
       <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:12px;">
         <div style="font-family:var(--mono); font-size:11px; letter-spacing:0.05em; color:var(--text-mute); text-transform:uppercase; padding-top:6px;">Social Analytics &amp; NLP</div>
         <button type="button" class="diagram-icon-btn" data-diagram-trigger data-diagram="images/architecture/social-listening-architecture.svg" data-diagram-title="Social Listening Intelligence architecture" data-diagram-alt="Facebook and Instagram Graph API comments through a unified scraper into PostgreSQL per brand and platform, a BERT classifier mapping 11 classes to 9 categories, and a dashboard with PDF reports" aria-label="View Social Listening architecture diagram">
@@ -417,7 +419,7 @@
 
   <div style="font-family:var(--mono); font-size:11.5px; color:var(--text-mute); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:14px;">Enterprise</div>
   <div class="work-grid" style="margin-bottom:40px;">
-    <div class="work-card" style="background:var(--surface); padding:20px 20px 22px; display:flex; flex-direction:column; gap:10px; min-height:150px;">
+    <div class="work-card stagger-item" style="--i:0; background:var(--surface); padding:20px 20px 22px; display:flex; flex-direction:column; gap:10px; min-height:150px;">
       <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:10px;">
         <h4 style="font-family:var(--head); font-size:14.5px; font-weight:600; margin:0;">Product-Label OCR</h4>
         <button type="button" class="diagram-icon-btn" data-diagram-trigger data-diagram="images/architecture/automation-ocr-architecture.svg" data-diagram-title="Product-Label OCR architecture" data-diagram-alt="Label image upload, preprocessing, Google Vision OCR with Arabic and English hints, field extraction and validation, structured output" aria-label="View Product-Label OCR architecture diagram" style="width:40px; height:40px; flex-shrink:0;">
@@ -427,7 +429,7 @@
       <p style="font-size:12.5px; color:var(--text-mute); margin:0; flex:1;">Bilingual (Arabic/English) OCR extracting batch, manufacturing-date, expiry-date and quantity fields from product labels.</p>
       <div style="font-family:var(--mono); font-size:11px; color:var(--accent-2);">Google Vision · OCR</div>
     </div>
-    <div class="work-card" style="background:var(--surface); padding:20px 20px 22px; display:flex; flex-direction:column; gap:10px; min-height:150px;">
+    <div class="work-card stagger-item" style="--i:1; background:var(--surface); padding:20px 20px 22px; display:flex; flex-direction:column; gap:10px; min-height:150px;">
       <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:10px;">
         <h4 style="font-family:var(--head); font-size:14.5px; font-weight:600; margin:0;">Forecasting &amp; Decision Intelligence</h4>
         <button type="button" class="diagram-icon-btn" data-diagram-trigger data-diagram="images/architecture/forecast-view-architecture.svg" data-diagram-title="Forecast View architecture — reconstructed from the project implementation" data-diagram-alt="SKU mapping and panel build, per-SKU model selection between Ridge regression and LightGBM with ETS/Croston fallback, forecast and root-cause metrics, LLM explanation, FastAPI dashboard" aria-label="View Forecasting architecture diagram" style="width:40px; height:40px; flex-shrink:0;">
@@ -437,7 +439,7 @@
       <p style="font-size:12.5px; color:var(--text-mute); margin:0; flex:1;">Custom Prophet-style Ridge regression and LightGBM ensemble models for supply-chain demand forecasting, with LLM-generated root-cause explanations.</p>
       <div style="font-family:var(--mono); font-size:11px; color:var(--accent-2);">LightGBM · Forecasting</div>
     </div>
-    <div class="work-card" style="background:var(--surface); padding:20px 20px 22px; display:flex; flex-direction:column; gap:10px; min-height:150px;">
+    <div class="work-card stagger-item" style="--i:2; background:var(--surface); padding:20px 20px 22px; display:flex; flex-direction:column; gap:10px; min-height:150px;">
       <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:10px;">
         <h4 style="font-family:var(--head); font-size:14.5px; font-weight:600; margin:0;">Bilingual Product-Content &amp; Regulatory Layout Platform</h4>
         <button type="button" class="diagram-icon-btn" data-diagram-trigger data-diagram="images/architecture/text-digitalize-architecture.svg" data-diagram-title="Bilingual Product-Content &amp; Regulatory Layout Platform architecture" data-diagram-alt="Document upload, storage, parsing via PyMuPDF or LLM vision, AI field extraction, Claude-generated bilingual GSO-compliant layout, compliance quality gate, cached output" aria-label="View Bilingual Product-Content Platform architecture diagram" style="width:40px; height:40px; flex-shrink:0;">
@@ -447,7 +449,7 @@
       <p style="font-size:12.5px; color:var(--text-mute); margin:0; flex:1;">Ingests product spec documents and uses Claude to generate GSO-compliant bilingual marketing layouts, gated by an automated compliance check.</p>
       <div style="font-family:var(--mono); font-size:11px; color:var(--accent-2);">Claude · Document Intelligence</div>
     </div>
-    <div class="work-card" style="background:var(--surface); padding:20px 20px 22px; display:flex; flex-direction:column; gap:10px; min-height:150px;">
+    <div class="work-card stagger-item" style="--i:3; background:var(--surface); padding:20px 20px 22px; display:flex; flex-direction:column; gap:10px; min-height:150px;">
       <h4 style="font-family:var(--head); font-size:14.5px; font-weight:600; margin:0;">Supply-Chain Analytics &amp; BI</h4>
       <p style="font-size:12.5px; color:var(--text-mute); margin:0; flex:1;">Power BI dashboards for inventory turnover, fulfillment and operational KPIs.</p>
       <div style="font-family:var(--mono); font-size:11px; color:var(--accent-2);">Power BI</div>
@@ -456,32 +458,32 @@
 
   <div style="font-family:var(--mono); font-size:11.5px; color:var(--text-mute); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:14px;">Research &amp; Applied</div>
   <div style="display:grid; grid-template-columns:repeat(6,1fr); gap:1px; background:var(--border-soft); border:1px solid var(--border-soft);">
-    <div class="work-card" style="background:var(--surface); padding:18px 16px; display:flex; flex-direction:column; gap:8px; min-height:130px;">
+    <div class="work-card stagger-item" style="--i:0; background:var(--surface); padding:18px 16px; display:flex; flex-direction:column; gap:8px; min-height:130px;">
       <h4 style="font-family:var(--head); font-size:13px; font-weight:600; margin:0; line-height:1.3;">Arabic Sign Language Robotic System</h4>
       <p style="font-size:11.5px; color:var(--text-mute); margin:0; flex:1;">Gesture recognition driving an Arduino robotic arm.</p>
       <div style="font-family:var(--mono); font-size:10.5px; color:var(--accent-3);">~96% accuracy</div>
     </div>
-    <div class="work-card" style="background:var(--surface); padding:18px 16px; display:flex; flex-direction:column; gap:8px; min-height:130px;">
+    <div class="work-card stagger-item" style="--i:1; background:var(--surface); padding:18px 16px; display:flex; flex-direction:column; gap:8px; min-height:130px;">
       <h4 style="font-family:var(--head); font-size:13px; font-weight:600; margin:0; line-height:1.3;">Arabic Text Summarization</h4>
       <p style="font-size:11.5px; color:var(--text-mute); margin:0; flex:1;">AraBART fine-tuned on 10,000+ Arabic documents.</p>
       <div style="font-family:var(--mono); font-size:10.5px; color:var(--accent-3);">−40% review time</div>
     </div>
-    <div class="work-card" style="background:var(--surface); padding:18px 16px; display:flex; flex-direction:column; gap:8px; min-height:130px;">
+    <div class="work-card stagger-item" style="--i:2; background:var(--surface); padding:18px 16px; display:flex; flex-direction:column; gap:8px; min-height:130px;">
       <h4 style="font-family:var(--head); font-size:13px; font-weight:600; margin:0; line-height:1.3;">Egyptian Speaker Diarization</h4>
       <p style="font-size:11.5px; color:var(--text-mute); margin:0; flex:1;">Speaker segmentation for noisy, multi-speaker Egyptian Arabic audio.</p>
       <div style="font-family:var(--mono); font-size:10.5px; color:var(--accent-3);">ASR</div>
     </div>
-    <div class="work-card" style="background:var(--surface); padding:18px 16px; display:flex; flex-direction:column; gap:8px; min-height:130px;">
+    <div class="work-card stagger-item" style="--i:3; background:var(--surface); padding:18px 16px; display:flex; flex-direction:column; gap:8px; min-height:130px;">
       <h4 style="font-family:var(--head); font-size:13px; font-weight:600; margin:0; line-height:1.3;">Wheat Disease Detection Assistant</h4>
       <p style="font-size:11.5px; color:var(--text-mute); margin:0; flex:1;">Real-time detection paired with a farmer-facing chatbot.</p>
       <div style="font-family:var(--mono); font-size:10.5px; color:var(--accent-3);">~90% accuracy</div>
     </div>
-    <div class="work-card" style="background:var(--surface); padding:18px 16px; display:flex; flex-direction:column; gap:8px; min-height:130px;">
+    <div class="work-card stagger-item" style="--i:4; background:var(--surface); padding:18px 16px; display:flex; flex-direction:column; gap:8px; min-height:130px;">
       <h4 style="font-family:var(--head); font-size:13px; font-weight:600; margin:0; line-height:1.3;">Assistive Vision System</h4>
       <p style="font-size:11.5px; color:var(--text-mute); margin:0; flex:1;">Object detection, OCR, face recognition and text-to-speech in one assistive app.</p>
       <div style="font-family:var(--mono); font-size:10.5px; color:var(--accent-3);">YOLOv5 · TTS</div>
     </div>
-    <div class="work-card" style="background:var(--surface); padding:18px 16px; display:flex; flex-direction:column; gap:8px; min-height:130px;">
+    <div class="work-card stagger-item" style="--i:5; background:var(--surface); padding:18px 16px; display:flex; flex-direction:column; gap:8px; min-height:130px;">
       <h4 style="font-family:var(--head); font-size:13px; font-weight:600; margin:0; line-height:1.3;">Egyptian Cotton Classification</h4>
       <p style="font-size:11.5px; color:var(--text-mute); margin:0; flex:1;">Deep-learning web app classifying cotton grade from imagery.</p>
       <div style="font-family:var(--mono); font-size:10.5px; color:var(--accent-3);">~94% accuracy</div>
