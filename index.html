@@ -65,6 +65,7 @@
 <nav class="site-nav" style="position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:18px clamp(20px,4vw,64px); background:rgba(14,17,22,0.85); backdrop-filter:blur(10px); border-bottom:1px solid var(--border-soft);">
   <a href="#home" style="font-family:var(--mono); font-size:13px; letter-spacing:0.06em; color:var(--text); text-decoration:none; font-weight:500;">GEORGE_YOUHANA</a>
   <div class="site-nav__links" style="display:flex; align-items:center; gap:clamp(12px,2vw,28px); font-family:var(--mono); font-size:12.5px; letter-spacing:0.02em;">
+    <span class="nav-indicator" aria-hidden="true"></span>
     <a href="#home" class="nav-link" style="color:var(--text-soft); text-decoration:none;">Home</a>
     <a href="#about" class="nav-link" style="color:var(--text-soft); text-decoration:none;">About</a>
     <a href="#experience" class="nav-link" style="color:var(--text-soft); text-decoration:none;">Experience</a>
@@ -81,14 +82,18 @@
   <canvas class="hero-canvas" aria-hidden="true"></canvas>
   <div class="hero-content" style="animation:heroIn .8s cubic-bezier(.16,1,.3,1) both;">
     <div style="font-family:var(--mono); font-size:12.5px; letter-spacing:0.08em; color:var(--accent); margin-bottom:18px; text-transform:uppercase;"><span id="hero-eyebrow-text" data-full-text="AI Engineer — LLM Systems · RAG · Agentic AI">AI Engineer — LLM Systems · RAG · Agentic AI</span><span id="hero-eyebrow-cursor" class="typewriter-cursor">&nbsp;</span></div>
-    <h1 style="font-family:var(--head); font-size:clamp(34px,5vw,56px); line-height:1.08; font-weight:600; margin:0 0 22px; letter-spacing:-0.01em;">Production AI systems for real business operations.</h1>
+    <h1 data-scramble style="font-family:var(--head); font-size:clamp(34px,5vw,56px); line-height:1.08; font-weight:600; margin:0 0 22px; letter-spacing:-0.01em;">Production AI systems for real business operations.</h1>
     <p style="font-size:17px; color:var(--text-soft); max-width:58ch; margin:0 0 26px;">I design and deploy enterprise AI — RAG assistants, Text-to-SQL platforms, agentic data analysis, computer vision and OCR pipelines — from architecture through deployment and monitoring.</p>
-    <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:32px;">
+    <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px;">
       <span class="stagger-item" style="--i:0; font-family:var(--mono); font-size:12px; color:var(--text-soft); border:1px solid var(--border); border-radius:20px; padding:6px 13px;">LLM &amp; RAG</span>
       <span class="stagger-item" style="--i:1; font-family:var(--mono); font-size:12px; color:var(--text-soft); border:1px solid var(--border); border-radius:20px; padding:6px 13px;">Agentic AI</span>
       <span class="stagger-item" style="--i:2; font-family:var(--mono); font-size:12px; color:var(--text-soft); border:1px solid var(--border); border-radius:20px; padding:6px 13px;">Text-to-SQL</span>
       <span class="stagger-item" style="--i:3; font-family:var(--mono); font-size:12px; color:var(--text-soft); border:1px solid var(--border); border-radius:20px; padding:6px 13px;">Computer Vision</span>
       <span class="stagger-item" style="--i:4; font-family:var(--mono); font-size:12px; color:var(--text-soft); border:1px solid var(--border); border-radius:20px; padding:6px 13px;">Arabic NLP</span>
+    </div>
+    <div style="display:flex; align-items:center; gap:8px; margin-bottom:32px;">
+      <span class="status-dot" aria-hidden="true"></span>
+      <span style="font-family:var(--mono); font-size:12px; color:var(--text-soft);">Available for new AI engineering engagements</span>
     </div>
     <div style="display:flex; flex-wrap:wrap; align-items:center; gap:20px;">
       <a href="#case-studies" class="btn-primary" style="font-family:var(--mono); font-size:13px; background:var(--accent); color:var(--bg); padding:12px 22px; border-radius:3px; text-decoration:none; font-weight:500; display:inline-block;">View Case Studies</a>
@@ -137,7 +142,7 @@
 <section id="about" data-reveal style="scroll-margin-top:70px; padding:clamp(56px,8vw,96px) clamp(20px,4vw,64px); max-width:1280px; margin:0 auto; border-bottom:1px solid var(--border-soft); display:grid; grid-template-columns:0.9fr 1.1fr; gap:56px;">
   <div>
     <div style="font-family:var(--mono); font-size:12px; letter-spacing:0.08em; color:var(--text-mute); text-transform:uppercase; margin-bottom:14px;">01 · About</div>
-    <h2 style="font-family:var(--head); font-size:clamp(24px,3vw,32px); font-weight:600; margin:0; letter-spacing:-0.01em;">AI engineering focused on practical implementation.</h2>
+    <h2 data-scramble style="font-family:var(--head); font-size:clamp(24px,3vw,32px); font-weight:600; margin:0; letter-spacing:-0.01em;">AI engineering focused on practical implementation.</h2>
   </div>
   <div>
     <p style="font-size:16px; color:var(--text-soft); margin:0 0 18px;">I build enterprise AI systems across LLM engineering, RAG, agentic workflows, computer vision, OCR, forecasting and automation — with a focus on letting people query knowledge, databases, documents and spreadsheets in plain language.</p>
@@ -191,7 +196,7 @@
   <div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:32px;">
     <div>
       <div style="font-family:var(--mono); font-size:12px; letter-spacing:0.08em; color:var(--text-mute); text-transform:uppercase; margin-bottom:14px;">03 · Featured Case Studies</div>
-      <h2 style="font-family:var(--head); font-size:clamp(24px,3vw,32px); font-weight:600; margin:0; letter-spacing:-0.01em;">Systems in production, end to end.</h2>
+      <h2 data-scramble style="font-family:var(--head); font-size:clamp(24px,3vw,32px); font-weight:600; margin:0; letter-spacing:-0.01em;">Systems in production, end to end.</h2>
     </div>
   </div>
   <div class="case-grid">
@@ -415,7 +420,7 @@
     <div style="font-family:var(--mono); font-size:12px; letter-spacing:0.08em; color:var(--text-mute); text-transform:uppercase;">05 · Additional Work</div>
     <a href="all-projects.html" style="font-family:var(--mono); font-size:12.5px; color:var(--accent); text-decoration:none;">View all projects →</a>
   </div>
-  <h2 style="font-family:var(--head); font-size:clamp(24px,3vw,32px); font-weight:600; margin:0 0 32px; letter-spacing:-0.01em;">Enterprise, applied and research projects.</h2>
+  <h2 data-scramble style="font-family:var(--head); font-size:clamp(24px,3vw,32px); font-weight:600; margin:0 0 32px; letter-spacing:-0.01em;">Enterprise, applied and research projects.</h2>
 
   <div style="font-family:var(--mono); font-size:11.5px; color:var(--text-mute); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:14px;">Enterprise</div>
   <div class="work-grid" style="margin-bottom:40px;">
@@ -604,7 +609,7 @@
 <section id="education" data-reveal style="scroll-margin-top:70px; padding:clamp(56px,8vw,96px) clamp(20px,4vw,64px); max-width:1280px; margin:0 auto; border-bottom:1px solid var(--border-soft); display:grid; grid-template-columns:0.9fr 1.1fr; gap:56px;">
   <div>
     <div style="font-family:var(--mono); font-size:12px; letter-spacing:0.08em; color:var(--text-mute); text-transform:uppercase; margin-bottom:14px;">07 · Education</div>
-    <h2 style="font-family:var(--head); font-size:clamp(22px,2.6vw,28px); font-weight:600; margin:0; letter-spacing:-0.01em;">Bachelor of Science in Artificial Intelligence</h2>
+    <h2 data-scramble style="font-family:var(--head); font-size:clamp(22px,2.6vw,28px); font-weight:600; margin:0; letter-spacing:-0.01em;">Bachelor of Science in Artificial Intelligence</h2>
   </div>
   <div>
     <div style="font-size:15px; color:var(--text); margin-bottom:4px;">Arab Academy for Science, Technology and Maritime Transport</div>
@@ -627,7 +632,7 @@
   <div style="display:grid; grid-template-columns:0.9fr 1.1fr; gap:56px;">
     <div>
       <div style="font-family:var(--mono); font-size:12px; letter-spacing:0.08em; color:var(--text-mute); text-transform:uppercase; margin-bottom:14px;">08 · Contact</div>
-      <h2 style="font-family:var(--head); font-size:clamp(26px,3.4vw,38px); font-weight:600; margin:0 0 16px; letter-spacing:-0.01em;">Open to select AI engineering work.</h2>
+      <h2 data-scramble style="font-family:var(--head); font-size:clamp(26px,3.4vw,38px); font-weight:600; margin:0 0 16px; letter-spacing:-0.01em;">Open to select AI engineering work.</h2>
       <p style="font-size:15px; color:var(--text-soft); max-width:44ch; margin:0;">Enterprise RAG, agentic workflows, Text-to-SQL, computer vision, OCR and AI automation — for enterprise teams or as a freelance engagement.</p>
     </div>
     <div style="display:flex; flex-direction:column; gap:0;">

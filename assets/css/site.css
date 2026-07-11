@@ -379,4 +379,177 @@ body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--
   .btn-primary::before { display: none; }
   .typewriter-cursor { animation: none; }
   .hero-canvas { display: none; }
+  .status-dot { animation: none; }
+  .tilt-card { transition: none; }
+  .nav-indicator { transition: none; }
+  #cursor-glow { display: none; }
+}
+
+/* ============================================================
+   Motion layer, round 2 — boot sequence, status pill, circuit
+   dividers, scroll-spy nav indicator, tilt/glow cards, cursor
+   glow trail, command palette, text-scramble headings. JS-gated
+   behind prefers-reduced-motion for anything purely decorative;
+   navigational aids (scroll-spy, command palette) stay available.
+   ============================================================ */
+
+/* Terminal boot sequence (home page only, once per session) */
+#boot-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 400;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity .5s ease;
+}
+#boot-overlay.is-done { opacity: 0; pointer-events: none; }
+.boot-lines { font-family: var(--mono); font-size: 13px; color: var(--accent); }
+.boot-line {
+  opacity: 0;
+  transform: translateY(4px);
+  margin-bottom: 6px;
+  transition: opacity .3s, transform .3s;
+}
+.boot-line.is-shown { opacity: 1; transform: none; }
+
+/* Hero status pill */
+.status-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #5EE6A8;
+  flex-shrink: 0;
+  animation: statusPulse 2.2s ease-out infinite;
+}
+@keyframes statusPulse {
+  0% { box-shadow: 0 0 0 0 rgba(94,230,168,0.55); }
+  70% { box-shadow: 0 0 0 9px rgba(94,230,168,0); }
+  100% { box-shadow: 0 0 0 0 rgba(94,230,168,0); }
+}
+
+/* Hero canvas parallax (JS shifts transform on mousemove) */
+.hero-canvas { transition: transform .3s ease-out; }
+
+/* Circuit-trace section dividers (inserted by site.js before each
+   [data-reveal] section; draws itself via stroke-dashoffset when
+   scrolled into view) */
+.circuit-divider { max-width: 1280px; margin: 0 auto; padding: 0 clamp(20px,4vw,64px); }
+.circuit-divider svg { width: 100%; height: 14px; display: block; overflow: visible; }
+.circuit-divider path {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.2;
+  stroke-dasharray: 420;
+  stroke-dashoffset: 420;
+  opacity: 0.45;
+  transition: stroke-dashoffset 1.2s ease-out;
+}
+.circuit-divider.is-drawn path { stroke-dashoffset: 0; }
+
+/* Scroll-spy nav indicator: JS slides this under the active nav link */
+.site-nav__links { position: relative; }
+.nav-indicator {
+  position: absolute;
+  bottom: -7px;
+  height: 2px;
+  width: 0;
+  background: var(--accent);
+  border-radius: 2px;
+  opacity: 0;
+  transition: left .3s ease, width .3s ease, opacity .2s;
+  pointer-events: none;
+}
+.nav-link.is-active { color: var(--text); }
+
+/* Tilt + cursor-glow cards (case studies, work grid) */
+.tilt-card { transition: transform .15s ease-out; will-change: transform; }
+.case-card::before, .work-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  background: radial-gradient(240px circle at var(--mx, 50%) var(--my, 50%), rgba(77,216,196,0.14), transparent 60%);
+  opacity: 0;
+  transition: opacity .3s;
+  pointer-events: none;
+}
+.case-card:hover::before, .work-card:hover::before { opacity: 1; }
+
+/* Custom cursor glow trail */
+#cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 250;
+  background: radial-gradient(circle, rgba(77,216,196,0.16), transparent 70%);
+  filter: blur(4px);
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity .3s;
+}
+#cursor-glow.is-active { opacity: 1; }
+
+/* Command palette (press "/" — built entirely in JS, no per-page markup) */
+.cmdk-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 350;
+  background: rgba(8,10,14,0.75);
+  align-items: flex-start;
+  justify-content: center;
+  padding: 12vh 24px 24px;
+}
+.cmdk-backdrop.is-open { display: flex; }
+.cmdk-panel {
+  width: 100%;
+  max-width: 520px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+  overflow: hidden;
+  animation: chatPop .2s cubic-bezier(.16,1,.3,1) both;
+}
+.cmdk-input {
+  width: 100%;
+  box-sizing: border-box;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--border-soft);
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 14px;
+  padding: 16px 18px;
+  outline: none;
+}
+.cmdk-list { list-style: none; margin: 0; padding: 8px; max-height: 340px; overflow-y: auto; }
+.cmdk-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13.5px;
+  color: var(--text-soft);
+}
+.cmdk-item.is-selected { background: var(--surface-2); color: var(--text); }
+.cmdk-empty { padding: 16px; font-size: 13px; color: var(--text-mute); }
+.cmdk-hint-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 16px;
+  border-top: 1px solid var(--border-soft);
+  font-family: var(--mono);
+  font-size: 10.5px;
+  color: var(--text-mute);
 }
