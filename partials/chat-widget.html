@@ -1,0 +1,25 @@
+  <!-- Scroll to Top Button -->
+  <button id="scrollTopBtn" aria-label="Scroll to top" title="Scroll to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+
+  <!-- Chat Widget -->
+  <button id="chatToggleBtn" aria-label="Open chat" aria-controls="chatPanel" aria-expanded="false" title="Chat">
+    <i class="fa-solid fa-comment-dots" aria-hidden="true"></i>
+  </button>
+  <section id="chatPanel" aria-label="Chat assistant" role="dialog" aria-hidden="true">
+    <div class="chat-header">
+      <div>
+        <strong>Ask me anything <span class="ai-badge">AI</span></strong>
+        <p>Automated assistant, not a live person &middot; answers questions about George's background &amp; projects</p>
+      </div>
+      <button id="chatCloseBtn" aria-label="Close chat"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+    </div>
+    <div class="chat-messages" id="chatMessages" aria-live="polite">
+      <div class="chat-msg assistant">Hi! Ask me about George's background, projects, or anything else on your mind.</div>
+    </div>
+    <form class="chat-input-row" id="chatForm">
+      <textarea id="chatInput" placeholder="Type a message…" rows="1" maxlength="1000" aria-label="Chat message"></textarea>
+      <button type="submit" id="chatSendBtn" aria-label="Send message"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i></button>
+    </form>
+  </section>

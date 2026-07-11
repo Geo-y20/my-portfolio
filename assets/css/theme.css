@@ -1,11 +1,17 @@
-/* THEME TWEAKS (header white over dark site) */
-.navbar { background: rgba(255,255,255,0.95); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
-.logo { color: #111827; }
-.nav-links li a { color: #111827; }
-.nav-links li a:hover { color: #2563eb; }
-
-/* Headings / accents */
-.section h2 { color: #60a5fa; }
-.project-card h3, .skills-category h3 { color: #93c5fd; }
-.tags span, #progress-bar { background: linear-gradient(to right, #0af, #08c); }
-
+/* THEME: dark glassmorphic navbar matching the page gradient */
+.navbar {
+  background: rgba(13, 20, 19, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  border-bottom: 1px solid var(--accent-soft);
+}
+.navbar.scrolled {
+  background: rgba(11, 17, 16, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+.logo { color: #e5e7eb; }
+.nav-links li a { color: #e5e7eb; }
+.nav-links li a:hover { color: var(--accent); }
