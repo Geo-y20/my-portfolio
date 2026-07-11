@@ -48,6 +48,7 @@
     var toggleBtns = document.querySelectorAll('[data-chat-toggle]');
     var panel = document.getElementById('gy-chat-panel');
     var messagesEl = document.getElementById('gy-chat-messages');
+    var suggestionsEl = document.getElementById('gy-chat-suggestions');
     var input = document.getElementById('gy-chat-input');
     var sendBtn = document.getElementById('gy-chat-send');
     if (!panel || !messagesEl || !input || !sendBtn) return;
@@ -57,6 +58,7 @@
     ];
     var loading = false;
     var open = false;
+    var hasUserMessage = false;
 
     function render() {
       messagesEl.innerHTML = '';
@@ -65,14 +67,7 @@
         row.style.display = 'flex';
         row.style.justifyContent = m.role === 'user' ? 'flex-end' : 'flex-start';
         var bubble = document.createElement('div');
-        bubble.style.maxWidth = '82%';
-        bubble.style.background = m.role === 'user' ? 'var(--accent)' : 'var(--surface-2)';
-        bubble.style.color = m.role === 'user' ? 'var(--bg)' : 'var(--text)';
-        bubble.style.fontSize = '13px';
-        bubble.style.lineHeight = '1.5';
-        bubble.style.padding = '9px 12px';
-        bubble.style.borderRadius = '8px';
-        bubble.style.whiteSpace = 'pre-wrap';
+        bubble.className = 'chat-bubble ' + (m.role === 'user' ? 'chat-bubble--user' : 'chat-bubble--assistant');
         bubble.textContent = m.content;
         row.appendChild(bubble);
         messagesEl.appendChild(row);
@@ -82,18 +77,14 @@
         row.style.display = 'flex';
         row.style.justifyContent = 'flex-start';
         var bubble = document.createElement('div');
-        bubble.style.background = 'var(--surface-2)';
-        bubble.style.color = 'var(--text-mute)';
-        bubble.style.fontFamily = 'var(--mono)';
-        bubble.style.fontSize = '12px';
-        bubble.style.padding = '9px 12px';
-        bubble.style.borderRadius = '8px';
-        bubble.textContent = 'thinking…';
+        bubble.className = 'chat-bubble chat-bubble--assistant';
+        bubble.innerHTML = '<span class="chat-typing" aria-label="Assistant is typing"><span></span><span></span><span></span></span>';
         row.appendChild(bubble);
         messagesEl.appendChild(row);
       }
       messagesEl.scrollTop = messagesEl.scrollHeight;
       sendBtn.disabled = loading || !input.value.trim();
+      if (suggestionsEl) suggestionsEl.classList.toggle('is-hidden', hasUserMessage);
       toggleBtns.forEach(function (btn) { btn.textContent = open ? 'Close' : 'Ask AI'; });
     }
 
@@ -111,9 +102,10 @@
     var closeBtn = document.getElementById('gy-chat-close');
     if (closeBtn) closeBtn.addEventListener('click', function () { setOpen(false); });
 
-    async function send() {
-      var text = input.value.trim();
+    async function send(overrideText) {
+      var text = (overrideText !== undefined ? overrideText : input.value).trim();
       if (!text || loading) return;
+      hasUserMessage = true;
       history.push({ role: 'user', content: text });
       input.value = '';
       loading = true;
@@ -135,7 +127,7 @@
       render();
     }
 
-    sendBtn.addEventListener('click', send);
+    sendBtn.addEventListener('click', function () { send(); });
     input.addEventListener('input', render);
     input.addEventListener('keydown', function (e) {
       if (e.key === 'Enter' && !e.shiftKey) {
@@ -143,6 +135,12 @@
         send();
       }
     });
+
+    if (suggestionsEl) {
+      suggestionsEl.querySelectorAll('.chat-suggestion').forEach(function (chip) {
+        chip.addEventListener('click', function () { send(chip.getAttribute('data-suggestion')); });
+      });
+    }
 
     render();
   }
