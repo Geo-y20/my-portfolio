@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 266" role="img" aria-labelledby="atrgpt-title atrgpt-desc" font-family="'IBM Plex Mono',ui-monospace,SFMono-Regular,monospace">
+  <title id="atrgpt-title">ATR GPT architecture</title>
+  <desc id="atrgpt-desc">Web interface sends requests to a FastAPI backend, which routes each request by mode to OCI GenAI for policy-document RAG, Anthropic Claude for assistant conversations, or OpenAI for image generation; all three modes read and write shared context in a PostgreSQL database with the pgvector extension. Verified from the akhnatonTradingAndDistribution/atr-policies-gpt repository.</desc>
+  <defs>
+    <marker id="atrgpt-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#6b7382"/>
+    </marker>
+  </defs>
+
+  <!-- connectors -->
+  <path d="M320,50 L320,64" stroke="#6b7382" stroke-width="1.5" marker-end="url(#atrgpt-arrow)"/>
+  <path d="M320,104 L320,118" stroke="#6b7382" stroke-width="1.5" marker-end="url(#atrgpt-arrow)"/>
+  <path d="M320,158 L105,172" stroke="#6b7382" stroke-width="1.5" fill="none" marker-end="url(#atrgpt-arrow)"/>
+  <path d="M320,158 L320,172" stroke="#6b7382" stroke-width="1.5" fill="none" marker-end="url(#atrgpt-arrow)"/>
+  <path d="M320,158 L535,172" stroke="#6b7382" stroke-width="1.5" fill="none" marker-end="url(#atrgpt-arrow)"/>
+  <path d="M105,212 L320,232" stroke="#6b7382" stroke-width="1.5" fill="none" marker-end="url(#atrgpt-arrow)"/>
+  <path d="M320,212 L320,232" stroke="#6b7382" stroke-width="1.5" fill="none" marker-end="url(#atrgpt-arrow)"/>
+  <path d="M535,212 L320,232" stroke="#6b7382" stroke-width="1.5" fill="none" marker-end="url(#atrgpt-arrow)"/>
+
+  <!-- Web Interface -->
+  <rect x="245" y="10" width="150" height="40" rx="6" fill="#1c222e" stroke="#2a3140"/>
+  <text x="320" y="35" text-anchor="middle" font-size="11" fill="#eef1f4">Web Interface</text>
+
+  <!-- FastAPI Backend -->
+  <rect x="245" y="64" width="150" height="40" rx="6" fill="#1c222e" stroke="#2a3140"/>
+  <text x="320" y="89" text-anchor="middle" font-size="11" fill="#eef1f4">FastAPI Backend</text>
+
+  <!-- Mode Router -->
+  <rect x="245" y="118" width="150" height="40" rx="6" fill="#1c222e" stroke="#2a3140"/>
+  <text x="320" y="143" text-anchor="middle" font-size="11" fill="#eef1f4">Mode Router</text>
+
+  <!-- Branch: OCI GenAI -->
+  <rect x="20" y="172" width="170" height="40" rx="6" fill="#1c222e" stroke="#2a3140"/>
+  <text x="105" y="188" text-anchor="middle" font-size="10.5" fill="#eef1f4">OCI GenAI</text>
+  <text x="105" y="202" text-anchor="middle" font-size="9.5" fill="#a7afba">Policy RAG mode</text>
+
+  <!-- Branch: Claude -->
+  <rect x="235" y="172" width="170" height="40" rx="6" fill="#1c222e" stroke="#2a3140"/>
+  <text x="320" y="188" text-anchor="middle" font-size="10.5" fill="#eef1f4">Anthropic Claude</text>
+  <text x="320" y="202" text-anchor="middle" font-size="9.5" fill="#a7afba">Assistant mode</text>
+
+  <!-- Branch: OpenAI -->
+  <rect x="450" y="172" width="170" height="40" rx="6" fill="#1c222e" stroke="#2a3140"/>
+  <text x="535" y="188" text-anchor="middle" font-size="10.5" fill="#eef1f4">OpenAI</text>
+  <text x="535" y="202" text-anchor="middle" font-size="9.5" fill="#a7afba">Image generation</text>
+
+  <!-- Merge: Postgres + pgvector -->
+  <rect x="190" y="232" width="260" height="34" rx="6" fill="#1c222e" stroke="#4DD8C4" stroke-width="1.5"/>
+  <text x="320" y="253" text-anchor="middle" font-size="11" fill="#eef1f4">PostgreSQL + pgvector</text>
+</svg>

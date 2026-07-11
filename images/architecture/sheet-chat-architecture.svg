@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 210" role="img" aria-labelledby="sheetchat-title sheetchat-desc" font-family="'IBM Plex Mono',ui-monospace,SFMono-Regular,monospace">
+  <title id="sheetchat-title">Sheet Chat architecture</title>
+  <desc id="sheetchat-desc">An uploaded spreadsheet is inspected, its intent classified, and the request conditionally routed to one of several specialized LangGraph nodes such as SQL analysis over DuckDB, visualization, or data-quality checks, before a natural-language explanation is returned.</desc>
+  <defs>
+    <marker id="sheetchat-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#6b7382"/>
+    </marker>
+  </defs>
+
+  <path d="M140,30 L160,30" stroke="#6b7382" stroke-width="1.5" marker-end="url(#sheetchat-arrow)"/>
+  <path d="M290,30 L310,30" stroke="#6b7382" stroke-width="1.5" marker-end="url(#sheetchat-arrow)"/>
+  <path d="M460,30 L480,30" stroke="#6b7382" stroke-width="1.5" marker-end="url(#sheetchat-arrow)"/>
+
+  <path d="M555,50 L95,100" stroke="#6b7382" stroke-width="1.5" fill="none" marker-end="url(#sheetchat-arrow)"/>
+  <path d="M555,50 L285,100" stroke="#6b7382" stroke-width="1.5" fill="none" marker-end="url(#sheetchat-arrow)"/>
+  <path d="M555,50 L475,100" stroke="#6b7382" stroke-width="1.5" fill="none" marker-end="url(#sheetchat-arrow)"/>
+
+  <path d="M95,140 L330,154" stroke="#6b7382" stroke-width="1.5" fill="none" marker-end="url(#sheetchat-arrow)"/>
+  <path d="M285,140 L330,154" stroke="#6b7382" stroke-width="1.5" fill="none" marker-end="url(#sheetchat-arrow)"/>
+  <path d="M475,140 L330,154" stroke="#6b7382" stroke-width="1.5" fill="none" marker-end="url(#sheetchat-arrow)"/>
+
+  <rect x="10" y="10" width="130" height="40" rx="6" fill="#1c222e" stroke="#2a3140"/>
+  <text x="75" y="35" text-anchor="middle" font-size="9.5" fill="#eef1f4">File Ingestion</text>
+
+  <rect x="160" y="10" width="130" height="40" rx="6" fill="#1c222e" stroke="#2a3140"/>
+  <text x="225" y="35" text-anchor="middle" font-size="9.5" fill="#eef1f4">Data Inspection</text>
+
+  <rect x="310" y="10" width="150" height="40" rx="6" fill="#1c222e" stroke="#2a3140"/>
+  <text x="385" y="35" text-anchor="middle" font-size="9.5" fill="#eef1f4">Intent Classification</text>
+
+  <rect x="480" y="10" width="150" height="40" rx="6" fill="#1c222e" stroke="#2a3140"/>
+  <text x="555" y="35" text-anchor="middle" font-size="9.5" fill="#eef1f4">Conditional Routing</text>
+
+  <rect x="10" y="100" width="170" height="40" rx="6" fill="#1c222e" stroke="#2a3140"/>
+  <text x="95" y="125" text-anchor="middle" font-size="10" fill="#eef1f4">SQL / DuckDB</text>
+
+  <rect x="200" y="100" width="170" height="40" rx="6" fill="#1c222e" stroke="#2a3140"/>
+  <text x="285" y="125" text-anchor="middle" font-size="10" fill="#eef1f4">Visualization</text>
+
+  <rect x="390" y="100" width="170" height="40" rx="6" fill="#1c222e" stroke="#2a3140"/>
+  <text x="475" y="125" text-anchor="middle" font-size="10" fill="#eef1f4">Data Quality Checks</text>
+
+  <rect x="245" y="154" width="170" height="34" rx="6" fill="#1c222e" stroke="#4DD8C4" stroke-width="1.5"/>
+  <text x="330" y="175" text-anchor="middle" font-size="10" fill="#eef1f4">NL Explanation</text>
+</svg>

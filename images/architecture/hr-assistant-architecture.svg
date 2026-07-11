@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 274" role="img" aria-labelledby="hrassist-title hrassist-desc" font-family="'IBM Plex Mono',ui-monospace,SFMono-Regular,monospace">
+  <title id="hrassist-title">EVA Cosmetics Offline HR Assistant architecture</title>
+  <desc id="hrassist-desc">Arabic and English HR documents are retrieved through both ChromaDB vector search and BM25 keyword search in parallel, merged into one context, and answered locally by an Aya-Expanse 8B model running via Ollama, with no cloud dependency.</desc>
+  <defs>
+    <marker id="hrassist-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#6b7382"/>
+    </marker>
+  </defs>
+
+  <path d="M320,50 L160,64" stroke="#6b7382" stroke-width="1.5" fill="none" marker-end="url(#hrassist-arrow)"/>
+  <path d="M320,50 L480,64" stroke="#6b7382" stroke-width="1.5" fill="none" marker-end="url(#hrassist-arrow)"/>
+  <path d="M160,104 L320,118" stroke="#6b7382" stroke-width="1.5" fill="none" marker-end="url(#hrassist-arrow)"/>
+  <path d="M480,104 L320,118" stroke="#6b7382" stroke-width="1.5" fill="none" marker-end="url(#hrassist-arrow)"/>
+  <path d="M320,158 L320,172" stroke="#6b7382" stroke-width="1.5" marker-end="url(#hrassist-arrow)"/>
+  <path d="M320,212 L320,226" stroke="#6b7382" stroke-width="1.5" marker-end="url(#hrassist-arrow)"/>
+
+  <rect x="170" y="10" width="300" height="40" rx="6" fill="#1c222e" stroke="#2a3140"/>
+  <text x="320" y="35" text-anchor="middle" font-size="10.5" fill="#eef1f4">Arabic/English HR Documents</text>
+
+  <rect x="60" y="64" width="200" height="40" rx="6" fill="#1c222e" stroke="#2a3140"/>
+  <text x="160" y="89" text-anchor="middle" font-size="10.5" fill="#eef1f4">ChromaDB Retrieval</text>
+
+  <rect x="380" y="64" width="200" height="40" rx="6" fill="#1c222e" stroke="#2a3140"/>
+  <text x="480" y="89" text-anchor="middle" font-size="10.5" fill="#eef1f4">BM25 Retrieval</text>
+
+  <rect x="220" y="118" width="200" height="40" rx="6" fill="#1c222e" stroke="#2a3140"/>
+  <text x="320" y="143" text-anchor="middle" font-size="10.5" fill="#eef1f4">Merged Context</text>
+
+  <rect x="170" y="172" width="300" height="40" rx="6" fill="#1c222e" stroke="#2a3140"/>
+  <text x="320" y="192" text-anchor="middle" font-size="10.5" fill="#eef1f4">Local LLM — Aya-Expanse 8B</text>
+  <text x="320" y="205" text-anchor="middle" font-size="9" fill="#a7afba">via Ollama, on-prem</text>
+
+  <rect x="245" y="226" width="150" height="34" rx="6" fill="#1c222e" stroke="#4DD8C4" stroke-width="1.5"/>
+  <text x="320" y="247" text-anchor="middle" font-size="10.5" fill="#eef1f4">Employee Answer</text>
+</svg>

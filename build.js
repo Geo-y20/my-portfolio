@@ -1,40 +1,50 @@
-// Stitches partials/*.html into index.template.html and assembles public/ —
-// the single build output, and the directory Vercel serves as static output
-// (outputDirectory in vercel.json). api/ is deployed separately as
-// serverless functions regardless of outputDirectory.
-// Run `npm run build` after editing any partial, then preview public/
-// directly (e.g. `npx serve public`, or just open public/index.html).
+// Assembles public/ — the single build output, and the directory Vercel
+// serves as static output (outputDirectory in vercel.json). api/ is deployed
+// separately as serverless functions regardless of outputDirectory.
+// Run `npm run build` after editing any page, then preview public/ directly
+// (e.g. `npx serve public`, or just open public/index.html).
 const fs = require('fs');
 const path = require('path');
 
 const ROOT = __dirname;
-const TEMPLATE_PATH = path.join(ROOT, 'index.template.html');
 const PUBLIC_DIR = path.join(ROOT, 'public');
+
+// Source path (in the repo) -> output filename (flat, at the public/ root, so
+// deployed URLs stay e.g. /case-study-atr-gpt.html regardless of where the
+// source file lives in the repo).
+const PAGES = [
+  'index.html',
+  'pages/case-study-atr-gpt.html',
+  'pages/case-study-sales-intelligence.html',
+  'pages/case-study-hr-assistant.html',
+  'pages/case-study-sheet-chat.html',
+  'pages/case-study-vision-platform.html',
+  'pages/case-study-learning-automation.html',
+  'pages/all-projects.html',
+];
+
 const STATIC_ASSETS = ['assets', 'images', 'robots.txt', 'sitemap.xml', 'George_Youhana_Resume.pdf'];
 
-const INCLUDE_RE = /<!--\s*include:\s*([^\s]+\.html)\s*-->/g;
-
 function build() {
-  const template = fs.readFileSync(TEMPLATE_PATH, 'utf8');
-
-  const output = template.replace(INCLUDE_RE, (match, relPath) => {
-    const partialPath = path.join(ROOT, relPath);
-    if (!fs.existsSync(partialPath)) {
-      throw new Error(`Partial not found: ${relPath} (referenced in ${TEMPLATE_PATH})`);
-    }
-    return fs.readFileSync(partialPath, 'utf8').replace(/\n$/, '');
-  });
-
   fs.rmSync(PUBLIC_DIR, { recursive: true, force: true });
   fs.mkdirSync(PUBLIC_DIR, { recursive: true });
-  fs.writeFileSync(path.join(PUBLIC_DIR, 'index.html'), output, 'utf8');
+
+  for (const page of PAGES) {
+    const src = path.join(ROOT, page);
+    if (!fs.existsSync(src)) {
+      throw new Error(`Page not found: ${page}`);
+    }
+    fs.copyFileSync(src, path.join(PUBLIC_DIR, path.basename(page)));
+  }
+
   for (const asset of STATIC_ASSETS) {
     const src = path.join(ROOT, asset);
     if (fs.existsSync(src)) {
       fs.cpSync(src, path.join(PUBLIC_DIR, asset), { recursive: true });
     }
   }
-  console.log(`Built ${path.relative(ROOT, PUBLIC_DIR)}/ from ${path.relative(ROOT, TEMPLATE_PATH)} + partials/`);
+
+  console.log(`Built ${path.relative(ROOT, PUBLIC_DIR)}/ from ${PAGES.length} pages + static assets`);
 }
 
 build();

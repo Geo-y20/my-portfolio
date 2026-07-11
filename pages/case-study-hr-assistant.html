@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>EVA Cosmetics Offline HR Assistant | George Youhana</title>
+<meta name="description" content="Case study: a fully offline bilingual (Arabic/English) HR assistant using hybrid ChromaDB + BM25 retrieval and a local Aya-Expanse 8B model, with zero cloud dependency.">
+<link rel="canonical" href="https://my-portfolio.vercel.app/case-study-hr-assistant.html" />
+<meta property="og:title" content="EVA Cosmetics Offline HR Assistant | George Youhana">
+<meta property="og:description" content="A fully offline bilingual assistant for internal HR-policy retrieval, with zero cloud dependency.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<link rel="icon" href="images/favicon.ico" sizes="any" />
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png" />
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+</head>
+<body>
+
+<nav style="position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:18px clamp(20px,4vw,64px); background:rgba(14,17,22,0.85); backdrop-filter:blur(10px); border-bottom:1px solid var(--border-soft);">
+  <a href="index.html" style="font-family:var(--mono); font-size:13px; letter-spacing:0.06em; color:var(--text); text-decoration:none;">← GEORGE_YOUHANA</a>
+  <div style="font-family:var(--mono); font-size:12px; color:var(--text-mute);">CASE STUDY 03 / 06</div>
+</nav>
+
+<header style="max-width:900px; margin:0 auto; padding:clamp(48px,8vw,88px) clamp(20px,4vw,32px) 40px;">
+  <div style="font-family:var(--mono); font-size:12px; letter-spacing:0.08em; color:var(--accent); text-transform:uppercase; margin-bottom:18px;">RAG &amp; Local LLMs</div>
+  <h1 style="font-family:var(--head); font-size:clamp(30px,4.4vw,46px); font-weight:600; margin:0 0 20px; letter-spacing:-0.01em; line-height:1.12;">EVA Cosmetics Offline HR Assistant</h1>
+  <div style="display:flex; flex-wrap:wrap; gap:10px; font-family:var(--mono); font-size:12px; color:var(--text-mute);">
+    <span>Context: Enterprise Project</span><span>·</span>
+    <span>Role: AI Engineer / Architect</span><span>·</span>
+    <span>Status: On-Premise Internal System</span>
+  </div>
+</header>
+
+<section style="max-width:900px; margin:0 auto; padding:0 clamp(20px,4vw,32px) 56px; display:flex; flex-direction:column; gap:56px;">
+
+  <div>
+    <p style="font-size:17px; color:var(--text-soft); margin:0;">A fully offline bilingual assistant that lets employees query internal HR policies in Arabic and English, with no cloud dependency.</p>
+  </div>
+
+  <div>
+    <h2 style="font-family:var(--mono); font-size:13px; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-mute); font-weight:500; margin:0 0 14px;">Business Problem</h2>
+    <p style="font-size:15.5px; color:var(--text-soft); margin:0;">Employees needed a simple way to find HR information inside internal documents, in either Arabic or English, without exposing sensitive policy content to any external service.</p>
+  </div>
+
+  <div>
+    <h2 style="font-family:var(--mono); font-size:13px; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-mute); font-weight:500; margin:0 0 14px;">Users</h2>
+    <p style="font-size:15.5px; color:var(--text-soft); margin:0;">Employees across the company asking HR policy questions in whichever language they're comfortable in.</p>
+  </div>
+
+  <div>
+    <h2 style="font-family:var(--mono); font-size:13px; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-mute); font-weight:500; margin:0 0 14px;">Constraints</h2>
+    <div style="display:flex; flex-wrap:wrap; gap:8px;">
+      <span style="font-family:var(--mono); font-size:12px; color:var(--text-soft); border:1px solid var(--border); border-radius:20px; padding:6px 13px;">Arabic &amp; English support</span>
+      <span style="font-family:var(--mono); font-size:12px; color:var(--text-soft); border:1px solid var(--border); border-radius:20px; padding:6px 13px;">No cloud dependency</span>
+      <span style="font-family:var(--mono); font-size:12px; color:var(--text-soft); border:1px solid var(--border); border-radius:20px; padding:6px 13px;">No external data transfer</span>
+      <span style="font-family:var(--mono); font-size:12px; color:var(--text-soft); border:1px solid var(--border); border-radius:20px; padding:6px 13px;">Local model execution</span>
+    </div>
+  </div>
+
+  <div>
+    <h2 style="font-family:var(--mono); font-size:13px; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-mute); font-weight:500; margin:0 0 14px;">Solution</h2>
+    <p style="font-size:15.5px; color:var(--text-soft); margin:0;">I designed a fully offline hybrid RAG pipeline combining ChromaDB vector retrieval with BM25 keyword search, answered by a locally-hosted Aya-Expanse 8B model — semantic search catches paraphrased questions, while keyword search catches exact policy terms, numbers and department names.</p>
+  </div>
+
+  <div>
+    <h2 style="font-family:var(--mono); font-size:13px; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-mute); font-weight:500; margin:0 0 18px;">Architecture</h2>
+    <img src="images/architecture/hr-assistant-architecture.svg" alt="HR Assistant architecture: Arabic and English HR documents retrieved via ChromaDB and BM25 in parallel, merged, and answered locally by Aya-Expanse 8B" style="width:100%; height:auto; max-width:520px; display:block; margin:0 auto 20px;">
+    <div style="display:flex; flex-wrap:wrap; align-items:center; gap:10px;">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <div style="font-family:var(--mono); font-size:12.5px; color:var(--text); background:var(--surface); border:1px solid var(--border); border-radius:4px; padding:12px 16px; white-space:nowrap;">Arabic/English HR Documents</div>
+        <span style="color:var(--text-mute); font-family:var(--mono);">→</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px;">
+        <div style="font-family:var(--mono); font-size:12.5px; color:var(--text); background:var(--surface); border:1px solid var(--border); border-radius:4px; padding:12px 16px; white-space:nowrap;">Hybrid Retrieval (ChromaDB + BM25)</div>
+        <span style="color:var(--text-mute); font-family:var(--mono);">→</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px;">
+        <div style="font-family:var(--mono); font-size:12.5px; color:var(--text); background:var(--surface); border:1px solid var(--border); border-radius:4px; padding:12px 16px; white-space:nowrap;">Local LLM (Aya-Expanse 8B)</div>
+        <span style="color:var(--text-mute); font-family:var(--mono);">→</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px;">
+        <div style="font-family:var(--mono); font-size:12.5px; color:var(--text); background:var(--surface); border:1px solid var(--border); border-radius:4px; padding:12px 16px; white-space:nowrap;">Employee Answer</div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <h2 style="font-family:var(--mono); font-size:13px; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-mute); font-weight:500; margin:0 0 4px;">Your Contribution</h2>
+    <div style="display:flex; flex-direction:column;">
+      <div style="display:grid; grid-template-columns:140px 1fr; gap:16px; padding:14px 0; border-bottom:1px solid var(--border-soft);">
+        <div style="font-family:var(--mono); font-size:12.5px; color:var(--accent);">Designed</div>
+        <div style="font-size:14.5px; color:var(--text-soft);">the offline hybrid RAG architecture.</div>
+      </div>
+      <div style="display:grid; grid-template-columns:140px 1fr; gap:16px; padding:14px 0; border-bottom:1px solid var(--border-soft);">
+        <div style="font-family:var(--mono); font-size:12.5px; color:var(--accent);">Built</div>
+        <div style="font-size:14.5px; color:var(--text-soft);">Arabic and English document workflows.</div>
+      </div>
+      <div style="display:grid; grid-template-columns:140px 1fr; gap:16px; padding:14px 0; border-bottom:1px solid var(--border-soft);">
+        <div style="font-family:var(--mono); font-size:12.5px; color:var(--accent);">Integrated</div>
+        <div style="font-size:14.5px; color:var(--text-soft);">ChromaDB and BM25 into one hybrid retrieval layer.</div>
+      </div>
+      <div style="display:grid; grid-template-columns:140px 1fr; gap:16px; padding:14px 0; border-bottom:1px solid var(--border-soft);">
+        <div style="font-family:var(--mono); font-size:12.5px; color:var(--accent);">Deployed</div>
+        <div style="font-size:14.5px; color:var(--text-soft);">Aya-Expanse 8B locally via Ollama, with zero cloud dependency.</div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <h2 style="font-family:var(--mono); font-size:13px; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-mute); font-weight:500; margin:0 0 14px;">Technology Stack</h2>
+    <div style="display:flex; flex-wrap:wrap; gap:8px;">
+      <span style="font-family:var(--mono); font-size:12px; color:var(--text-soft); border:1px solid var(--border); border-radius:3px; padding:5px 11px;">Python</span>
+      <span style="font-family:var(--mono); font-size:12px; color:var(--text-soft); border:1px solid var(--border); border-radius:3px; padding:5px 11px;">ChromaDB</span>
+      <span style="font-family:var(--mono); font-size:12px; color:var(--text-soft); border:1px solid var(--border); border-radius:3px; padding:5px 11px;">BM25</span>
+      <span style="font-family:var(--mono); font-size:12px; color:var(--text-soft); border:1px solid var(--border); border-radius:3px; padding:5px 11px;">Aya-Expanse 8B</span>
+      <span style="font-family:var(--mono); font-size:12px; color:var(--text-soft); border:1px solid var(--border); border-radius:3px; padding:5px 11px;">Ollama</span>
+      <span style="font-family:var(--mono); font-size:12px; color:var(--text-soft); border:1px solid var(--border); border-radius:3px; padding:5px 11px;">Arabic NLP</span>
+    </div>
+  </div>
+
+  <div>
+    <h2 style="font-family:var(--mono); font-size:13px; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-mute); font-weight:500; margin:0 0 18px;">Results</h2>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px;">
+      <div>
+        <div style="font-family:var(--mono); font-size:22px; color:var(--accent); font-weight:500; line-height:1.3;">Bilingual</div>
+        <div style="font-size:12.5px; color:var(--text-mute); margin-top:6px;">HR-policy access</div>
+      </div>
+      <div>
+        <div style="font-family:var(--mono); font-size:22px; color:var(--accent); font-weight:500; line-height:1.3;">Zero-cloud</div>
+        <div style="font-size:12.5px; color:var(--text-mute); margin-top:6px;">fully local execution</div>
+      </div>
+      <div>
+        <div style="font-family:var(--mono); font-size:22px; color:var(--accent); font-weight:500; line-height:1.3;">Zero-exposure</div>
+        <div style="font-size:12.5px; color:var(--text-mute); margin-top:6px;">of internal HR documents</div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <h2 style="font-family:var(--mono); font-size:13px; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-mute); font-weight:500; margin:0 0 12px;">Challenges &amp; Trade-Offs</h2>
+    <h3 style="font-family:var(--head); font-size:17px; font-weight:600; margin:0 0 10px; color:var(--text);">Semantic vs. keyword retrieval, privacy vs. capability</h3>
+    <p style="font-size:15.5px; color:var(--text-soft); margin:0;">Combining vector and keyword search trades some system simplicity for retrieval coverage. Running a local 8B model instead of a larger hosted one trades some raw capability for a strict no-cloud, no-external-exposure guarantee on HR data.</p>
+  </div>
+
+</section>
+
+<footer style="max-width:900px; margin:0 auto; padding:32px clamp(20px,4vw,32px) 56px; display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--border-soft);">
+  <a href="case-study-sales-intelligence.html" class="case-nav-link" style="font-family:var(--mono); font-size:12.5px; color:var(--text-soft); text-decoration:none;">← Sales Intelligence Platform</a>
+  <a href="case-study-sheet-chat.html" class="case-nav-link" style="font-family:var(--mono); font-size:12.5px; color:var(--accent); text-decoration:none;">Next: Sheet Chat →</a>
+</footer>
+
+<script src="assets/js/site.js"></script>
+</body>
+</html>

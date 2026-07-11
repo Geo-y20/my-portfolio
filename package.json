@@ -2,7 +2,7 @@
   "name": "my-portfolio",
   "private": true,
   "version": "1.0.0",
-  "description": "George Youhana's portfolio site (static HTML/CSS/JS). index.html is generated from index.template.html + partials/ — run the build script after editing a partial.",
+  "description": "George Youhana's portfolio site (static HTML/CSS/JS). Run the build script to assemble public/ before deploying.",
   "scripts": {
     "build": "node build.js"
   }

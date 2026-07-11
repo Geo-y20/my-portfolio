@@ -4,31 +4,29 @@ George Youhana's personal portfolio site — static HTML, CSS, and vanilla JS (n
 
 ## Editing content
 
-There is no tracked `index.html` — it's a **generated file**, written only to the gitignored `public/` build output. Edit the section partials instead:
+Each page is a self-contained HTML file. `index.html` (the homepage) stays at the repo root as the site entry point; every other page lives in `pages/`:
 
 ```text
-partials/
-  head-meta.html      <meta> tags + JSON-LD (inside <head>)
-  chat-widget.html     floating AI chat button + panel
-  navbar.html          top navigation
-  hero.html            hero section
-  education.html       education timeline
-  experience.html      work experience timeline
-  projects.html        flagship + archive project cards, filter tabs
-  skills.html          technical skills chips
-  stats.html           impact stats section
-  footer.html          footer CTA + contact + social links
+index.html                                    homepage (hero, about, case studies, experience, skills, education, contact)
+pages/
+  case-study-atr-gpt.html
+  case-study-sales-intelligence.html
+  case-study-hr-assistant.html
+  case-study-sheet-chat.html
+  case-study-vision-platform.html
+  case-study-learning-automation.html
+  all-projects.html                           archive of additional projects not featured on the homepage
 ```
 
-The overall page shell (`<head>`/`<body>` wrapper, script tags) lives in `index.template.html`, which references each partial via `<!-- include: partials/x.html -->` markers.
+Shared design tokens, animations and interactive (`:hover`) states live in `assets/css/site.css`. Shared scroll-reveal, stat count-up and chat-widget behavior lives in `assets/js/site.js`.
 
-After editing any partial (or the template), rebuild:
+There is no tracked `public/index.html` etc. — `public/` is a **generated** build output. Edit `index.html` or the pages under `pages/` directly, then rebuild:
 
 ```sh
 npm run build
 ```
 
-This runs `build.js`, a small dependency-free Node script that stitches the partials into the template and assembles `public/` — `public/index.html` plus copies of `assets/`, `images/`, `robots.txt`, `sitemap.xml`, and the resume PDF. `public/` is the single build output: it's what Vercel deploys (`outputDirectory` in `vercel.json`) and what you should preview locally (open `public/index.html` directly, or `npx serve public`). Don't edit anything inside `public/` — it's regenerated from scratch on every build and is gitignored.
+This runs `build.js`, a small dependency-free Node script that flattens `index.html` + every `pages/*.html` file into `public/` (so deployed URLs stay e.g. `/case-study-atr-gpt.html` regardless of the `pages/` source folder), plus copies `assets/`, `images/`, `robots.txt`, `sitemap.xml`, and the resume PDF. `public/` is the single build output: it's what Vercel deploys (`outputDirectory` in `vercel.json`) and what you should preview locally (open `public/index.html` directly, or `npx serve public`). Don't edit anything inside `public/` — it's regenerated from scratch on every build and is gitignored.
 
 ## Chatbot
 

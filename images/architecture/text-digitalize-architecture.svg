@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 830 170" role="img" aria-labelledby="textdig-title textdig-desc" font-family="'IBM Plex Mono',ui-monospace,SFMono-Regular,monospace">
+  <title id="textdig-title">Bilingual Product-Content &amp; Regulatory Layout Platform architecture</title>
+  <desc id="textdig-desc">Uploaded product spec documents are stored, parsed with PyMuPDF text extraction or LLM vision for embedded images, and passed through AI field extraction. Anthropic Claude then generates a bilingual, GSO-compliant marketing layout, which passes a compliance quality gate before being cached and served to the UI or exported to Excel/PDF. Verified from the akhnatonTradingAndDistribution/Text-Digitlize-System repository.</desc>
+  <defs>
+    <marker id="textdig-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#6b7382"/>
+    </marker>
+  </defs>
+
+  <path d="M200,34 L220,34" stroke="#6b7382" stroke-width="1.5" marker-end="url(#textdig-arrow)"/>
+  <path d="M400,34 L420,34" stroke="#6b7382" stroke-width="1.5" marker-end="url(#textdig-arrow)"/>
+  <path d="M610,34 L630,34" stroke="#6b7382" stroke-width="1.5" marker-end="url(#textdig-arrow)"/>
+  <path d="M720,58 L190,110" stroke="#6b7382" stroke-width="1.5" fill="none" marker-end="url(#textdig-arrow)"/>
+  <path d="M290,134 L310,134" stroke="#6b7382" stroke-width="1.5" marker-end="url(#textdig-arrow)"/>
+  <path d="M510,134 L530,134" stroke="#6b7382" stroke-width="1.5" marker-end="url(#textdig-arrow)"/>
+
+  <rect x="20" y="10" width="180" height="48" rx="6" fill="#1c222e" stroke="#2a3140"/>
+  <text x="110" y="30" text-anchor="middle" font-size="9.5" fill="#eef1f4">Document Upload</text>
+  <text x="110" y="44" text-anchor="middle" font-size="8.5" fill="#a7afba">PDF/DOCX/XLSX/PPTX</text>
+
+  <rect x="220" y="10" width="180" height="48" rx="6" fill="#1c222e" stroke="#2a3140"/>
+  <text x="310" y="30" text-anchor="middle" font-size="9.5" fill="#eef1f4">Store</text>
+  <text x="310" y="44" text-anchor="middle" font-size="8.5" fill="#a7afba">Disk / Postgres / OCI</text>
+
+  <rect x="420" y="10" width="190" height="48" rx="6" fill="#1c222e" stroke="#2a3140"/>
+  <text x="515" y="30" text-anchor="middle" font-size="9.5" fill="#eef1f4">Parse</text>
+  <text x="515" y="44" text-anchor="middle" font-size="8.5" fill="#a7afba">PyMuPDF / LLM Vision</text>
+
+  <rect x="630" y="10" width="180" height="48" rx="6" fill="#1c222e" stroke="#2a3140"/>
+  <text x="720" y="30" text-anchor="middle" font-size="9.5" fill="#eef1f4">AI Field</text>
+  <text x="720" y="44" text-anchor="middle" font-size="9.5" fill="#eef1f4">Extraction</text>
+
+  <rect x="90" y="110" width="200" height="48" rx="6" fill="#1c222e" stroke="#2a3140"/>
+  <text x="190" y="130" text-anchor="middle" font-size="9.5" fill="#eef1f4">Bilingual Layout Gen.</text>
+  <text x="190" y="144" text-anchor="middle" font-size="8.5" fill="#a7afba">Claude, GSO-compliant</text>
+
+  <rect x="310" y="110" width="200" height="48" rx="6" fill="#1c222e" stroke="#2a3140"/>
+  <text x="410" y="130" text-anchor="middle" font-size="9.5" fill="#eef1f4">Compliance</text>
+  <text x="410" y="144" text-anchor="middle" font-size="9.5" fill="#eef1f4">Quality Gate</text>
+
+  <rect x="530" y="110" width="190" height="48" rx="6" fill="#1c222e" stroke="#4DD8C4" stroke-width="1.5"/>
+  <text x="625" y="130" text-anchor="middle" font-size="9.5" fill="#eef1f4">Cached Output</text>
+  <text x="625" y="144" text-anchor="middle" font-size="8.5" fill="#a7afba">UI / Excel / PDF</text>
+</svg>

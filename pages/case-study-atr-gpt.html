@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ATR GPT — Enterprise AI Assistant | George Youhana</title>
+<meta name="description" content="Case study: a FastAPI + PostgreSQL/pgvector RAG assistant serving 900+ employees across 20+ knowledge sources, routing between OCI GenAI, Claude and OpenAI by task.">
+<link rel="canonical" href="https://my-portfolio.vercel.app/case-study-atr-gpt.html" />
+<meta property="og:title" content="ATR GPT — Enterprise AI Assistant | George Youhana">
+<meta property="og:description" content="A RAG assistant serving 900+ employees across 20+ knowledge sources, routing between OCI GenAI, Claude and OpenAI by task.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<link rel="icon" href="images/favicon.ico" sizes="any" />
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png" />
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+</head>
+<body>
+
+<nav style="position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:18px clamp(20px,4vw,64px); background:rgba(14,17,22,0.85); backdrop-filter:blur(10px); border-bottom:1px solid var(--border-soft);">
+  <a href="index.html" style="font-family:var(--mono); font-size:13px; letter-spacing:0.06em; color:var(--text); text-decoration:none;">← GEORGE_YOUHANA</a>
+  <div style="font-family:var(--mono); font-size:12px; color:var(--text-mute);">CASE STUDY 01 / 06</div>
+</nav>
+
+<header style="max-width:900px; margin:0 auto; padding:clamp(48px,8vw,88px) clamp(20px,4vw,32px) 40px;">
+  <div style="font-family:var(--mono); font-size:12px; letter-spacing:0.08em; color:var(--accent); text-transform:uppercase; margin-bottom:18px;">LLM &amp; RAG</div>
+  <h1 style="font-family:var(--head); font-size:clamp(30px,4.4vw,46px); font-weight:600; margin:0 0 20px; letter-spacing:-0.01em; line-height:1.12;">ATR GPT — Enterprise AI Assistant</h1>
+  <div style="display:flex; flex-wrap:wrap; gap:10px; font-family:var(--mono); font-size:12px; color:var(--text-mute);">
+    <span>Context: Enterprise Project</span><span>·</span>
+    <span>Role: AI Engineer / Architect</span><span>·</span>
+    <span>Status: Enterprise Internal System</span>
+  </div>
+</header>
+
+<section style="max-width:900px; margin:0 auto; padding:0 clamp(20px,4vw,32px) 56px; display:flex; flex-direction:column; gap:56px;">
+
+  <div>
+    <p style="font-size:17px; color:var(--text-soft); margin:0;">ATR GPT is an enterprise RAG assistant helping 900+ employees access information distributed across 20+ departmental knowledge sources, through a policy-search mode and a general assistant mode.</p>
+  </div>
+
+  <div>
+    <h2 style="font-family:var(--mono); font-size:13px; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-mute); font-weight:500; margin:0 0 14px;">Business Problem</h2>
+    <p style="font-size:15.5px; color:var(--text-soft); margin:0;">Employees searched scattered documents and departmental repositories, and relied on direct communication with subject-matter experts to find information — a slow process that created knowledge silos across the organization.</p>
+  </div>
+
+  <div>
+    <h2 style="font-family:var(--mono); font-size:13px; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-mute); font-weight:500; margin:0 0 14px;">Users</h2>
+    <p style="font-size:15.5px; color:var(--text-soft); margin:0;">Employees across departments who need answers grounded in internal knowledge, without knowing which team or document holds them.</p>
+  </div>
+
+  <div>
+    <h2 style="font-family:var(--mono); font-size:13px; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-mute); font-weight:500; margin:0 0 14px;">Constraints</h2>
+    <div style="display:flex; flex-wrap:wrap; gap:8px;">
+      <span style="font-family:var(--mono); font-size:12px; color:var(--text-soft); border:1px solid var(--border); border-radius:20px; padding:6px 13px;">Sensitive internal data</span>
+      <span style="font-family:var(--mono); font-size:12px; color:var(--text-soft); border:1px solid var(--border); border-radius:20px; padding:6px 13px;">20+ heterogeneous sources</span>
+      <span style="font-family:var(--mono); font-size:12px; color:var(--text-soft); border:1px solid var(--border); border-radius:20px; padding:6px 13px;">Multi-provider requirement</span>
+      <span style="font-family:var(--mono); font-size:12px; color:var(--text-soft); border:1px solid var(--border); border-radius:20px; padding:6px 13px;">Hybrid semantic + keyword memory</span>
+    </div>
+  </div>
+
+  <div>
+    <h2 style="font-family:var(--mono); font-size:13px; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-mute); font-weight:500; margin:0 0 14px;">Solution</h2>
+    <p style="font-size:15.5px; color:var(--text-soft); margin:0;">I architected a FastAPI RAG platform backed by PostgreSQL with the pgvector extension for hybrid semantic-memory retrieval. A mode router directs each request to Oracle Cloud Infrastructure (OCI) GenAI for policy-document search or Anthropic Claude for general assistant conversation, with OpenAI used separately for image generation — chosen per request based on task and data sensitivity.</p>
+  </div>
+
+  <div>
+    <h2 style="font-family:var(--mono); font-size:13px; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-mute); font-weight:500; margin:0 0 18px;">Architecture</h2>
+    <img src="images/architecture/atr-gpt-architecture.svg" alt="ATR GPT architecture: web interface, FastAPI backend, mode router branching to OCI GenAI, Claude and OpenAI, converging on PostgreSQL with pgvector" style="width:100%; height:auto; max-width:520px; display:block; margin:0 auto 20px;">
+    <div style="display:flex; flex-wrap:wrap; align-items:center; gap:10px;">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <div style="font-family:var(--mono); font-size:12.5px; color:var(--text); background:var(--surface); border:1px solid var(--border); border-radius:4px; padding:12px 16px; white-space:nowrap;">20+ Knowledge Sources</div>
+        <span style="color:var(--text-mute); font-family:var(--mono);">→</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px;">
+        <div style="font-family:var(--mono); font-size:12.5px; color:var(--text); background:var(--surface); border:1px solid var(--border); border-radius:4px; padding:12px 16px; white-space:nowrap;">FastAPI + pgvector Retrieval</div>
+        <span style="color:var(--text-mute); font-family:var(--mono);">→</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px;">
+        <div style="font-family:var(--mono); font-size:12.5px; color:var(--text); background:var(--surface); border:1px solid var(--border); border-radius:4px; padding:12px 16px; white-space:nowrap;">Mode Router (OCI GenAI · Claude · OpenAI)</div>
+        <span style="color:var(--text-mute); font-family:var(--mono);">→</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px;">
+        <div style="font-family:var(--mono); font-size:12.5px; color:var(--text); background:var(--surface); border:1px solid var(--border); border-radius:4px; padding:12px 16px; white-space:nowrap;">Web Delivery</div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <h2 style="font-family:var(--mono); font-size:13px; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-mute); font-weight:500; margin:0 0 4px;">Your Contribution</h2>
+    <div style="display:flex; flex-direction:column;">
+      <div style="display:grid; grid-template-columns:140px 1fr; gap:16px; padding:14px 0; border-bottom:1px solid var(--border-soft);">
+        <div style="font-family:var(--mono); font-size:12.5px; color:var(--accent);">Designed</div>
+        <div style="font-size:14.5px; color:var(--text-soft);">the RAG system architecture and hybrid knowledge-retrieval strategy.</div>
+      </div>
+      <div style="display:grid; grid-template-columns:140px 1fr; gap:16px; padding:14px 0; border-bottom:1px solid var(--border-soft);">
+        <div style="font-family:var(--mono); font-size:12.5px; color:var(--accent);">Integrated</div>
+        <div style="font-size:14.5px; color:var(--text-soft);">20+ departmental knowledge sources into one retrieval layer.</div>
+      </div>
+      <div style="display:grid; grid-template-columns:140px 1fr; gap:16px; padding:14px 0; border-bottom:1px solid var(--border-soft);">
+        <div style="font-family:var(--mono); font-size:12.5px; color:var(--accent);">Built</div>
+        <div style="font-size:14.5px; color:var(--text-soft);">the FastAPI backend and a custom web interface.</div>
+      </div>
+      <div style="display:grid; grid-template-columns:140px 1fr; gap:16px; padding:14px 0; border-bottom:1px solid var(--border-soft);">
+        <div style="font-family:var(--mono); font-size:12.5px; color:var(--accent);">Developed</div>
+        <div style="font-size:14.5px; color:var(--text-soft);">a mode router spanning OCI GenAI, Claude and OpenAI, plus the PostgreSQL/pgvector memory layer.</div>
+      </div>
+      <div style="display:grid; grid-template-columns:140px 1fr; gap:16px; padding:14px 0; border-bottom:1px solid var(--border-soft);">
+        <div style="font-family:var(--mono); font-size:12.5px; color:var(--accent);">Supported</div>
+        <div style="font-size:14.5px; color:var(--text-soft);">enterprise deployment and ongoing operation.</div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <h2 style="font-family:var(--mono); font-size:13px; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-mute); font-weight:500; margin:0 0 14px;">Technology Stack</h2>
+    <div style="display:flex; flex-wrap:wrap; gap:8px;">
+      <span style="font-family:var(--mono); font-size:12px; color:var(--text-soft); border:1px solid var(--border); border-radius:3px; padding:5px 11px;">Python</span>
+      <span style="font-family:var(--mono); font-size:12px; color:var(--text-soft); border:1px solid var(--border); border-radius:3px; padding:5px 11px;">FastAPI</span>
+      <span style="font-family:var(--mono); font-size:12px; color:var(--text-soft); border:1px solid var(--border); border-radius:3px; padding:5px 11px;">RAG</span>
+      <span style="font-family:var(--mono); font-size:12px; color:var(--text-soft); border:1px solid var(--border); border-radius:3px; padding:5px 11px;">PostgreSQL + pgvector</span>
+      <span style="font-family:var(--mono); font-size:12px; color:var(--text-soft); border:1px solid var(--border); border-radius:3px; padding:5px 11px;">OCI GenAI</span>
+      <span style="font-family:var(--mono); font-size:12px; color:var(--text-soft); border:1px solid var(--border); border-radius:3px; padding:5px 11px;">Claude API</span>
+      <span style="font-family:var(--mono); font-size:12px; color:var(--text-soft); border:1px solid var(--border); border-radius:3px; padding:5px 11px;">OpenAI API</span>
+    </div>
+  </div>
+
+  <div>
+    <h2 style="font-family:var(--mono); font-size:13px; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-mute); font-weight:500; margin:0 0 18px;">Results</h2>
+    <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:24px;">
+      <div>
+        <div style="font-family:var(--mono); font-size:26px; color:var(--accent); font-weight:500;">900+</div>
+        <div style="font-size:12.5px; color:var(--text-mute); margin-top:6px;">employees served</div>
+      </div>
+      <div>
+        <div style="font-family:var(--mono); font-size:26px; color:var(--accent); font-weight:500;">20+</div>
+        <div style="font-size:12.5px; color:var(--text-mute); margin-top:6px;">knowledge sources integrated</div>
+      </div>
+      <div>
+        <div style="font-family:var(--mono); font-size:26px; color:var(--accent); font-weight:500;">3</div>
+        <div style="font-size:12.5px; color:var(--text-mute); margin-top:6px;">AI providers routed by mode</div>
+      </div>
+      <div>
+        <div style="font-family:var(--mono); font-size:26px; color:var(--accent); font-weight:500;">1</div>
+        <div style="font-size:12.5px; color:var(--text-mute); margin-top:6px;">cross-department access point</div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <h2 style="font-family:var(--mono); font-size:13px; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-mute); font-weight:500; margin:0 0 12px;">Challenges &amp; Trade-Offs</h2>
+    <h3 style="font-family:var(--head); font-size:17px; font-weight:600; margin:0 0 10px; color:var(--text);">Mode routing vs. a single fixed model</h3>
+    <p style="font-size:15.5px; color:var(--text-soft); margin:0;">Routing policy-search requests to OCI GenAI and general assistant requests to Claude trades the simplicity of one fixed model for the flexibility of matching each request to the provider best suited to it — at the cost of maintaining a mode-routing layer instead of a single integration.</p>
+  </div>
+
+  <div style="border:1px solid var(--border); border-radius:4px; padding:20px 24px;">
+    <h2 style="font-family:var(--mono); font-size:12px; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-mute); font-weight:500; margin:0 0 10px;">Confidentiality</h2>
+    <p style="font-size:14px; color:var(--text-mute); margin:0; font-style:italic;">Enterprise project. This page uses architecture diagrams and anonymized descriptions rather than internal interfaces or company data.</p>
+  </div>
+
+</section>
+
+<footer style="max-width:900px; margin:0 auto; padding:32px clamp(20px,4vw,32px) 56px; display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--border-soft);">
+  <a href="index.html#case-studies" class="case-nav-link" style="font-family:var(--mono); font-size:12.5px; color:var(--text-soft); text-decoration:none;">← All Case Studies</a>
+  <a href="case-study-sales-intelligence.html" class="case-nav-link" style="font-family:var(--mono); font-size:12.5px; color:var(--accent); text-decoration:none;">Next: Sales Intelligence Platform →</a>
+</footer>
+
+<script src="assets/js/site.js"></script>
+</body>
+</html>

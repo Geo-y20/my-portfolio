@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Enterprise Sales Intelligence Platform | George Youhana</title>
+<meta name="description" content="Case study: a Text-to-SQL platform converting natural-language business questions into governed SQL over Oracle Autonomous Database across 10+ tables, ~10s response latency.">
+<link rel="canonical" href="https://my-portfolio.vercel.app/case-study-sales-intelligence.html" />
+<meta property="og:title" content="Enterprise Sales Intelligence Platform | George Youhana">
+<meta property="og:description" content="A Text-to-SQL system converting natural-language business questions into governed SQL over Oracle sales data.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<link rel="icon" href="images/favicon.ico" sizes="any" />
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png" />
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+</head>
+<body>
+
+<nav style="position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between; padding:18px clamp(20px,4vw,64px); background:rgba(14,17,22,0.85); backdrop-filter:blur(10px); border-bottom:1px solid var(--border-soft);">
+  <a href="index.html" style="font-family:var(--mono); font-size:13px; letter-spacing:0.06em; color:var(--text); text-decoration:none;">← GEORGE_YOUHANA</a>
+  <div style="font-family:var(--mono); font-size:12px; color:var(--text-mute);">CASE STUDY 02 / 06</div>
+</nav>
+
+<header style="max-width:900px; margin:0 auto; padding:clamp(48px,8vw,88px) clamp(20px,4vw,32px) 40px;">
+  <div style="font-family:var(--mono); font-size:12px; letter-spacing:0.08em; color:var(--accent); text-transform:uppercase; margin-bottom:18px;">LLM Engineering &amp; Text-to-SQL</div>
+  <h1 style="font-family:var(--head); font-size:clamp(30px,4.4vw,46px); font-weight:600; margin:0 0 20px; letter-spacing:-0.01em; line-height:1.12;">Enterprise Sales Intelligence Platform</h1>
+  <div style="display:flex; flex-wrap:wrap; gap:10px; font-family:var(--mono); font-size:12px; color:var(--text-mute);">
+    <span>Context: Enterprise Project</span><span>·</span>
+    <span>Role: AI Engineer / Architect</span><span>·</span>
+    <span>Status: Production-Grade Enterprise System</span>
+  </div>
+</header>
+
+<section style="max-width:900px; margin:0 auto; padding:0 clamp(20px,4vw,32px) 56px; display:flex; flex-direction:column; gap:56px;">
+
+  <div>
+    <p style="font-size:17px; color:var(--text-soft); margin:0;">A natural-language business-intelligence platform letting non-technical users query enterprise sales data without writing SQL.</p>
+  </div>
+
+  <div>
+    <h2 style="font-family:var(--mono); font-size:13px; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-mute); font-weight:500; margin:0 0 14px;">Business Problem</h2>
+    <p style="font-size:15.5px; color:var(--text-soft); margin:0;">Sales information was distributed across 10+ connected tables in Oracle Autonomous Database. Business users depended on SQL developers and analysts for every report, and needed technical help interpreting the results.</p>
+  </div>
+
+  <div>
+    <h2 style="font-family:var(--mono); font-size:13px; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-mute); font-weight:500; margin:0 0 14px;">Users</h2>
+    <p style="font-size:15.5px; color:var(--text-soft); margin:0;">Non-technical sales and business teams who need answers from operational data directly, without a request-and-wait cycle through analysts.</p>
+  </div>
+
+  <div>
+    <h2 style="font-family:var(--mono); font-size:13px; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-mute); font-weight:500; margin:0 0 14px;">Constraints</h2>
+    <div style="display:flex; flex-wrap:wrap; gap:8px;">
+      <span style="font-family:var(--mono); font-size:12px; color:var(--text-soft); border:1px solid var(--border); border-radius:20px; padding:6px 13px;">10+ connected Oracle tables</span>
+      <span style="font-family:var(--mono); font-size:12px; color:var(--text-soft); border:1px solid var(--border); border-radius:20px; padding:6px 13px;">Governed query execution</span>
+      <span style="font-family:var(--mono); font-size:12px; color:var(--text-soft); border:1px solid var(--border); border-radius:20px; padding:6px 13px;">Non-technical end users</span>
+      <span style="font-family:var(--mono); font-size:12px; color:var(--text-soft); border:1px solid var(--border); border-radius:20px; padding:6px 13px;">Low-latency target</span>
+    </div>
+  </div>
+
+  <div>
+    <h2 style="font-family:var(--mono); font-size:13px; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-mute); font-weight:500; margin:0 0 14px;">Solution</h2>
+    <p style="font-size:15.5px; color:var(--text-soft); margin:0;">I designed a Text-to-SQL system that converts natural-language business questions into SQL, executes it against approved Oracle schema, and returns the result as a plain-language explanation.</p>
+  </div>
+
+  <div>
+    <h2 style="font-family:var(--mono); font-size:13px; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-mute); font-weight:500; margin:0 0 18px;">Architecture</h2>
+    <img src="images/architecture/sales-intelligence-architecture.svg" alt="Sales Intelligence architecture: user question through intent interpretation, schema context selection, SQL generation, validation and execution, to a natural-language explanation" style="width:100%; height:auto; max-width:640px; display:block; margin:0 auto 20px;">
+    <div style="display:flex; flex-wrap:wrap; align-items:center; gap:10px;">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <div style="font-family:var(--mono); font-size:12.5px; color:var(--text); background:var(--surface); border:1px solid var(--border); border-radius:4px; padding:12px 16px; white-space:nowrap;">User Question</div>
+        <span style="color:var(--text-mute); font-family:var(--mono);">→</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px;">
+        <div style="font-family:var(--mono); font-size:12.5px; color:var(--text); background:var(--surface); border:1px solid var(--border); border-radius:4px; padding:12px 16px; white-space:nowrap;">Intent Interpretation</div>
+        <span style="color:var(--text-mute); font-family:var(--mono);">→</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px;">
+        <div style="font-family:var(--mono); font-size:12.5px; color:var(--text); background:var(--surface); border:1px solid var(--border); border-radius:4px; padding:12px 16px; white-space:nowrap;">Schema Context Selection</div>
+        <span style="color:var(--text-mute); font-family:var(--mono);">→</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px;">
+        <div style="font-family:var(--mono); font-size:12.5px; color:var(--text); background:var(--surface); border:1px solid var(--border); border-radius:4px; padding:12px 16px; white-space:nowrap;">SQL Generation</div>
+        <span style="color:var(--text-mute); font-family:var(--mono);">→</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px;">
+        <div style="font-family:var(--mono); font-size:12.5px; color:var(--text); background:var(--surface); border:1px solid var(--border); border-radius:4px; padding:12px 16px; white-space:nowrap;">Validation &amp; Execution</div>
+        <span style="color:var(--text-mute); font-family:var(--mono);">→</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px;">
+        <div style="font-family:var(--mono); font-size:12.5px; color:var(--text); background:var(--surface); border:1px solid var(--border); border-radius:4px; padding:12px 16px; white-space:nowrap;">NL Explanation</div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <h2 style="font-family:var(--mono); font-size:13px; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-mute); font-weight:500; margin:0 0 4px;">Your Contribution</h2>
+    <div style="display:flex; flex-direction:column;">
+      <div style="display:grid; grid-template-columns:140px 1fr; gap:16px; padding:14px 0; border-bottom:1px solid var(--border-soft);">
+        <div style="font-family:var(--mono); font-size:12.5px; color:var(--accent);">Designed</div>
+        <div style="font-size:14.5px; color:var(--text-soft);">the Text-to-SQL architecture and schema context strategy.</div>
+      </div>
+      <div style="display:grid; grid-template-columns:140px 1fr; gap:16px; padding:14px 0; border-bottom:1px solid var(--border-soft);">
+        <div style="font-family:var(--mono); font-size:12.5px; color:var(--accent);">Integrated</div>
+        <div style="font-size:14.5px; color:var(--text-soft);">Oracle Autonomous Database across 10+ business tables.</div>
+      </div>
+      <div style="display:grid; grid-template-columns:140px 1fr; gap:16px; padding:14px 0; border-bottom:1px solid var(--border-soft);">
+        <div style="font-family:var(--mono); font-size:12.5px; color:var(--accent);">Built</div>
+        <div style="font-size:14.5px; color:var(--text-soft);">the SQL-generation workflow and backend API.</div>
+      </div>
+      <div style="display:grid; grid-template-columns:140px 1fr; gap:16px; padding:14px 0; border-bottom:1px solid var(--border-soft);">
+        <div style="font-family:var(--mono); font-size:12.5px; color:var(--accent);">Added</div>
+        <div style="font-size:14.5px; color:var(--text-soft);">query-validation controls and natural-language explanations.</div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <h2 style="font-family:var(--mono); font-size:13px; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-mute); font-weight:500; margin:0 0 14px;">Technology Stack</h2>
+    <div style="display:flex; flex-wrap:wrap; gap:8px;">
+      <span style="font-family:var(--mono); font-size:12px; color:var(--text-soft); border:1px solid var(--border); border-radius:3px; padding:5px 11px;">Python</span>
+      <span style="font-family:var(--mono); font-size:12px; color:var(--text-soft); border:1px solid var(--border); border-radius:3px; padding:5px 11px;">FastAPI</span>
+      <span style="font-family:var(--mono); font-size:12px; color:var(--text-soft); border:1px solid var(--border); border-radius:3px; padding:5px 11px;">SQL</span>
+      <span style="font-family:var(--mono); font-size:12px; color:var(--text-soft); border:1px solid var(--border); border-radius:3px; padding:5px 11px;">Oracle Autonomous Database</span>
+      <span style="font-family:var(--mono); font-size:12px; color:var(--text-soft); border:1px solid var(--border); border-radius:3px; padding:5px 11px;">LLM Engineering</span>
+      <span style="font-family:var(--mono); font-size:12px; color:var(--text-soft); border:1px solid var(--border); border-radius:3px; padding:5px 11px;">Prompt Engineering</span>
+    </div>
+  </div>
+
+  <div>
+    <h2 style="font-family:var(--mono); font-size:13px; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-mute); font-weight:500; margin:0 0 18px;">Results</h2>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px;">
+      <div>
+        <div style="font-family:var(--mono); font-size:26px; color:var(--accent); font-weight:500;">10+</div>
+        <div style="font-size:12.5px; color:var(--text-mute); margin-top:6px;">tables queryable in plain language</div>
+      </div>
+      <div>
+        <div style="font-family:var(--mono); font-size:26px; color:var(--accent); font-weight:500;">~10s</div>
+        <div style="font-size:12.5px; color:var(--text-mute); margin-top:6px;">average response latency</div>
+      </div>
+      <div>
+        <div style="font-family:var(--mono); font-size:26px; color:var(--accent); font-weight:500;">↓</div>
+        <div style="font-size:12.5px; color:var(--text-mute); margin-top:6px;">manual SQL requests</div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <h2 style="font-family:var(--mono); font-size:13px; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-mute); font-weight:500; margin:0 0 12px;">Challenges &amp; Trade-Offs</h2>
+    <h3 style="font-family:var(--head); font-size:17px; font-weight:600; margin:0 0 10px; color:var(--text);">Flexibility vs. safety, accuracy vs. latency</h3>
+    <p style="font-size:15.5px; color:var(--text-soft); margin:0;">A validation step checks generated SQL before execution — trading some flexibility for guardrails against unsafe or malformed queries, while keeping the full question-to-answer cycle within a ~10-second response target.</p>
+  </div>
+
+  <div style="border:1px solid var(--border); border-radius:4px; padding:20px 24px;">
+    <h2 style="font-family:var(--mono); font-size:12px; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-mute); font-weight:500; margin:0 0 10px;">Confidentiality</h2>
+    <p style="font-size:14px; color:var(--text-mute); margin:0; font-style:italic;">Enterprise project. Database structures and real sales information are not shown publicly — this page describes the workflow, not the data.</p>
+  </div>
+
+</section>
+
+<footer style="max-width:900px; margin:0 auto; padding:32px clamp(20px,4vw,32px) 56px; display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--border-soft);">
+  <a href="case-study-atr-gpt.html" class="case-nav-link" style="font-family:var(--mono); font-size:12.5px; color:var(--text-soft); text-decoration:none;">← ATR GPT</a>
+  <a href="case-study-hr-assistant.html" class="case-nav-link" style="font-family:var(--mono); font-size:12.5px; color:var(--accent); text-decoration:none;">Next: HR Assistant →</a>
+</footer>
+
+<script src="assets/js/site.js"></script>
+</body>
+</html>

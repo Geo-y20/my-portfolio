@@ -1,2 +1,0 @@
-/* Subtle static glow behind the hero — no motion, kept minimal by design */
-.page-bg { background: radial-gradient(60% 50% at 50% 20%, var(--accent-soft), transparent 70%); }
