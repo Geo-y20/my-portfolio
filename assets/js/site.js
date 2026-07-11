@@ -152,19 +152,30 @@
     var img = document.getElementById('diagram-modal-img');
     var titleEl = document.getElementById('diagram-modal-title');
     var closeBtn = document.getElementById('diagram-modal-close');
+    var zoomBtn = document.getElementById('diagram-modal-zoom');
     var triggers = document.querySelectorAll('[data-diagram-trigger]');
     if (!modal || !img || !titleEl || !closeBtn || !triggers.length) return;
+
+    function setZoom(on) {
+      modal.classList.toggle('is-enlarged', on);
+      if (zoomBtn) {
+        zoomBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
+        zoomBtn.setAttribute('aria-label', on ? 'Shrink diagram' : 'Enlarge diagram');
+      }
+    }
 
     function open(trigger) {
       img.src = trigger.getAttribute('data-diagram');
       img.alt = trigger.getAttribute('data-diagram-alt') || '';
       titleEl.textContent = trigger.getAttribute('data-diagram-title') || '';
+      setZoom(false);
       modal.classList.add('is-open');
       closeBtn.focus();
     }
 
     function close() {
       modal.classList.remove('is-open');
+      setZoom(false);
       img.src = '';
     }
 
@@ -174,6 +185,15 @@
         e.stopPropagation();
         open(btn);
       });
+    });
+
+    if (zoomBtn) {
+      zoomBtn.addEventListener('click', function () {
+        setZoom(!modal.classList.contains('is-enlarged'));
+      });
+    }
+    img.addEventListener('click', function () {
+      setZoom(!modal.classList.contains('is-enlarged'));
     });
 
     closeBtn.addEventListener('click', close);
@@ -234,16 +254,43 @@
     var section = canvas.closest('.hero-section') || canvas.parentElement;
     var dpr = Math.min(window.devicePixelRatio || 1, 2);
     var nodes = [];
+    var packets = [];
     var width, height, raf;
     var running = true;
+    var lastPacketAttempt = 0;
 
-    var accent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#4DD8C4';
+    function cssVar(name, fallback) {
+      var v = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+      return v || fallback;
+    }
     function hexToRgb(hex) {
       var m = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
       return m ? [parseInt(m[1], 16), parseInt(m[2], 16), parseInt(m[3], 16)] : [77, 216, 196];
     }
-    var rgb = hexToRgb(accent);
-    var rgbStr = rgb.join(',');
+
+    // Slowly cycle through the three accent colors so the canvas isn't
+    // locked to one fixed hue — each transition takes segmentMs, so a
+    // full loop across all three colors is unhurried and won't clash
+    // with foreground text.
+    var palette = [
+      hexToRgb(cssVar('--accent', '#4DD8C4')),
+      hexToRgb(cssVar('--accent-3', '#8FA8E8')),
+      hexToRgb(cssVar('--accent-2', '#E7A465'))
+    ];
+    var segmentMs = 9000;
+    function paletteColorAt(t) {
+      var total = segmentMs * palette.length;
+      var pos = (t % total) / segmentMs;
+      var idx = Math.floor(pos) % palette.length;
+      var next = (idx + 1) % palette.length;
+      var frac = pos - Math.floor(pos);
+      var a = palette[idx], b = palette[next];
+      return [
+        Math.round(a[0] + (b[0] - a[0]) * frac),
+        Math.round(a[1] + (b[1] - a[1]) * frac),
+        Math.round(a[2] + (b[2] - a[2]) * frac)
+      ];
+    }
 
     function resize() {
       var rect = section.getBoundingClientRect();
@@ -255,21 +302,58 @@
       canvas.style.height = height + 'px';
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       var count = Math.max(24, Math.min(70, Math.round((width * height) / 16000)));
+      var nearCount = Math.max(4, Math.round(count * 0.25));
       nodes = [];
       for (var i = 0; i < count; i++) {
+        var near = i < nearCount;
         nodes.push({
           x: Math.random() * width,
           y: Math.random() * height,
-          vx: (Math.random() - 0.5) * 0.25,
-          vy: (Math.random() - 0.5) * 0.25,
+          vx: (Math.random() - 0.5) * (near ? 0.12 : 0.35),
+          vy: (Math.random() - 0.5) * (near ? 0.12 : 0.35),
           phase: Math.random() * Math.PI * 2,
+          near: near,
+          r: near ? 2 + Math.random() * 1.2 : 0.8 + Math.random() * 0.7
         });
       }
+      packets = [];
+    }
+
+    function spawnPacket(edges) {
+      if (!edges.length || packets.length >= 6) return;
+      var edge = edges[Math.floor(Math.random() * edges.length)];
+      packets.push({ a: edge.a, b: edge.b, p: 0 });
     }
 
     function step(t) {
       if (!running) return;
+      t = t || 0;
+      var rgbStr = paletteColorAt(t).join(',');
       ctx.clearRect(0, 0, width, height);
+
+      // Faint HUD-style grid: vertical lines drift slowly, horizontal
+      // lines stay fixed — cheap texture, never competes with content.
+      ctx.strokeStyle = 'rgba(' + rgbStr + ',0.05)';
+      ctx.lineWidth = 1;
+      var gridStep = 46;
+      var gx0 = (t / 400) % gridStep;
+      for (var gx = gx0; gx < width; gx += gridStep) {
+        ctx.beginPath(); ctx.moveTo(gx, 0); ctx.lineTo(gx, height); ctx.stroke();
+      }
+      for (var gy = 0; gy < height; gy += gridStep) {
+        ctx.beginPath(); ctx.moveTo(0, gy); ctx.lineTo(width, gy); ctx.stroke();
+      }
+
+      // Slow radar-style scanline sweeping down the canvas
+      var sweepPeriod = 7000;
+      var sweepY = ((t % sweepPeriod) / sweepPeriod) * (height + 80) - 40;
+      var sweepGrad = ctx.createLinearGradient(0, sweepY - 40, 0, sweepY + 40);
+      sweepGrad.addColorStop(0, 'rgba(' + rgbStr + ',0)');
+      sweepGrad.addColorStop(0.5, 'rgba(' + rgbStr + ',0.06)');
+      sweepGrad.addColorStop(1, 'rgba(' + rgbStr + ',0)');
+      ctx.fillStyle = sweepGrad;
+      ctx.fillRect(0, sweepY - 40, width, 80);
+
       var linkDist = Math.min(150, width / 5);
 
       nodes.forEach(function (n) {
@@ -281,28 +365,54 @@
         n.y = Math.max(0, Math.min(height, n.y));
       });
 
+      var edges = [];
       for (var i = 0; i < nodes.length; i++) {
         for (var j = i + 1; j < nodes.length; j++) {
           var dx = nodes[i].x - nodes[j].x;
           var dy = nodes[i].y - nodes[j].y;
           var dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < linkDist) {
-            ctx.strokeStyle = 'rgba(' + rgbStr + ',' + (0.16 * (1 - dist / linkDist)) + ')';
-            ctx.lineWidth = 1;
+            var bothNear = nodes[i].near && nodes[j].near;
+            var alpha = (bothNear ? 0.22 : 0.11) * (1 - dist / linkDist);
+            ctx.strokeStyle = 'rgba(' + rgbStr + ',' + alpha + ')';
+            ctx.lineWidth = bothNear ? 1.2 : 0.8;
             ctx.beginPath();
             ctx.moveTo(nodes[i].x, nodes[i].y);
             ctx.lineTo(nodes[j].x, nodes[j].y);
             ctx.stroke();
+            edges.push({ a: i, b: j });
           }
         }
       }
 
+      // Data packets: small bright dots traveling along a random
+      // active connection, like requests moving through a network.
+      if (t - lastPacketAttempt > 500) {
+        lastPacketAttempt = t;
+        if (Math.random() < 0.6) spawnPacket(edges);
+      }
+      packets.forEach(function (pk) { pk.p += 0.02; });
+      packets = packets.filter(function (pk) { return pk.p < 1; });
+      packets.forEach(function (pk) {
+        var a = nodes[pk.a], b = nodes[pk.b];
+        var px = a.x + (b.x - a.x) * pk.p;
+        var py = a.y + (b.y - a.y) * pk.p;
+        var fade = Math.sin(Math.PI * pk.p);
+        ctx.beginPath();
+        ctx.arc(px, py, 1.8, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(' + rgbStr + ',' + (0.7 * fade) + ')';
+        ctx.fill();
+      });
+
+      // Depth layer: a few larger/brighter "near" nodes up front,
+      // many small/dim "far" nodes drifting faster behind them.
       nodes.forEach(function (n) {
-        var pulse = 0.5 + 0.5 * Math.sin((t || 0) / 900 + n.phase);
-        var r = 1.2 + pulse * 1.1;
+        var pulse = 0.5 + 0.5 * Math.sin(t / 900 + n.phase);
+        var r = n.r + pulse * (n.near ? 1.3 : 0.6);
+        var baseAlpha = n.near ? 0.55 : 0.3;
         ctx.beginPath();
         ctx.arc(n.x, n.y, r, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(' + rgbStr + ',' + (0.35 + pulse * 0.4) + ')';
+        ctx.fillStyle = 'rgba(' + rgbStr + ',' + (baseAlpha + pulse * (n.near ? 0.4 : 0.25)) + ')';
         ctx.fill();
       });
 

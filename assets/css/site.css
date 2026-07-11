@@ -214,31 +214,36 @@ body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--
   width: 100%;
   max-height: 85vh;
   overflow-y: auto;
+  transition: max-width .25s ease, max-height .25s ease;
 }
-.diagram-modal__close {
+.diagram-modal.is-enlarged .diagram-modal__panel {
+  max-width: min(96vw, 1200px);
+  max-height: 94vh;
+}
+.diagram-modal__close, .diagram-modal__zoom {
   position: absolute;
   top: 8px;
-  right: 12px;
   background: none;
   border: none;
   color: var(--text-mute);
-  font-family: var(--mono);
-  font-size: 22px;
-  line-height: 1;
   cursor: pointer;
   padding: 6px;
   transition: color .2s;
 }
-.diagram-modal__close:hover { color: var(--text); }
+.diagram-modal__close { right: 12px; font-family: var(--mono); font-size: 22px; line-height: 1; }
+.diagram-modal__zoom { right: 44px; }
+.diagram-modal__zoom svg { width: 18px; height: 18px; display: block; }
+.diagram-modal__close:hover, .diagram-modal__zoom:hover { color: var(--text); }
 .diagram-modal__title {
   font-family: var(--head);
   font-size: 15px;
   font-weight: 600;
   color: var(--text);
   margin: 0 0 16px;
-  padding-right: 24px;
+  padding-right: 56px;
 }
-.diagram-modal__img { width: 100%; height: auto; display: block; }
+.diagram-modal__img { width: 100%; height: auto; display: block; cursor: zoom-in; }
+.diagram-modal.is-enlarged .diagram-modal__img { cursor: zoom-out; }
 
 /* Enterprise project tiles: responsive, don't force-stretch shorter cards */
 .work-grid {
@@ -597,6 +602,7 @@ nav:not(.site-nav) { flex-wrap: wrap; row-gap: 8px; }
 /* Tablet (~900px and down): the widest fixed grids get real breathing room */
 @media (max-width: 900px) {
   .hero-section { grid-template-columns: 1fr !important; }
+  .hero-photo { order: -1; margin-bottom: 8px; }
   .stats-grid { grid-template-columns: repeat(3, 1fr); }
   .stats-grid .stat-item { border-right: 1px solid var(--border-soft); border-bottom: 1px solid var(--border-soft); padding-bottom: 16px !important; }
   .stats-grid .stat-item:nth-child(3n) { border-right: none; }
