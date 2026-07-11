@@ -1,6 +1,5 @@
 .env
 .env.local
 .vercel
-
-.vercel
 .claude
+public
