@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   
   /* ----------- Project Tabs Filtering (Archive only) ----------- */
-  const tabs = document.querySelectorAll(".tab");
+  const tabs = document.querySelectorAll(".projects-tabs .tab");
   const projects = document.querySelectorAll(".projects-archive .project-card");
 
   // Show all projects initially
@@ -23,6 +23,28 @@ document.addEventListener("DOMContentLoaded", function () {
         const match = category === "all" || cardCategories.includes(category);
         project.classList.toggle("show", match);
         project.classList.toggle("hide", !match);
+      });
+    });
+  });
+
+  /* ----------- Experience Tabs Filtering (Additional Experience only) ----------- */
+  const expTabs = document.querySelectorAll(".exp-tabs .tab");
+  const expItems = document.querySelectorAll(".exp-cards .exp-compact");
+
+  expTabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      expTabs.forEach(t => {
+        t.classList.remove("active");
+        t.setAttribute("aria-pressed", "false");
+      });
+      tab.classList.add("active");
+      tab.setAttribute("aria-pressed", "true");
+
+      const group = tab.dataset.group;
+
+      expItems.forEach(item => {
+        const match = group === "all" || item.dataset.group === group;
+        item.classList.toggle("hide", !match);
       });
     });
   });
@@ -161,21 +183,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  /* ----------- Experience Rail Scrollspy ----------- */
-  const railYears = document.querySelectorAll('.exp-rail-year');
-  const expItems = document.querySelectorAll('.exp-cards [data-year]');
-  if (railYears.length && expItems.length) {
-    const railObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const year = entry.target.dataset.year;
-          railYears.forEach(y => y.classList.toggle('active', y.dataset.year === year));
-        }
-      });
-    }, { rootMargin: '-35% 0px -55% 0px', threshold: 0 });
-    expItems.forEach(item => railObserver.observe(item));
-  }
-
   /* ----------- Chat Widget ----------- */
   const chatToggleBtn = document.getElementById('chatToggleBtn');
   const chatPanel = document.getElementById('chatPanel');
@@ -262,10 +269,73 @@ document.addEventListener("DOMContentLoaded", function () {
       if (delta > 60) setPanelOpen(false);
     });
 
+    function escapeHtml(str) {
+      return str
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function applyInlineMarkdown(str) {
+      return str.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    }
+
+    // Safe-by-construction: the input is HTML-escaped first, so the only
+    // markup in the output is the handful of tags inserted below
+    // (strong/ul/ol/li/p/br) — nothing from the model response can produce
+    // arbitrary HTML, so this never needs a separate sanitize pass.
+    function renderMarkdownSafe(text) {
+      const lines = escapeHtml(text).split('\n');
+      const htmlParts = [];
+      let paragraphLines = [];
+      let listItems = [];
+      let listTag = null;
+
+      function flushParagraph() {
+        if (!paragraphLines.length) return;
+        htmlParts.push('<p>' + paragraphLines.map(applyInlineMarkdown).join('<br>') + '</p>');
+        paragraphLines = [];
+      }
+      function flushList() {
+        if (!listItems.length) return;
+        htmlParts.push(`<${listTag}>` + listItems.map(t => `<li>${applyInlineMarkdown(t)}</li>`).join('') + `</${listTag}>`);
+        listItems = [];
+        listTag = null;
+      }
+
+      for (const rawLine of lines) {
+        const line = rawLine.trim();
+        const bulletMatch = line.match(/^[-•]\s+(.*)/);
+        const numberedMatch = line.match(/^\d+\.\s+(.*)/);
+        if (bulletMatch || numberedMatch) {
+          flushParagraph();
+          const tag = bulletMatch ? 'ul' : 'ol';
+          if (listTag && listTag !== tag) flushList();
+          listTag = tag;
+          listItems.push((bulletMatch || numberedMatch)[1]);
+        } else if (line === '') {
+          flushList();
+          flushParagraph();
+        } else {
+          flushList();
+          paragraphLines.push(line);
+        }
+      }
+      flushList();
+      flushParagraph();
+      return htmlParts.join('');
+    }
+
     function appendMessage(role, text) {
       const div = document.createElement('div');
       div.className = 'chat-msg ' + role;
-      div.textContent = text;
+      if (role === 'assistant') {
+        div.innerHTML = renderMarkdownSafe(text);
+      } else {
+        div.textContent = text;
+      }
       chatMessages.appendChild(div);
       chatMessages.scrollTop = chatMessages.scrollHeight;
       return div;

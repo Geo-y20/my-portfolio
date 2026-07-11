@@ -1,9 +1,10 @@
 /* DESIGN TOKENS */
 :root {
-  --accent: #14b8a6;
-  --accent-strong: #0d9488;
-  --accent-soft: rgba(20, 184, 166, 0.16);
-  --accent-ink: #04211d;
+  --accent: #6366f1;
+  --accent-strong: #4f46e5;
+  --accent-soft: rgba(99, 102, 241, 0.16);
+  --accent-ink: #f8fafc;
+  --accent-rgb: 99, 102, 241;
   --font-heading: 'Space Grotesk', sans-serif;
   --font-body: 'Inter', sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
@@ -24,7 +25,7 @@
 /* RESET & BASE */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { font-family: var(--font-body), "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; transition: background 0.3s ease, color 0.3s ease; line-height: 1.6; background: linear-gradient(180deg, #0d1413 0%, #141a19 100%); color: #e5e7eb; min-height: 100vh; }
+body { font-family: var(--font-body), "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; transition: background 0.3s ease, color 0.3s ease; line-height: 1.6; background: linear-gradient(180deg, #0d0e12 0%, #14151b 100%); color: #e5e7eb; min-height: 100vh; }
 h1, h2, h3, .logo { font-family: var(--font-heading), sans-serif; line-height: 1.1; }
 
 /* LAYOUT */
