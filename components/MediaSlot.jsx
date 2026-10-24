@@ -24,8 +24,13 @@ export default function MediaSlot({ variant = 'card', icon = 'chat', caption, im
   const dims = showVideo ? getMediaObject(video.mp4) : img;
   const style = variant === 'cs' && dims?.width && dims?.height ? { aspectRatio: `${dims.width} / ${dims.height}` } : undefined;
 
+  // Card screenshots sit under a slim app-window bar (decorative).
+  const windowed = variant === 'card' && img && !showVideo && fit !== 'contain';
+  const cardClass = `card__media${fit === 'contain' && img ? ' card__media--diagram' : ''}${windowed ? ' card__media--window' : ''}`;
+
   return (
-    <div className={variant === 'cs' ? `cs-cover${filled ? '' : ' cs-cover--empty'}` : `card__media${fit === 'contain' && img ? ' card__media--diagram' : ''}`} style={style}>
+    <div className={variant === 'cs' ? `cs-cover${filled ? '' : ' cs-cover--empty'}` : cardClass} style={style}>
+      {windowed ? <span className="card__chrome" aria-hidden="true"><i /><i /><i /></span> : null}
       <div className="ph" aria-hidden="true">
         <Icon name={icon} className="ph__icon" />
         {caption ? <span className="ph__caption">{caption}</span> : null}

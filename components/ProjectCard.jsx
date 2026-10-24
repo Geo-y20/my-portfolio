@@ -3,6 +3,16 @@ import MediaSlot from '@/components/MediaSlot';
 import { FilterItem } from '@/components/FilterableProjects';
 import DiagramDialog from '@/components/DiagramDialog';
 import { getMediaObject, mediaUrl } from '@/lib/media';
+import { featured, moreProduction } from '@/content/projects';
+
+// Status badge derived from which list a project lives in (no new facts):
+// featured + moreProduction → "In production"; everything else is the
+// research & personal group, labelled by its kicker prefix (Research / Applied / Personal).
+const PRODUCTION = new Set([...featured, ...moreProduction].map((p) => p.title));
+function statusOf({ title, kicker }) {
+  if (PRODUCTION.has(title)) return { label: 'In production', live: true };
+  return { label: kicker.split(' · ')[0], live: false };
+}
 
 // One project card (.card). Media: a screenshot `image` if the card has one,
 // otherwise its case-study `cover`; MediaSlot falls back to the placeholder
@@ -19,9 +29,11 @@ export default function ProjectCard({ project, reveal = false }) {
   const isCaseStudy = link?.label === 'Read case study';
   // Internal pages use client-side navigation; files and external sites a plain <a>.
   const LinkTag = link?.href?.startsWith('/') ? Link : 'a';
+  const status = statusOf(project);
 
   return (
     <FilterItem tags={tags} reveal={reveal}>
+      <p className={`card__status${status.live ? ' card__status--live' : ''}`}><span aria-hidden="true" />{status.label}</p>
       <MediaSlot variant="card" icon={icon} caption={caption || stack.join(' · ')} image={media} fit={showsDiagram ? 'contain' : undefined} />
       <div className="card__body">
         <p className="card__kicker">{kicker}</p>

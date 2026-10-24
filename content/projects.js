@@ -128,6 +128,9 @@ export const moreProduction = [
     stack: ['LightGBM', 'scikit-learn', 'Python'],
     icon: 'chart',
     diagram: 'architecture/forecast-view-architecture.svg',
+    cover: 'work/forecasting/cover.webp',
+    coverAlt: 'Forecasting dashboard with randomized demonstration figures',
+    link: caseStudy('forecasting'),
   },
   {
     title: 'Social listening platform',

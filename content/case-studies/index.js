@@ -7,8 +7,9 @@ import visionPlatform from './case-study-vision-platform';
 import learningAutomation from './case-study-learning-automation';
 import socialListening from './case-study-social-listening';
 import textDigitalization from './case-study-text-digitalization';
+import forecasting from './case-study-forecasting';
 
-// Ordered 01 → 09; this order also drives the prev/next pager chain.
+// Ordered 01 → 10; this order also drives the prev/next pager chain.
 export const caseStudies = [
   atrGpt,
   textToSql,
@@ -19,6 +20,7 @@ export const caseStudies = [
   learningAutomation,
   socialListening,
   textDigitalization,
+  forecasting,
 ];
 
 const bySlug = new Map(caseStudies.map((cs) => [cs.slug, cs]));

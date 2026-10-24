@@ -62,7 +62,7 @@ const caseStudy = {
   ],
   note: "Enterprise project. The demo is a recording of the internal system, shared with George's approval; confidential details beyond what it shows are not published.",
   prev: { href: '/case-study-social-listening', title: 'Social listening platform' },
-  next: { href: '/all-projects', title: 'All projects' },
+  next: { href: '/case-study-forecasting', title: 'Demand forecasting with explainable root causes' },
 };
 
 export default caseStudy;

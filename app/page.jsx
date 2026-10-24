@@ -1,4 +1,5 @@
-import SectionHead from '@/components/SectionHead';
+import SectionHead, { Eyebrow } from '@/components/SectionHead';
+import HeroTrace from '@/components/HeroTrace';
 import ProjectCard from '@/components/ProjectCard';
 import FilterableProjects, { FilterBar, FilterGrid, FilterMoreLink } from '@/components/FilterableProjects';
 import { SITE_URL, mediaUrl } from '@/lib/media';
@@ -17,6 +18,16 @@ export const metadata = pageMetadata({
 });
 
 const html = (s) => ({ __html: s });
+
+// Stack strip: a curated subset of the Skills section, filtered against it so
+// the strip can never list a tool that isn't in content/site.js.
+const STACK_PICKS = ['Python', 'FastAPI', 'PostgreSQL + pgvector', 'LangGraph', 'OpenAI', 'Anthropic Claude', 'Ollama', 'PyTorch', 'YOLO', 'Docker', 'Azure', 'OCI'];
+const SKILL_ITEMS = new Set(skills.flatMap((g) => g.items.split(' · ')));
+const STACK = STACK_PICKS.filter((t) => SKILL_ITEMS.has(t));
+
+// "AI Engineer @ EVA Group", from the current role in content/site.js.
+const current = experience[0];
+const currentOrg = current.org.match(/\(([^)]+)\)/)?.[1] || current.org.split(' · ')[0];
 
 const SKILL_ICONS = {
   llm: <><circle cx="12" cy="12" r="3" /><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1" /></>,
@@ -58,8 +69,17 @@ export default function HomePage() {
       <section className="hero" aria-labelledby="hero-name">
         <div className="container">
           <div className="hero__grid">
-            <div>
-              <p className="status-pill"><span className="status-dot" aria-hidden="true" />{profile.status}</p>
+            <div className="hero__intro">
+              <div className="hero__id">
+                <div className="hero__photo">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={mediaUrl(profile.photo.key)} width={profile.photo.width} height={profile.photo.height} alt={profile.photo.alt} fetchPriority="high" decoding="async" />
+                </div>
+                <div className="hero__status">
+                  <p className="status-pill"><span className="status-dot" aria-hidden="true" />{profile.status}</p>
+                  <p className="hero__now"><span aria-hidden="true">~/</span>currently: <b>{current.role} @ {currentOrg}</b></p>
+                </div>
+              </div>
               <h1 className="hero__name" id="hero-name">{profile.name}</h1>
               <p className="hero__headline">{profile.headline} <span>{profile.headlineTags}</span></p>
               <p className="hero__lede">{profile.lede}</p>
@@ -68,10 +88,7 @@ export default function HomePage() {
                 <a className="btn btn--ghost" href={profile.resumeUrl} target="_blank" rel="noopener">Download résumé <Download /></a>
               </div>
             </div>
-            <div className="hero__photo">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={mediaUrl(profile.photo.key)} width={profile.photo.width} height={profile.photo.height} alt={profile.photo.alt} fetchPriority="high" decoding="async" />
-            </div>
+            <HeroTrace />
           </div>
 
           {/* Final values are server-rendered so scrapers, ATS tools and link previews read them; JS only animates the count-up. */}
@@ -84,6 +101,16 @@ export default function HomePage() {
                 <p className="metric__label">{m.label}</p>
               </li>
             ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* STACK */}
+      <section className="stack-strip" aria-labelledby="stack-title">
+        <div className="container stack-strip__inner">
+          <h2 className="stack-strip__label" id="stack-title"><span aria-hidden="true">{'// '}</span>core stack</h2>
+          <ul className="stack-strip__list">
+            {STACK.map((t) => <li key={t}>{t}</li>)}
           </ul>
         </div>
       </section>
@@ -110,7 +137,7 @@ export default function HomePage() {
           <SectionHead index="02" label="Experience" id="experience-title" title="Experience" />
           <ol className="timeline">
             {experience.map((job) => (
-              <li className="tl-item" data-reveal="" key={job.role}>
+              <li className={`tl-item${job.dates.to.label === 'Present' ? ' tl-item--current' : ''}`} data-reveal="" key={job.role}>
                 <div className="tl-head">
                   <h3 className="tl-role">{job.role}</h3>
                   <DateRange {...job.dates} />
@@ -168,7 +195,7 @@ export default function HomePage() {
       <section className="section" id="about" aria-labelledby="about-title">
         <div className="container about">
           <div data-reveal="">
-            <p className="eyebrow"><b>04</b> / About</p>
+            <Eyebrow index="04" label="about" />
             <h2 className="section-title" id="about-title">About</h2>
             {about.map((p) => <p className="about__text" key={p}>{p}</p>)}
           </div>
@@ -188,7 +215,7 @@ export default function HomePage() {
       {/* 05 CONTACT */}
       <section className="section contact" id="contact" aria-labelledby="contact-title">
         <div className="container" data-reveal="">
-          <p className="eyebrow"><b>05</b> / Contact</p>
+          <Eyebrow index="05" label="contact" />
           <h2 className="section-title" id="contact-title">{contact.title}</h2>
           <p className="section-intro">{contact.intro}</p>
           <a className="contact__email" href={`mailto:${contact.email}`}>{contact.email}
