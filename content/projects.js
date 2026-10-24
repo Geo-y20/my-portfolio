@@ -118,6 +118,7 @@ export const moreProduction = [
     kicker: 'Data & ML · EVA Group',
     tags: ['data'],
     outcome: 'Ridge + LightGBM per brand/customer/channel with per-SKU selection: <strong>−15%</strong> wMAPE vs. baseline.',
+    note: 'Any figures shown for this project are randomized for demonstration, not real company data.',
     stack: ['LightGBM', 'scikit-learn', 'Python'],
     icon: 'chart',
     link: { mediaKey: 'architecture/forecast-view-architecture.svg', label: 'View architecture' },

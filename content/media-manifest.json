@@ -1,6 +1,12 @@
 {
   "bucket": "images",
   "objects": {
+    "George_Youhana_Resume.pdf": {
+      "bytes": 143758,
+      "contentType": "application/pdf",
+      "etag": "d33f70abf3b8bb1ef66a39e0775517b1",
+      "public": true
+    },
     "apple-touch-icon.png": {
       "bytes": 50866,
       "contentType": "image/png",

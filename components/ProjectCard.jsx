@@ -7,7 +7,7 @@ import { hasMedia, mediaUrl } from '@/lib/media';
 // otherwise its case-study `cover`; MediaSlot falls back to the placeholder
 // when neither file is in object storage yet.
 export default function ProjectCard({ project, reveal = false }) {
-  const { title, kicker, tags, outcome, stack, icon, image, cover, coverAlt, caption, link } = project;
+  const { title, kicker, tags, outcome, note, stack, icon, image, cover, coverAlt, caption, link } = project;
   const media = image || (cover ? { key: cover, alt: coverAlt || title } : undefined);
 
   let href = link?.href;
@@ -23,6 +23,7 @@ export default function ProjectCard({ project, reveal = false }) {
         <p className="card__kicker">{kicker}</p>
         <h3 className="card__title">{title}</h3>
         <p className="card__outcome" dangerouslySetInnerHTML={{ __html: outcome }} />
+        {note ? <p className="card__note">{note}</p> : null}
         <div className="card__foot">
           <ul className="tags" aria-label="Stack">
             {stack.map((s) => <li className="tag" key={s}>{s}</li>)}

@@ -18,9 +18,13 @@ export default function MediaSlot({ variant = 'card', icon = 'chat', caption, im
   const showVideo = video && hasMedia(video.mp4);
   const poster = showVideo && video.poster && hasMedia(video.poster) ? mediaUrl(video.poster) : undefined;
   const filled = Boolean(img || showVideo);
+  // Case-study demos take the recording's own aspect ratio, so wide screen
+  // captures are shown whole — no cropping and no letterbox bars.
+  const dims = showVideo ? getMediaObject(video.mp4) : img;
+  const style = variant === 'cs' && dims?.width && dims?.height ? { aspectRatio: `${dims.width} / ${dims.height}` } : undefined;
 
   return (
-    <div className={variant === 'cs' ? `cs-cover${filled ? '' : ' cs-cover--empty'}` : 'card__media'}>
+    <div className={variant === 'cs' ? `cs-cover${filled ? '' : ' cs-cover--empty'}` : 'card__media'} style={style}>
       <div className="ph" aria-hidden="true">
         <Icon name={icon} className="ph__icon" />
         {caption ? <span className="ph__caption">{caption}</span> : null}

@@ -544,5 +544,6 @@ button { font: inherit; color: inherit; }
 .cs-cover--empty { aspect-ratio: 16 / 5; }
 @media (max-width: 640px) { .cs-cover--empty { aspect-ratio: 16 / 8; } }
 
-/* Demo recordings have mixed aspect ratios; show the whole frame rather than cropping UI edges. */
-.cs-cover > video { object-fit: contain; background: #05070A; }
+/* Card thumbnails are cropped from wide screen recordings: keep the top of the UI (headers, titles) in view. */
+.card__media > img { object-position: center top; }
+.card__note { font-size: var(--fs-xs); color: var(--muted); font-style: italic; line-height: 1.5; }
