@@ -2,8 +2,27 @@
   "name": "my-portfolio",
   "private": true,
   "version": "1.0.0",
-  "description": "George Youhana's portfolio site (static HTML/CSS/JS). Run the build script to assemble public/ before deploying.",
+  "description": "George Youhana's portfolio site (Next.js App Router, deployed on Vercel).",
   "scripts": {
-    "build": "node build.js"
+    "build": "next build",
+    "media:upload": "node scripts/upload-media.mjs",
+    "dev": "next dev",
+    "start": "next start",
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^16.4.3",
+    "image-size": "^2.0.4"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.1156.0",
+    "@aws-sdk/lib-storage": "^3.1156.0",
+    "@aws-sdk/s3-request-presigner": "^3.1156.0",
+    "dotenv": "^18.0.9",
+    "next": "^16.4.3",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "server-only": "^0.0.1"
   }
 }
