@@ -52,7 +52,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className={`${workSans.variable} ${jetBrainsMono.variable}`}>
       <body id="top">
         <a className="skip-link" href="#main">Skip to content</a>
-        <Header resumeHref={mediaUrl(profile.resumeKey)} />
+        <Header resumeHref={profile.resumeUrl} />
         <main id="main">{children}</main>
         <Footer />
         <ChatWidget />

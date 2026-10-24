@@ -65,7 +65,7 @@ export default function HomePage() {
               <p className="hero__lede">{profile.lede}</p>
               <div className="hero__ctas">
                 <a className="btn btn--primary" href="#work">View my work <ArrowDown /></a>
-                <a className="btn btn--ghost" href={mediaUrl(profile.resumeKey)} download>Download résumé <Download /></a>
+                <a className="btn btn--ghost" href={profile.resumeUrl} target="_blank" rel="noopener">Download résumé <Download /></a>
               </div>
             </div>
             <div className="hero__photo">

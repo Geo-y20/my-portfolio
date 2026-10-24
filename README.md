@@ -62,7 +62,7 @@ Media is stored in the Neon bucket and listed in `content/media-manifest.json`. 
 
 URLs: by default media goes through `/api/media/<key>`, which redirects to a presigned GET URL. Signatures are pinned to 6-hour windows (valid 12 h), so the redirect is cacheable by browsers and Vercel's CDN. If the bucket is made publicly readable or fronted by a CDN, set `NEXT_PUBLIC_MEDIA_BASE_URL` and files are linked directly.
 
-Expected keys include `profile-560.webp`, `og-image.png`, `favicon.ico`, `favicon.svg`, `apple-touch-icon.png`, `George_Youhana_Resume.pdf`, `projects/*.webp`, `architecture/*.svg` and `work/<slug>/cover.webp` (+ optional `demo.mp4` / `demo.webm`) for each case study.
+Expected keys include `profile-560.webp`, `og-image.png`, `favicon.ico`, `favicon.svg`, `apple-touch-icon.png`, `projects/*.webp`, `architecture/*.svg` and `work/<slug>/cover.webp` (+ optional `demo.mp4` / `demo.webm`) for each case study.
 
 ## Environment variables
 
@@ -80,3 +80,7 @@ Vercel reserves the `AWS_*` names, so production must use the `NEON_S3_*` names.
 ## Chatbot
 
 `/api/chat` proxies to OpenRouter's free models. Set `OPENROUTER_API_KEY` in Vercel → Settings → Environment Variables (Production + Preview), then redeploy. Free model IDs get retired without notice; the chain ends with `openrouter/free`, and you can override it without a code change via `OPENROUTER_MODELS="model-a,model-b"`. Requests are validated and rate-limited per instance; failures are logged in the Vercel function logs.
+
+## Résumé
+
+The Resume buttons link to a Google Drive file (`profile.resumeUrl` in `content/site.js`). To update it, open the file in Drive → Manage versions → Upload new version; the link stays the same, so no deploy is needed. Keep the file shared as "Anyone with the link".
