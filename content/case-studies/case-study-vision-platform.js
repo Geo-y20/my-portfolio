@@ -40,6 +40,13 @@ const caseStudy = {
       poster: 'work/vision-platform/cover.webp',
       label: 'Demo: CCTV feeds with live person detection, face-recognition labels and a fire-detection alert',
     },
+    gallery: [
+      {
+        key: 'work/vision-platform/plate-recognition.webp',
+        alt: 'An Egyptian license plate photo next to the vehicle-arrivals app with the plate characters filled in; the driver name is blurred',
+        caption: 'License-plate recognition: an Arabic plate is read and filled into the vehicle-arrivals app for driver ID (driver name blurred).',
+      },
+    ],
   },
   results: [
     { value: '20', unit: 'cameras', label: 'across 3 sites, on existing camera infrastructure' },

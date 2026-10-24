@@ -7,6 +7,22 @@
       "etag": "d33f70abf3b8bb1ef66a39e0775517b1",
       "public": false
     },
+    "Scan Automation 2.jpg": {
+      "bytes": 15218,
+      "contentType": "image/jpeg",
+      "etag": "77180516d9226ec1a5356dde0e03d1e7",
+      "height": 200,
+      "public": false,
+      "width": 518
+    },
+    "Scan Automation.jpg": {
+      "bytes": 28253,
+      "contentType": "image/jpeg",
+      "etag": "9e0491f10a46aaa964d8913707ef74b5",
+      "height": 277,
+      "public": false,
+      "width": 517
+    },
     "apple-touch-icon.png": {
       "bytes": 50866,
       "contentType": "image/png",
@@ -118,6 +134,22 @@
       "height": 64,
       "public": true,
       "width": 64
+    },
+    "licensce plate 1.jpg": {
+      "bytes": 87207,
+      "contentType": "image/jpeg",
+      "etag": "bea3ef5ff055e006ba1effaf05845422",
+      "height": 746,
+      "public": false,
+      "width": 979
+    },
+    "licensce plate 2.jpg": {
+      "bytes": 32695,
+      "contentType": "image/jpeg",
+      "etag": "6c5b632518cadd8572805c914e27e34f",
+      "height": 390,
+      "public": false,
+      "width": 337
     },
     "og-image.png": {
       "bytes": 161507,
@@ -351,6 +383,14 @@
       "public": true,
       "width": 800
     },
+    "work/document-ai/cover.webp": {
+      "bytes": 43906,
+      "contentType": "image/webp",
+      "etag": "c4115e008789354b25aa94e8f4d11cdf",
+      "height": 1000,
+      "public": true,
+      "width": 1600
+    },
     "work/social-listening/cover.webp": {
       "bytes": 36402,
       "contentType": "image/webp",
@@ -470,6 +510,14 @@
       "height": 720,
       "public": true,
       "width": 1280
+    },
+    "work/vision-platform/plate-recognition.webp": {
+      "bytes": 66790,
+      "contentType": "image/webp",
+      "etag": "e2cba0efc6aa48456dc89f330fdd41b0",
+      "height": 1000,
+      "public": true,
+      "width": 1600
     }
   }
 }

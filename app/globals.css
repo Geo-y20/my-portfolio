@@ -547,3 +547,9 @@ button { font: inherit; color: inherit; }
 /* Card thumbnails are cropped from wide screen recordings: keep the top of the UI (headers, titles) in view. */
 .card__media > img { object-position: center top; }
 .card__note { font-size: var(--fs-xs); color: var(--muted); font-style: italic; line-height: 1.5; }
+
+/* Demo caption + extra demo images under a case study's main demo. */
+.cs-demo-caption { margin-top: var(--s2); font-size: var(--fs-sm); color: var(--muted); }
+.cs-figure { margin: var(--s3) 0 0; }
+.cs-figure img { width: 100%; height: auto; border-radius: var(--radius); border: 1px solid var(--border); }
+.cs-figure figcaption { margin-top: var(--s2); font-size: var(--fs-sm); color: var(--muted); }

@@ -67,7 +67,7 @@ export const featured = [
     caption: 'Google Cloud Vision · Arabic–English · validation',
     icon: 'scan',
     cover: 'work/document-ai/cover.webp',
-    coverAlt: 'Product label with extracted batch, expiry and quantity fields highlighted (blurred sample)',
+    coverAlt: 'Product label photo next to the extracted batch, dates and quantity',
     link: caseStudy('document-ai'),
     archive: {
       outcome: '<strong>95%</strong> field accuracy on <strong>1,000</strong> docs/month; cheques validated before ERP.',

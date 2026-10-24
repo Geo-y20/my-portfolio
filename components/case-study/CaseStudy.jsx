@@ -79,6 +79,17 @@ export default function CaseStudy({ cs }) {
             video={demo.video}
             image={demo.image}
           />
+          {demo.caption ? <p className="cs-demo-caption">{demo.caption}</p> : null}
+          {(demo.gallery || []).filter((g) => getMediaObject(g.key)).map((g) => {
+            const obj = getMediaObject(g.key);
+            return (
+              <figure className="cs-figure" key={g.key}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={mediaUrl(g.key)} width={obj.width} height={obj.height} alt={g.alt} loading="lazy" decoding="async" />
+                {g.caption ? <figcaption>{g.caption}</figcaption> : null}
+              </figure>
+            );
+          })}
         </Section>
 
         <Section id="results" num="04" title="Results">

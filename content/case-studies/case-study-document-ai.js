@@ -1,4 +1,4 @@
-// MEDIA: card cover/demo must use mock or blurred data — never real cheques, account numbers, signatures or supplier names.
+// MEDIA: the demo image is a real product-label photo and the system's extracted output, supplied by George for publication (2026-10-24). Never show cheques, account numbers, signatures or supplier names.
 const caseStudy = {
   slug: 'case-study-document-ai',
   number: '03',
@@ -32,8 +32,13 @@ const caseStudy = {
       mp4: 'work/document-ai/demo.mp4',
       webm: 'work/document-ai/demo.webm',
       poster: 'work/document-ai/cover.webp',
-      label: 'Demo: a bilingual product label is uploaded, fields are highlighted and extracted, and the validated record is shown (blurred sample)',
+      label: 'Demo: a bilingual product label is uploaded, fields are highlighted and extracted, and the validated record is shown',
     },
+    image: {
+      key: 'work/document-ai/cover.webp',
+      alt: 'A photographed Arabic–English product label next to the extracted fields: batch L175, manufacturing date 07-2025, expiry 06-2026, quantity 96',
+    },
+    caption: 'A real product label in, structured fields out: batch, manufacturing date, expiry and quantity.',
   },
   results: [
     { value: '95%', label: 'field accuracy on bilingual product labels' },
