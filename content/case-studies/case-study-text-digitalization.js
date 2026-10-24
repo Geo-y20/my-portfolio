@@ -1,4 +1,4 @@
-// MEDIA: card cover/demo must use mock or blurred company data — never real product specifications, brand assets or regulatory submissions.
+// MEDIA: the demo is a real recording of the internal system; George approved publishing it on 2026-10-24. Any other screenshots must use mock or blurred data.
 // NEW in the Next.js version (no static page existed). Facts are limited to what
 // George supplied: EVA Group, AI Engineer, 2025 – present; document upload →
 // storage → parsing (PyMuPDF / LLM vision) → AI field extraction → Claude
@@ -47,7 +47,7 @@ const caseStudy = {
       mp4: 'work/text-digitalization/demo.mp4',
       webm: 'work/text-digitalization/demo.webm',
       poster: 'work/text-digitalization/cover.webp',
-      label: 'Demo: products move through the review stages, the Brand approvals queue, and Text GPT returning English and Arabic versions (mock data)',
+      label: 'Demo: the product dashboard, the Brand approvals queue, and Text GPT returning original, refined English and final Arabic versions',
     },
   },
   results: [
@@ -60,7 +60,7 @@ const caseStudy = {
     { label: 'Regression set', text: 'keep a set of approved bilingual layouts and check every prompt or model change against it before release.' },
     { label: 'Rejection reasons', text: 'record why the compliance gate or a brand reviewer rejects a layout, and use those reasons to improve the generation prompt.' },
   ],
-  note: 'Enterprise project. Screens and demos use mock or blurred data; no real product specifications or brand details are shown.',
+  note: "Enterprise project. The demo is a recording of the internal system, shared with George's approval; confidential details beyond what it shows are not published.",
   prev: { href: '/case-study-social-listening', title: 'Social listening platform' },
   next: { href: '/all-projects', title: 'All projects' },
 };

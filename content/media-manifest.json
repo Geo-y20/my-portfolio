@@ -1,1 +1,469 @@
-{ "bucket": "images", "objects": {} }
+{
+  "bucket": "images",
+  "objects": {
+    "apple-touch-icon.png": {
+      "bytes": 50866,
+      "contentType": "image/png",
+      "etag": "2ced889081c228316d9078b8921da892",
+      "height": 180,
+      "public": true,
+      "width": 180
+    },
+    "architecture/atr-gpt-architecture.svg": {
+      "bytes": 3576,
+      "contentType": "image/svg+xml",
+      "etag": "e97afc40be48d7f507c1107be60a091e",
+      "height": 266,
+      "public": true,
+      "width": 640
+    },
+    "architecture/automation-ocr-architecture.svg": {
+      "bytes": 2676,
+      "contentType": "image/svg+xml",
+      "etag": "f4e3a9f396120aaff65e25ad6adfd10b",
+      "height": 170,
+      "public": true,
+      "width": 580
+    },
+    "architecture/forecast-view-architecture.svg": {
+      "bytes": 3452,
+      "contentType": "image/svg+xml",
+      "etag": "bd829a26283b137bb572cd5cee8d4873",
+      "height": 180,
+      "public": true,
+      "width": 790
+    },
+    "architecture/hr-assistant-architecture.svg": {
+      "bytes": 2702,
+      "contentType": "image/svg+xml",
+      "etag": "f79b6d1be97d527532dcf7dcc44e4403",
+      "height": 274,
+      "public": true,
+      "width": 640
+    },
+    "architecture/learning-automation-architecture.svg": {
+      "bytes": 2432,
+      "contentType": "image/svg+xml",
+      "etag": "15028e30e87ee23956b98f2691df0ee1",
+      "height": 226,
+      "public": true,
+      "width": 640
+    },
+    "architecture/sales-intelligence-architecture.svg": {
+      "bytes": 2433,
+      "contentType": "image/svg+xml",
+      "etag": "102dcb053ff2476e72685f600c6bc00c",
+      "height": 140,
+      "public": true,
+      "width": 940
+    },
+    "architecture/sheet-chat-architecture.svg": {
+      "bytes": 3290,
+      "contentType": "image/svg+xml",
+      "etag": "025420fd1ba2cc972b937301a82b12e8",
+      "height": 210,
+      "public": true,
+      "width": 660
+    },
+    "architecture/social-listening-architecture.svg": {
+      "bytes": 2765,
+      "contentType": "image/svg+xml",
+      "etag": "b7a4de22edaf2087e8ed40cdee914e06",
+      "height": 280,
+      "public": true,
+      "width": 640
+    },
+    "architecture/text-digitalize-architecture.svg": {
+      "bytes": 3586,
+      "contentType": "image/svg+xml",
+      "etag": "f9727c105e1a1f108b99c29298deb616",
+      "height": 170,
+      "public": true,
+      "width": 830
+    },
+    "architecture/vision-platform-architecture.svg": {
+      "bytes": 2854,
+      "contentType": "image/svg+xml",
+      "etag": "0b5b109f08646b5b7afe8e6dbcc1bf0b",
+      "height": 226,
+      "public": true,
+      "width": 640
+    },
+    "favicon-32x32.png": {
+      "bytes": 2805,
+      "contentType": "image/png",
+      "etag": "f3923f980e93e5bf5f10bb87552625c9",
+      "height": 32,
+      "public": true,
+      "width": 32
+    },
+    "favicon.ico": {
+      "bytes": 9310,
+      "contentType": "image/x-icon",
+      "etag": "283d929492a7f4c62694acbb08d5805a",
+      "height": 48,
+      "public": true,
+      "width": 48
+    },
+    "favicon.svg": {
+      "bytes": 387,
+      "contentType": "image/svg+xml",
+      "etag": "c2819b15b808ffa8323e18575850eac2",
+      "height": 64,
+      "public": true,
+      "width": 64
+    },
+    "og-image.png": {
+      "bytes": 161507,
+      "contentType": "image/png",
+      "etag": "a4d9d1e43feecbf2b83b0b09ff33b949",
+      "height": 630,
+      "public": true,
+      "width": 1200
+    },
+    "profile-560.webp": {
+      "bytes": 40586,
+      "contentType": "image/webp",
+      "etag": "59b58844b7981ce877e5e6ec15c6f0ae",
+      "height": 560,
+      "public": true,
+      "width": 560
+    },
+    "profile-hero.jpg": {
+      "bytes": 143506,
+      "contentType": "image/jpeg",
+      "etag": "f5060890d9d4f2cdb4a1d669bb9fb5c7",
+      "height": 800,
+      "public": false,
+      "width": 800
+    },
+    "profile-new.jpg": {
+      "bytes": 5253265,
+      "contentType": "image/jpeg",
+      "etag": "85d1576fa05cf8a2b8e2c404005e6245",
+      "height": 4080,
+      "public": false,
+      "width": 3072
+    },
+    "projects/ATR MOM.gif": {
+      "bytes": 12765711,
+      "contentType": "image/gif",
+      "etag": "5bc6c7dfb7644a574a23ecd187067245-2",
+      "height": 549,
+      "public": false,
+      "width": 1024
+    },
+    "projects/Home - Text Digitalization.gif": {
+      "bytes": 19332987,
+      "contentType": "image/gif",
+      "etag": "0b8b437e2b18048ecfbe726d19b27fd7-3",
+      "height": 488,
+      "public": false,
+      "width": 1080
+    },
+    "projects/Security & Vision Intelligence Platform.gif": {
+      "bytes": 32509193,
+      "contentType": "image/gif",
+      "etag": "557aa27a920e514d80b96032a9065ca7-4",
+      "height": 720,
+      "public": false,
+      "width": 1280
+    },
+    "projects/Social Listening Platfrom.gif": {
+      "bytes": 21010224,
+      "contentType": "image/gif",
+      "etag": "3db29df365ec3337c697c3e131b581f4-3",
+      "height": 604,
+      "public": false,
+      "width": 1350
+    },
+    "projects/ai-powered-learning-automation-platform.jpeg": {
+      "bytes": 76433,
+      "contentType": "image/jpeg",
+      "etag": "d07e8e389d6535ad98a7edc1113b08de",
+      "height": 766,
+      "public": true,
+      "width": 1561
+    },
+    "projects/ai-powered-learning-automation-platform.webp": {
+      "bytes": 25690,
+      "contentType": "image/webp",
+      "etag": "9f6bf93202bafd7c7a6eecfeb2fde552",
+      "height": 589,
+      "public": true,
+      "width": 1200
+    },
+    "projects/arabic-sign-language-system.png": {
+      "bytes": 391136,
+      "contentType": "image/png",
+      "etag": "e45d69634fed27dfa4cacebbbc8a2633",
+      "height": 547,
+      "public": true,
+      "width": 502
+    },
+    "projects/arabic-sign-language-system.webp": {
+      "bytes": 27872,
+      "contentType": "image/webp",
+      "etag": "e6e16e74c096cd917a21504ffc3cc9a9",
+      "height": 547,
+      "public": true,
+      "width": 502
+    },
+    "projects/chat with sheets.gif": {
+      "bytes": 53431419,
+      "contentType": "image/gif",
+      "etag": "79af6fe6784c1907e227aa4d17f9c171-7",
+      "height": 720,
+      "public": false,
+      "width": 1680
+    },
+    "projects/diabetes-heart-monitor-system.png": {
+      "bytes": 20653,
+      "contentType": "image/png",
+      "etag": "a012b89a0fb7f5e215e9a4222742c61f",
+      "height": 548,
+      "public": true,
+      "width": 627
+    },
+    "projects/diabetes-heart-monitor-system.webp": {
+      "bytes": 34174,
+      "contentType": "image/webp",
+      "etag": "c0f06f98b1d57819da9ac97ce6050adb",
+      "height": 548,
+      "public": true,
+      "width": 627
+    },
+    "projects/egyptian-cotton-classification.png": {
+      "bytes": 52307,
+      "contentType": "image/png",
+      "etag": "9db3d32dcb686401a18c7a1784b66981",
+      "height": 883,
+      "public": true,
+      "width": 1920
+    },
+    "projects/egyptian-cotton-classification.webp": {
+      "bytes": 5938,
+      "contentType": "image/webp",
+      "etag": "c82fa53ac6eb0aab190ad6a1dc586a70",
+      "height": 368,
+      "public": true,
+      "width": 800
+    },
+    "projects/fashion-recommendation-system.jpeg": {
+      "bytes": 55375,
+      "contentType": "image/jpeg",
+      "etag": "037db1d4ad38e29a6d3ecd47ba56c0ac",
+      "height": 777,
+      "public": true,
+      "width": 1547
+    },
+    "projects/fashion-recommendation-system.webp": {
+      "bytes": 6106,
+      "contentType": "image/webp",
+      "etag": "54d5a2d70cec5890feb9d0e803b3fd68",
+      "height": 402,
+      "public": true,
+      "width": 800
+    },
+    "projects/loan-approval-automation-mongodb-pymongo.png": {
+      "bytes": 23953,
+      "contentType": "image/png",
+      "etag": "c424edae39e912b700484163851c59ad",
+      "height": 453,
+      "public": true,
+      "width": 452
+    },
+    "projects/loan-approval-automation-mongodb-pymongo.webp": {
+      "bytes": 5120,
+      "contentType": "image/webp",
+      "etag": "f9edbec4dd4e00b14789bb63b30cf359",
+      "height": 453,
+      "public": true,
+      "width": 452
+    },
+    "projects/ocr-system-with-resnet.jpeg": {
+      "bytes": 73802,
+      "contentType": "image/jpeg",
+      "etag": "0e116abb836042ad79fedaeca12d6ddb",
+      "height": 761,
+      "public": true,
+      "width": 1482
+    },
+    "projects/research-paper-title-generation-bart.jpg": {
+      "bytes": 84641,
+      "contentType": "image/jpeg",
+      "etag": "af55fc3409f21da5b8e6b70bc6f47362",
+      "height": 802,
+      "public": true,
+      "width": 1600
+    },
+    "projects/research-paper-title-generation-bart.webp": {
+      "bytes": 32300,
+      "contentType": "image/webp",
+      "etag": "c8716d846bba95fe7e367884a010336f",
+      "height": 401,
+      "public": true,
+      "width": 800
+    },
+    "projects/uber-ride-data-analysis.png": {
+      "bytes": 103217,
+      "contentType": "image/png",
+      "etag": "4bf3b6531f27922d06e9c6d062be5722",
+      "height": 628,
+      "public": true,
+      "width": 1123
+    },
+    "projects/uber-ride-data-analysis.webp": {
+      "bytes": 28046,
+      "contentType": "image/webp",
+      "etag": "5f5b98ea1df111eae449a10d5ed3f1fd",
+      "height": 447,
+      "public": true,
+      "width": 800
+    },
+    "projects/vision-project.jpg": {
+      "bytes": 132159,
+      "contentType": "image/jpeg",
+      "etag": "ed2d207b6fcb3532ba98b213b7d9c760",
+      "height": 820,
+      "public": true,
+      "width": 1600
+    },
+    "projects/wheat-farming-ai-disease-detection-1.jpg": {
+      "bytes": 210118,
+      "contentType": "image/jpeg",
+      "etag": "22bf9ad72aad510dbfade368e9e2e2bc",
+      "height": 771,
+      "public": true,
+      "width": 1553
+    },
+    "projects/wheat-farming-ai-disease-detection-1.webp": {
+      "bytes": 45100,
+      "contentType": "image/webp",
+      "etag": "9c6b26982b3ecb489fb6b289fae49736",
+      "height": 397,
+      "public": true,
+      "width": 800
+    },
+    "work/social-listening/cover.webp": {
+      "bytes": 36402,
+      "contentType": "image/webp",
+      "etag": "a12ec58a6ce15c351afb60c584ec1609",
+      "height": 604,
+      "public": true,
+      "width": 1350
+    },
+    "work/social-listening/demo.mp4": {
+      "bytes": 1286037,
+      "contentType": "video/mp4",
+      "etag": "bebd4aefc21adf4e33c2a27b453c7610",
+      "height": 572,
+      "public": true,
+      "width": 1280
+    },
+    "work/social-listening/demo.webm": {
+      "bytes": 856535,
+      "contentType": "video/webm",
+      "etag": "d718e38c67d0538acfb7ec7415d704ff",
+      "height": 572,
+      "public": true,
+      "width": 1280
+    },
+    "work/speech-ai/cover.webp": {
+      "bytes": 49570,
+      "contentType": "image/webp",
+      "etag": "acdc66ea4adf4946e4ae865cd626a4f4",
+      "height": 550,
+      "public": true,
+      "width": 1024
+    },
+    "work/speech-ai/demo.mp4": {
+      "bytes": 1232697,
+      "contentType": "video/mp4",
+      "etag": "24769056c5cc415371a3225a48bb89ec",
+      "height": 550,
+      "public": true,
+      "width": 1024
+    },
+    "work/speech-ai/demo.webm": {
+      "bytes": 1413235,
+      "contentType": "video/webm",
+      "etag": "13c223bfe5131620d71a1a16ffaebe10",
+      "height": 550,
+      "public": true,
+      "width": 1024
+    },
+    "work/text-digitalization/cover.webp": {
+      "bytes": 23878,
+      "contentType": "image/webp",
+      "etag": "c2f592d598b93e7c3991776d7499895d",
+      "height": 488,
+      "public": true,
+      "width": 1080
+    },
+    "work/text-digitalization/demo.mp4": {
+      "bytes": 1328223,
+      "contentType": "video/mp4",
+      "etag": "ed6570464edcf6963ef76a2c8ac93691",
+      "height": 488,
+      "public": true,
+      "width": 1080
+    },
+    "work/text-digitalization/demo.webm": {
+      "bytes": 1137448,
+      "contentType": "video/webm",
+      "etag": "21bde924ecc852cca00d8a11c319364a",
+      "height": 488,
+      "public": true,
+      "width": 1080
+    },
+    "work/text-to-sql/cover.webp": {
+      "bytes": 46546,
+      "contentType": "image/webp",
+      "etag": "39faeabe735110fa366b4fe39dcba2c9",
+      "height": 686,
+      "public": true,
+      "width": 1600
+    },
+    "work/text-to-sql/demo.mp4": {
+      "bytes": 650369,
+      "contentType": "video/mp4",
+      "etag": "43586bd8767e9a74f6caf2a2949ebb4a",
+      "height": 548,
+      "public": true,
+      "width": 1280
+    },
+    "work/text-to-sql/demo.webm": {
+      "bytes": 677847,
+      "contentType": "video/webm",
+      "etag": "830068a5578b9d33e4d54ccf84a3d193",
+      "height": 548,
+      "public": true,
+      "width": 1280
+    },
+    "work/vision-platform/cover.webp": {
+      "bytes": 78852,
+      "contentType": "image/webp",
+      "etag": "7c34877c4f87fe35b09f8e310d10f43a",
+      "height": 720,
+      "public": true,
+      "width": 1280
+    },
+    "work/vision-platform/demo.mp4": {
+      "bytes": 2460249,
+      "contentType": "video/mp4",
+      "etag": "86d1eed0208d6961c6f1f6994a27b814",
+      "height": 720,
+      "public": true,
+      "width": 1280
+    },
+    "work/vision-platform/demo.webm": {
+      "bytes": 2574722,
+      "contentType": "video/webm",
+      "etag": "add8452de836a8db159a94bbbb282f24",
+      "height": 720,
+      "public": true,
+      "width": 1280
+    }
+  }
+}

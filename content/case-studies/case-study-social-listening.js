@@ -1,4 +1,4 @@
-// MEDIA: card cover/demo must use mock or blurred company data — never real brand names, comments or account identifiers.
+// MEDIA: the demo is a real recording of the internal system; George approved publishing it on 2026-10-24. Any other screenshots must use mock or blurred data.
 const caseStudy = {
   slug: 'case-study-social-listening',
   number: '08',
@@ -38,7 +38,7 @@ const caseStudy = {
       mp4: 'work/social-listening/demo.mp4',
       webm: 'work/social-listening/demo.webm',
       poster: 'work/social-listening/cover.webp',
-      label: 'Demo: classified comments are filtered by brand and category, then exported as a PDF report (mock data)',
+      label: 'Demo: picking a brand opens its dashboard with comment totals, the category distribution and content-type breakdown',
     },
   },
   results: [
@@ -52,7 +52,7 @@ const caseStudy = {
     { label: 'Alerts', text: 'notify customer care when delivery complaints or negative comments spike for a brand.' },
     { label: 'Retraining loop', text: 'let reviewers correct tags in the dashboard and feed those corrections back into fine-tuning.' },
   ],
-  note: 'Enterprise project. Screens and demos use mock or blurred data; no real brand names, comments or account identifiers are shown.',
+  note: "Enterprise project. The demo is a recording of the internal system, shared with George's approval; confidential details beyond what it shows are not published.",
   prev: { href: '/case-study-learning-automation', title: 'Learning automation platform' },
   next: { href: '/case-study-text-digitalization', title: 'Text Digitalization: bilingual product content & regulatory layouts' },
 };

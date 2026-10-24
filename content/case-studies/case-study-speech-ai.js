@@ -1,4 +1,4 @@
-// MEDIA: card cover/demo must use a mock meeting and synthetic calls — never real participants, voices, customer names or phone numbers.
+// MEDIA: the demo is a real recording of the internal system; George approved publishing it on 2026-10-24. Any other screenshots must use mock or blurred data.
 const caseStudy = {
   slug: 'case-study-speech-ai',
   number: '04',
@@ -32,7 +32,7 @@ const caseStudy = {
       mp4: 'work/speech-ai/demo.mp4',
       webm: 'work/speech-ai/demo.webm',
       poster: 'work/speech-ai/cover.webp',
-      label: 'Demo: a mock meeting is transcribed live and the app produces minutes in Arabic and English',
+      label: 'Demo: a meeting is recorded and transcribed live, then the app produces structured minutes in Arabic and English',
     },
   },
   results: [
@@ -45,7 +45,7 @@ const caseStudy = {
     { label: 'Action items', text: "extract owners and due dates from the minutes and push them to the team's task tracker." },
     { label: 'Measure it', text: 'track word error rate on a hand-checked set of Egyptian Arabic and code-switched audio, and compare the LLM sentiment labels against a labelled sample of calls.' },
   ],
-  note: 'Enterprise project. No real meetings, calls or participants are shown; screens and demos use mock audio and transcripts.',
+  note: "Enterprise project. The demo is a recording of the internal system, shared with George's approval; confidential details beyond what it shows are not published.",
   prev: { href: '/case-study-document-ai', title: 'Document AI & OCR' },
   next: { href: '/case-study-hr-assistant', title: 'Offline Arabic HR assistant' },
 };

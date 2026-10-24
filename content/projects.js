@@ -51,7 +51,7 @@ export const featured = [
     caption: 'Oracle Autonomous DB · LangGraph · DuckDB',
     icon: 'db',
     cover: 'work/text-to-sql/cover.webp',
-    coverAlt: 'Sheet Chat answering a sales question with generated SQL and a chart (mock data)',
+    coverAlt: 'Sheet Chat answering a question in Arabic about an orders spreadsheet',
     link: caseStudy('text-to-sql'),
     archive: {
       outcome: '<strong>~10s</strong> answers instead of 1–2 days; <strong>90%</strong> correct SQL on 100 questions.',
@@ -83,7 +83,7 @@ export const featured = [
     caption: 'Deepgram · Whisper · OpenAI · bilingual minutes',
     icon: 'wave',
     cover: 'work/speech-ai/cover.webp',
-    coverAlt: 'Meeting-minutes app showing a live transcript and generated bilingual summary (mock meeting)',
+    coverAlt: 'Meeting-minutes app showing the generated summary of a recorded meeting',
     link: caseStudy('speech-ai'),
     archive: {
       outcome: 'Live bilingual minutes, plus sentiment on <strong>1,500</strong> calls/month.',
@@ -110,7 +110,7 @@ export const moreProduction = [
     stack: ['YOLO', 'OpenCV', 'Docker'],
     icon: 'eye',
     cover: 'work/vision-platform/cover.webp',
-    coverAlt: 'On-prem vision platform interface (staged footage)',
+    coverAlt: 'On-prem vision platform: CCTV frame with person and fire detection boxes',
     link: caseStudy('vision-platform'),
   },
   {
@@ -130,7 +130,7 @@ export const moreProduction = [
     stack: ['BERT', 'PostgreSQL', 'Graph API'],
     icon: 'bubbles',
     cover: 'work/social-listening/cover.webp',
-    coverAlt: 'Social listening dashboard (mock data)',
+    coverAlt: 'Social listening dashboard with comment categories and content types',
     link: caseStudy('social-listening'),
   },
   {
@@ -151,7 +151,7 @@ export const moreProduction = [
     stack: ['Claude', 'PyMuPDF', 'Document AI'],
     icon: 'doc',
     cover: 'work/text-digitalization/cover.webp',
-    coverAlt: 'Text Digitalization platform generating a bilingual product layout (mock data)',
+    coverAlt: 'Text Digitalization: Text GPT returning English and Arabic product text',
     link: caseStudy('text-digitalization'),
   },
   {

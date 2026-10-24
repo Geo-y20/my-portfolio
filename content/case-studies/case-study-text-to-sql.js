@@ -1,4 +1,4 @@
-// MEDIA: card cover/demo must use mock or blurred company data — never real sales figures, customer names or schema details.
+// MEDIA: the demo is a real recording of the internal system; George approved publishing it on 2026-10-24. Any other screenshots must use mock or blurred data.
 const caseStudy = {
   slug: 'case-study-text-to-sql',
   number: '02',
@@ -34,7 +34,7 @@ const caseStudy = {
       mp4: 'work/text-to-sql/demo.mp4',
       webm: 'work/text-to-sql/demo.webm',
       poster: 'work/text-to-sql/cover.webp',
-      label: 'Demo: a user asks a sales question, sees the generated SQL, a chart and a plain-language explanation (mock data)',
+      label: 'Demo: Sheet Chat loads an orders spreadsheet, takes a question in Arabic and answers with the computed result',
     },
   },
   results: [
@@ -48,7 +48,7 @@ const caseStudy = {
     { label: 'Grow the eval set', text: 'log real user questions and promote the hard ones into the evaluation set, so it keeps up with how people actually ask.' },
     { label: 'Shared core', text: 'run the Oracle Text-to-SQL path through the same LangGraph planner as Sheet Chat, so both get charts and data-quality checks.' },
   ],
-  note: 'Enterprise project. Database structures and real sales figures are not shown; screens and demos use mock data.',
+  note: "Enterprise project. The demo is a recording of the internal system, shared with George's approval; confidential details beyond what it shows are not published.",
   prev: { href: '/case-study-atr-gpt', title: 'ATR GPT: agentic RAG assistant' },
   next: { href: '/case-study-document-ai', title: 'Document AI & OCR' },
 };

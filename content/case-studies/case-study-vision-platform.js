@@ -1,4 +1,4 @@
-// MEDIA: card cover/demo must use mock or blurred company data — never real camera footage, faces, plates or facility layouts.
+// MEDIA: the demo is a real recording of the internal system; George approved publishing it on 2026-10-24. Any other screenshots must use mock or blurred data.
 const caseStudy = {
   slug: 'case-study-vision-platform',
   number: '06',
@@ -38,7 +38,7 @@ const caseStudy = {
       mp4: 'work/vision-platform/demo.mp4',
       webm: 'work/vision-platform/demo.webm',
       poster: 'work/vision-platform/cover.webp',
-      label: 'Demo: camera feeds with live detection boxes for people, plates and a simulated fire event raising an alert (mock, blurred footage)',
+      label: 'Demo: CCTV feeds with live person detection, face-recognition labels and a fire-detection alert',
     },
   },
   results: [
@@ -52,7 +52,7 @@ const caseStudy = {
     { label: 'Health monitoring', text: 'track per-camera stream uptime and inference latency so a dropped feed is noticed before an incident is missed.' },
     { label: 'Model optimization', text: 'export models to a faster runtime to fit more concurrent cameras on the CPU-only sites.' },
   ],
-  note: 'Enterprise project. Screens and demos use mock or blurred data; no real camera footage, faces, plates or facility details are shown.',
+  note: "Enterprise project. The demo is a recording of the internal system, shared with George's approval; confidential details beyond what it shows are not published.",
   prev: { href: '/case-study-hr-assistant', title: 'Offline Arabic HR assistant' },
   next: { href: '/case-study-learning-automation', title: 'Learning automation platform' },
 };
