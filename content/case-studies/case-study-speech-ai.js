@@ -47,7 +47,7 @@ const caseStudy = {
   ],
   note: "Enterprise project. The demo is a recording of the internal system, shared with George's approval; confidential details beyond what it shows are not published.",
   prev: { href: '/case-study-document-ai', title: 'Document AI & OCR' },
-  next: { href: '/case-study-hr-assistant', title: 'Offline Arabic HR assistant' },
+  next: { href: '/case-study-hr-assistant', title: 'Offline bilingual HR assistant for EVA Cosmetics' },
 };
 
 export default caseStudy;

@@ -53,7 +53,7 @@ export const experience = [
       '<strong>Document AI / OCR:</strong> Cheque reading and validation before ERP ingestion, plus bilingual Arabic–English product-label extraction (batch, expiry, quantity) with Google Cloud Vision at 95% field accuracy on 1,000 docs/month.',
       '<strong>Speech AI:</strong> Desktop app that transcribes Zoom/Teams meetings live with Deepgram and writes bilingual minutes with OpenAI, plus a call-analytics pipeline (CRM recordings → Whisper → LLM sentiment) covering 1,500 calls/month.',
       '<strong>Forecasting:</strong> Ridge + LightGBM per brand/customer/channel with per-SKU model selection by wMAPE, a 15% reduction in wMAPE against the previous baseline.',
-      '<strong>On-prem AI:</strong> Fully offline Arabic–English HR assistant (Aya-Expanse 8B on Ollama, hybrid ChromaDB + BM25) with zero cloud exposure. Vision for fire/violence, license plates, people counting and attendance on 20 cameras at 3 sites.',
+      '<strong>On-prem AI:</strong> Fully offline Arabic–English HR assistant for EVA Cosmetics (Aya-Expanse 8B on Ollama, hybrid ChromaDB + BM25) with zero cloud exposure. Vision for fire/violence, license plates, people counting and attendance on 20 cameras at 3 sites.',
     ],
   },
   {

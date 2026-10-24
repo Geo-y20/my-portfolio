@@ -98,7 +98,7 @@ export default function HomePage() {
             {featured.map((p) => <ProjectCard key={p.title} project={p} reveal />)}
           </FilterGrid>
           <div className="work-more">
-            <p>Forecasting, on-prem vision, an offline Arabic HR assistant, social listening and research projects.</p>
+            <p>Forecasting, on-prem vision, an offline bilingual HR assistant for EVA Cosmetics, social listening and research projects.</p>
             <FilterMoreLink className="btn btn--ghost">See all 12+ projects <span aria-hidden="true">→</span></FilterMoreLink>
           </div>
         </FilterableProjects>

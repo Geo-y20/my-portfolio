@@ -97,7 +97,9 @@ export const featured = [
 
 export const moreProduction = [
   {
-    title: 'Offline Arabic HR assistant',
+    title: 'Offline bilingual HR assistant for EVA Cosmetics',
+    cover: 'work/hr-assistant/cover.webp',
+    coverAlt: 'EVA Cosmetics Policy Assistant answering an Arabic leave question with its source',
     kicker: 'Agents & RAG · On-prem',
     tags: ['agents', 'speech'],
     outcome: 'Aya-Expanse <strong>8B</strong> on Ollama with hybrid retrieval and <strong>zero</strong> cloud exposure.',

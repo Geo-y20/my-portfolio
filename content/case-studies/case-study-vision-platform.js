@@ -60,7 +60,7 @@ const caseStudy = {
     { label: 'Model optimization', text: 'export models to a faster runtime to fit more concurrent cameras on the CPU-only sites.' },
   ],
   note: "Enterprise project. The demo is a recording of the internal system, shared with George's approval; confidential details beyond what it shows are not published.",
-  prev: { href: '/case-study-hr-assistant', title: 'Offline Arabic HR assistant' },
+  prev: { href: '/case-study-hr-assistant', title: 'Offline bilingual HR assistant for EVA Cosmetics' },
   next: { href: '/case-study-learning-automation', title: 'Learning automation platform' },
 };
 

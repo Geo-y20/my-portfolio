@@ -1,14 +1,14 @@
-// MEDIA: card cover/demo must use mock or blurred company data — never real HR policies, employee questions or names.
+// MEDIA: the demo screenshots are real chats with EVA Cosmetics' Policy Assistant, supplied by George for publication (2026-10-24); no personal names are shown.
 const caseStudy = {
   slug: 'case-study-hr-assistant',
   number: '05',
   track: 'Agents & RAG',
   featured: false,
-  title: 'Offline Arabic HR assistant',
-  metaTitle: 'Offline Arabic HR Assistant | George Youhana',
-  metaDescription: 'Case study: a fully offline Arabic–English HR assistant on Aya-Expanse 8B via Ollama, with hybrid ChromaDB + BM25 retrieval and 0 cloud calls.',
+  title: 'Offline bilingual HR assistant for EVA Cosmetics',
+  metaTitle: 'Offline Bilingual HR Assistant for EVA Cosmetics | George Youhana',
+  metaDescription: "Case study: EVA Cosmetics' fully offline Arabic–English HR assistant on Aya-Expanse 8B via Ollama, with hybrid ChromaDB + BM25 retrieval and 0 cloud calls.",
   ogDescription: 'Bilingual HR answers from a local 8B model. Hybrid ChromaDB + BM25 retrieval, 0 cloud calls, zero exposure of HR documents.',
-  lede: 'A fully offline assistant that answers HR-policy questions in Arabic and English from a local model, with zero cloud exposure.',
+  lede: "EVA Cosmetics' Policy Assistant: a fully offline assistant that answers HR-policy questions in Arabic and English from a local model, with zero cloud exposure.",
   back: { href: '/all-projects', label: 'All projects' },
   meta: {
     role: 'AI Engineer: architecture, retrieval, local deployment',
@@ -38,8 +38,20 @@ const caseStudy = {
       mp4: 'work/hr-assistant/demo.mp4',
       webm: 'work/hr-assistant/demo.webm',
       poster: 'work/hr-assistant/cover.webp',
-      label: 'Demo: an employee asks an HR question in Arabic, then in English, and gets answers grounded in policy passages from a local model (mock data)',
+      label: 'Demo: an employee asks an HR question in Arabic, then in English, and gets answers grounded in policy passages from a local model',
     },
+    image: {
+      key: 'work/hr-assistant/chat-leave.webp',
+      alt: "EVA Cosmetics Policy Assistant answering 'عايز اجازه' (I want leave) in Arabic with the leave types from the policy and one cited source",
+    },
+    caption: "Asked 'عايز اجازه' (I want leave), the assistant lists the leave types from the HR policy and cites its source.",
+    gallery: [
+      {
+        key: 'work/hr-assistant/chat-hours.webp',
+        alt: 'EVA Cosmetics Policy Assistant chat: an English greeting, then an Egyptian-Arabic question about required working hours, with the search it ran',
+        caption: 'English or Egyptian Arabic: a greeting in English, then a question about required working hours in Arabic.',
+      },
+    ],
   },
   results: [
     { value: '0', unit: 'cloud calls', label: 'fully offline: no HR document or question leaves the network' },

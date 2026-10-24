@@ -7,6 +7,22 @@
       "etag": "d33f70abf3b8bb1ef66a39e0775517b1",
       "public": false
     },
+    "Picture1.png": {
+      "bytes": 256543,
+      "contentType": "image/png",
+      "etag": "d2a7a95ade810f969cae852d2e1a6114",
+      "height": 551,
+      "public": false,
+      "width": 1166
+    },
+    "Picture2.png": {
+      "bytes": 358682,
+      "contentType": "image/png",
+      "etag": "0466f0352d1086204cbc258f359f4812",
+      "height": 607,
+      "public": false,
+      "width": 1149
+    },
     "Scan Automation 2.jpg": {
       "bytes": 15218,
       "contentType": "image/jpeg",
@@ -400,49 +416,49 @@
       "width": 800
     },
     "work/atr-gpt/assistant-poster.webp": {
-      "bytes": 53716,
+      "bytes": 38296,
       "contentType": "image/webp",
-      "etag": "b9270559890d07aa3c03badd8232bb95",
-      "height": 750,
+      "etag": "b4ed6bdbd3687655632b805115848e9c",
+      "height": 600,
       "public": true,
-      "width": 1600
+      "width": 1280
     },
     "work/atr-gpt/assistant.mp4": {
-      "bytes": 514906,
+      "bytes": 488082,
       "contentType": "video/mp4",
-      "etag": "1e00269cd69085cf809891139b9867bd",
+      "etag": "d6a1243789b9281e92d073468a0effde",
       "height": 600,
       "public": true,
       "width": 1280
     },
     "work/atr-gpt/assistant.webm": {
-      "bytes": 502343,
+      "bytes": 492019,
       "contentType": "video/webm",
-      "etag": "72fa75a0ae6a4fc754ba54de177d5723",
+      "etag": "3153c2e16e0c256bfffec828e7b33026",
       "height": 600,
       "public": true,
       "width": 1280
     },
     "work/atr-gpt/cover.webp": {
-      "bytes": 65210,
+      "bytes": 46904,
       "contentType": "image/webp",
-      "etag": "41339acf9c2fd6dfd575bcd88068a5ac",
-      "height": 754,
+      "etag": "25d3445cf853de41ed09b1061d059170",
+      "height": 604,
       "public": true,
-      "width": 1600
+      "width": 1280
     },
     "work/atr-gpt/demo.mp4": {
-      "bytes": 428581,
+      "bytes": 416853,
       "contentType": "video/mp4",
-      "etag": "475a193ccf63313f3aa9a85085265fda",
+      "etag": "f64a464fac7d929e0e237f4873b25996",
       "height": 604,
       "public": true,
       "width": 1280
     },
     "work/atr-gpt/demo.webm": {
-      "bytes": 448839,
+      "bytes": 432219,
       "contentType": "video/webm",
-      "etag": "ceeb76a38307fdc0b3bc4f5289423f74",
+      "etag": "5c23a3e9175c6392b754115a766b24b7",
       "height": 604,
       "public": true,
       "width": 1280
@@ -454,6 +470,30 @@
       "height": 1000,
       "public": true,
       "width": 1600
+    },
+    "work/hr-assistant/chat-hours.webp": {
+      "bytes": 16084,
+      "contentType": "image/webp",
+      "etag": "c89c4ebe62f0e6637bf048d03075a8ac",
+      "height": 551,
+      "public": true,
+      "width": 1166
+    },
+    "work/hr-assistant/chat-leave.webp": {
+      "bytes": 25944,
+      "contentType": "image/webp",
+      "etag": "13f54d8a11cc73e253da54dfd8430bfc",
+      "height": 545,
+      "public": true,
+      "width": 1149
+    },
+    "work/hr-assistant/cover.webp": {
+      "bytes": 25944,
+      "contentType": "image/webp",
+      "etag": "13f54d8a11cc73e253da54dfd8430bfc",
+      "height": 545,
+      "public": true,
+      "width": 1149
     },
     "work/social-listening/cover.webp": {
       "bytes": 36402,
