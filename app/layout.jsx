@@ -4,6 +4,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ChatWidget from '@/components/ChatWidget';
 import Enhancements from '@/components/Enhancements';
+import { Analytics } from '@vercel/analytics/next';
 import { SITE_URL, mediaUrl } from '@/lib/media';
 import { profile, seo } from '@/content/site';
 
@@ -50,6 +51,8 @@ export default function RootLayout({ children }) {
         <Footer />
         <ChatWidget />
         <Enhancements />
+        {/* Vercel Web Analytics: cookieless page views & visitors, viewed in the Vercel dashboard → Analytics. */}
+        <Analytics />
       </body>
     </html>
   );
