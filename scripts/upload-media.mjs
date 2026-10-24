@@ -4,6 +4,11 @@
 //
 //   npm run media:upload              upload new/changed files + rebuild manifest
 //   npm run media:upload -- --dry-run show what would be uploaded, write nothing
+//   npm run media:upload -- --keep    don't delete local copies afterwards
+//
+// After a successful sync, every local file whose bucket copy has the same
+// checksum (ETag) is deleted, so images/ and media-staging/ only ever hold
+// files that haven't reached the bucket yet. The bucket is the source of truth.
 //
 // Sources (both gitignored):
 //   images/         key = path relative to images/        e.g. projects/foo.webp
@@ -14,7 +19,7 @@
 import 'dotenv/config';
 import { createHash } from 'node:crypto';
 import { execFileSync } from 'node:child_process';
-import { createReadStream, existsSync, mkdtempSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from 'node:fs';
+import { createReadStream, existsSync, mkdtempSync, readdirSync, readFileSync, rmdirSync, rmSync, statSync, unlinkSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -30,6 +35,7 @@ const MULTIPART_THRESHOLD = 8 * 1024 * 1024;
 const PART_SIZE = 8 * 1024 * 1024;
 const CACHE_CONTROL = 'public, max-age=31536000, immutable';
 const DRY_RUN = process.argv.includes('--dry-run');
+const KEEP_LOCAL = process.argv.includes('--keep');
 
 const env = (a, b, fallback) => process.env[a] || process.env[b] || fallback;
 const config = {
@@ -144,6 +150,14 @@ async function listBucket() {
   return objects;
 }
 
+function removeEmptyDirs(dir, root) {
+  if (!existsSync(dir)) return;
+  for (const entry of readdirSync(dir, { withFileTypes: true })) {
+    if (entry.isDirectory()) removeEmptyDirs(path.join(dir, entry.name), root);
+  }
+  if (dir !== root && readdirSync(dir).length === 0) rmdirSync(dir);
+}
+
 async function main() {
   console.log(`${DRY_RUN ? '[dry run] ' : ''}Syncing media to bucket "${config.bucket}"`);
   const files = SOURCES.flatMap((dir) => walk(dir));
@@ -207,11 +221,30 @@ async function main() {
   }
 
   writeFileSync(MANIFEST, `${JSON.stringify({ bucket: config.bucket, objects }, null, 2)}\n`);
+
+  // Delete local copies that are verifiably in the bucket (same ETag).
+  let removed = 0;
+  const kept = [];
+  if (!KEEP_LOCAL) {
+    for (const [key, file] of localByKey) {
+      const remote = objects[key];
+      if (remote && remote.etag === expectedEtag(file, statSync(file).size)) {
+        unlinkSync(file);
+        removed++;
+      } else {
+        kept.push(key);
+      }
+    }
+    for (const dir of SOURCES) removeEmptyDirs(dir, dir);
+  }
+
   const publicCount = Object.values(objects).filter((o) => o.public).length;
   console.log(
     `\nUploaded ${uploaded} (${(uploadedBytes / 1e6).toFixed(2)} MB), skipped ${skipped} unchanged.` +
       `\nBucket: ${listed.length} objects, ${(totalBytes / 1e6).toFixed(2)} MB total, ${publicCount} public.` +
-      `\nWrote ${path.relative(ROOT, MANIFEST)}`
+      `\nWrote ${path.relative(ROOT, MANIFEST)}` +
+      (KEEP_LOCAL ? '\nKept local copies (--keep).' : `\nRemoved ${removed} local file(s) now safely in the bucket.`) +
+      (kept.length ? `\nNOT removed (bucket copy didn't match): ${kept.join(', ')}` : '')
   );
 }
 

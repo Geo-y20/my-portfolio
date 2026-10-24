@@ -7,4 +7,4 @@ Site media does not live in git. It lives in the Neon object-storage bucket `ima
 3. Objects are public on the site unless they are listed in `scripts/media-visibility.json` → `private`.
 
 Encoded demo videos live in `media-staging/` (also gitignored) and sync the same way.
-You can empty this folder after uploading. The bucket is the source of truth.
+After a successful upload, files whose bucket copy matches (same checksum) are deleted from here automatically, so this folder only ever holds files that haven't been uploaded yet. Use `npm run media:upload -- --keep` to keep local copies. The bucket is the source of truth.

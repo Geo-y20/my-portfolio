@@ -13,7 +13,8 @@ import LazyVideo from '@/components/LazyVideo';
 // variant: "card" → .card__media (project cards), "cs" → .cs-cover (case-study demo)
 // image:   { key, alt, priority? }       width/height come from the manifest
 // video:   { mp4, webm?, poster?, label } lazy-loaded, muted, looping
-export default function MediaSlot({ variant = 'card', icon = 'chat', caption, image, video }) {
+// fit:     "contain" shows the whole image on a padded surface (architecture diagrams)
+export default function MediaSlot({ variant = 'card', icon = 'chat', caption, image, video, fit }) {
   const img = image && getMediaObject(image.key);
   const showVideo = video && hasMedia(video.mp4);
   const poster = showVideo && video.poster && hasMedia(video.poster) ? mediaUrl(video.poster) : undefined;
@@ -24,7 +25,7 @@ export default function MediaSlot({ variant = 'card', icon = 'chat', caption, im
   const style = variant === 'cs' && dims?.width && dims?.height ? { aspectRatio: `${dims.width} / ${dims.height}` } : undefined;
 
   return (
-    <div className={variant === 'cs' ? `cs-cover${filled ? '' : ' cs-cover--empty'}` : 'card__media'} style={style}>
+    <div className={variant === 'cs' ? `cs-cover${filled ? '' : ' cs-cover--empty'}` : `card__media${fit === 'contain' && img ? ' card__media--diagram' : ''}`} style={style}>
       <div className="ph" aria-hidden="true">
         <Icon name={icon} className="ph__icon" />
         {caption ? <span className="ph__caption">{caption}</span> : null}

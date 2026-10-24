@@ -1,24 +1,28 @@
 import Link from 'next/link';
 import MediaSlot from '@/components/MediaSlot';
 import { FilterItem } from '@/components/FilterableProjects';
-import { hasMedia, mediaUrl } from '@/lib/media';
+import DiagramDialog from '@/components/DiagramDialog';
+import { getMediaObject, mediaUrl } from '@/lib/media';
 
 // One project card (.card). Media: a screenshot `image` if the card has one,
 // otherwise its case-study `cover`; MediaSlot falls back to the placeholder
 // when neither file is in object storage yet.
 export default function ProjectCard({ project, reveal = false }) {
-  const { title, kicker, tags, outcome, note, stack, icon, image, cover, coverAlt, caption, link } = project;
-  const media = image || (cover ? { key: cover, alt: coverAlt || title } : undefined);
+  const { title, kicker, tags, outcome, note, stack, icon, image, cover, coverAlt, caption, link, diagram } = project;
+  const diagramObj = diagram ? getMediaObject(diagram) : undefined;
+  // Thumbnail: screenshot, else case-study cover, else the architecture diagram.
+  const ownMedia = image || (cover && getMediaObject(cover) ? { key: cover, alt: coverAlt || title } : undefined);
+  const media = ownMedia || (diagramObj ? { key: diagram, alt: `${title} architecture diagram` } : undefined);
+  const showsDiagram = !ownMedia && Boolean(diagramObj);
 
-  let href = link?.href;
-  if (link?.mediaKey) href = hasMedia(link.mediaKey) ? mediaUrl(link.mediaKey) : undefined;
+  const href = link?.href;
   const isCaseStudy = link?.label === 'Read case study';
   // Internal pages use client-side navigation; files and external sites a plain <a>.
   const LinkTag = link?.href?.startsWith('/') ? Link : 'a';
 
   return (
     <FilterItem tags={tags} reveal={reveal}>
-      <MediaSlot variant="card" icon={icon} caption={caption || stack.join(' · ')} image={media} />
+      <MediaSlot variant="card" icon={icon} caption={caption || stack.join(' · ')} image={media} fit={showsDiagram ? 'contain' : undefined} />
       <div className="card__body">
         <p className="card__kicker">{kicker}</p>
         <h3 className="card__title">{title}</h3>
@@ -34,6 +38,8 @@ export default function ProjectCard({ project, reveal = false }) {
               {isCaseStudy ? null : <span className="sr-only"> for {title}</span>}
               {' '}<span aria-hidden="true">→</span>
             </LinkTag>
+          ) : diagramObj ? (
+            <DiagramDialog src={mediaUrl(diagram)} width={diagramObj.width} height={diagramObj.height} title={title} />
           ) : null}
         </div>
       </div>

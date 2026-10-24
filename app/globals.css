@@ -553,3 +553,14 @@ button { font: inherit; color: inherit; }
 .cs-figure { margin: var(--s3) 0 0; }
 .cs-figure img { width: 100%; height: auto; border-radius: var(--radius); border: 1px solid var(--border); }
 .cs-figure figcaption { margin-top: var(--s2); font-size: var(--fs-sm); color: var(--muted); }
+
+/* Architecture diagram used as a card thumbnail: show it whole on a padded surface. */
+.card__media--diagram > img { object-fit: contain; padding: var(--s3); background: var(--surface); }
+.diagram-trigger { background: none; border: 0; padding: 0; cursor: pointer; font: inherit; font-family: var(--mono); font-size: var(--fs-sm); }
+
+/* In-page architecture viewer. */
+.diagram-dialog { width: min(1000px, calc(100vw - 32px)); max-height: calc(100vh - 48px); padding: 0; border: 1px solid var(--border-strong); border-radius: 16px; background: var(--surface); color: var(--text); box-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.7); }
+.diagram-dialog::backdrop { background: rgba(5, 7, 10, 0.75); backdrop-filter: blur(4px); }
+.diagram-dialog__head { display: flex; align-items: center; justify-content: space-between; gap: var(--s2); padding: 8px 8px 8px var(--s3); border-bottom: 1px solid var(--border); }
+.diagram-dialog__title { font-family: var(--mono); font-size: var(--fs-xs); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+.diagram-dialog img { display: block; width: 100%; height: auto; padding: var(--s4); }

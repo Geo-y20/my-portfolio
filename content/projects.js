@@ -9,7 +9,10 @@
 //   icon                 placeholder icon name (components/Icon.jsx)
 //   image                { key, alt } object-storage key of a screenshot
 //   cover                'work/<slug>/cover.webp' (+ coverAlt) — used when `image` is absent
-//   link                 { href, label, external } — or { mediaKey, label } for a file in storage
+//   link                 { href, label, external }
+//   diagram              optional storage key of an architecture SVG: used as the
+//                        thumbnail when there's no image/cover, and opened in an
+//                        in-page viewer ("View architecture") when there's no link
 //   archive              featured only: shorter { outcome, caption } used on /all-projects
 //
 // MEDIA RULE: every screenshot or demo must use mock or blurred company data.
@@ -35,7 +38,7 @@ export const featured = [
     caption: 'FastAPI · PostgreSQL + pgvector · reranker · OpenAI / Claude',
     icon: 'chat',
     cover: 'work/atr-gpt/cover.webp',
-    coverAlt: 'ATR GPT chat interface answering an employee question with cited policy sources (mock data)',
+    coverAlt: 'ATR GPT in Policy mode: an Arabic answer about working hours with the cited policy document and section',
     link: caseStudy('atr-gpt'),
     archive: {
       outcome: '<strong>900+</strong> employees, 20 departments, <strong>5,000</strong> queries/month.',
@@ -100,6 +103,7 @@ export const moreProduction = [
     outcome: 'Aya-Expanse <strong>8B</strong> on Ollama with hybrid retrieval and <strong>zero</strong> cloud exposure.',
     stack: ['Ollama', 'ChromaDB + BM25', 'Arabic'],
     icon: 'lock',
+    diagram: 'architecture/hr-assistant-architecture.svg',
     link: caseStudy('hr-assistant'),
   },
   {
@@ -121,7 +125,7 @@ export const moreProduction = [
     note: 'Any figures shown for this project are randomized for demonstration, not real company data.',
     stack: ['LightGBM', 'scikit-learn', 'Python'],
     icon: 'chart',
-    link: { mediaKey: 'architecture/forecast-view-architecture.svg', label: 'View architecture' },
+    diagram: 'architecture/forecast-view-architecture.svg',
   },
   {
     title: 'Social listening platform',

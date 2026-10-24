@@ -135,6 +135,14 @@
       "public": true,
       "width": 64
     },
+    "general business.gif": {
+      "bytes": 9199322,
+      "contentType": "image/gif",
+      "etag": "ac037529f79fd5519f9f9bf9c4a07992-2",
+      "height": 640,
+      "public": false,
+      "width": 1366
+    },
     "licensce plate 1.jpg": {
       "bytes": 87207,
       "contentType": "image/jpeg",
@@ -158,6 +166,14 @@
       "height": 630,
       "public": true,
       "width": 1200
+    },
+    "policy.gif": {
+      "bytes": 4579638,
+      "contentType": "image/gif",
+      "etag": "410df9d24a90391dcc8af16d438eb246",
+      "height": 640,
+      "public": false,
+      "width": 1358
     },
     "profile-560.webp": {
       "bytes": 40586,
@@ -382,6 +398,54 @@
       "height": 397,
       "public": true,
       "width": 800
+    },
+    "work/atr-gpt/assistant-poster.webp": {
+      "bytes": 53716,
+      "contentType": "image/webp",
+      "etag": "b9270559890d07aa3c03badd8232bb95",
+      "height": 750,
+      "public": true,
+      "width": 1600
+    },
+    "work/atr-gpt/assistant.mp4": {
+      "bytes": 514906,
+      "contentType": "video/mp4",
+      "etag": "1e00269cd69085cf809891139b9867bd",
+      "height": 600,
+      "public": true,
+      "width": 1280
+    },
+    "work/atr-gpt/assistant.webm": {
+      "bytes": 502343,
+      "contentType": "video/webm",
+      "etag": "72fa75a0ae6a4fc754ba54de177d5723",
+      "height": 600,
+      "public": true,
+      "width": 1280
+    },
+    "work/atr-gpt/cover.webp": {
+      "bytes": 65210,
+      "contentType": "image/webp",
+      "etag": "41339acf9c2fd6dfd575bcd88068a5ac",
+      "height": 754,
+      "public": true,
+      "width": 1600
+    },
+    "work/atr-gpt/demo.mp4": {
+      "bytes": 428581,
+      "contentType": "video/mp4",
+      "etag": "475a193ccf63313f3aa9a85085265fda",
+      "height": 604,
+      "public": true,
+      "width": 1280
+    },
+    "work/atr-gpt/demo.webm": {
+      "bytes": 448839,
+      "contentType": "video/webm",
+      "etag": "ceeb76a38307fdc0b3bc4f5289423f74",
+      "height": 604,
+      "public": true,
+      "width": 1280
     },
     "work/document-ai/cover.webp": {
       "bytes": 43906,

@@ -32,13 +32,6 @@ export const metadata = {
     description: seo.twitterDescription,
     images: [ogImage.url],
   },
-  icons: {
-    icon: [
-      { url: mediaUrl('favicon.ico'), sizes: 'any' },
-      { url: mediaUrl('favicon.svg'), type: 'image/svg+xml' },
-    ],
-    apple: mediaUrl('apple-touch-icon.png'),
-  },
 };
 
 export const viewport = {

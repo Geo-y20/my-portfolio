@@ -1,4 +1,4 @@
-// MEDIA: card cover/demo must use mock or blurred company data — never real employee questions, documents or names.
+// MEDIA: the demos are real recordings of ATR GPT (policy mode and General Business assistant mode), supplied by George for publication on 2026-10-24.
 const caseStudy = {
   slug: 'case-study-atr-gpt',
   number: '01',
@@ -17,6 +17,7 @@ const caseStudy = {
   },
   problem: "Employees searched scattered documents and departmental repositories, or waited on subject-matter experts, to answer routine questions. Knowledge sat in silos across 20 departments, and every answer cost someone else's time.",
   solution: [
+    { label: 'Two modes', text: 'Policy mode answers company-wide policy and procedure questions from the policy documents and cites the source document and section; Assistant mode (e.g. General Business) handles everyday work such as emails, summaries, ideas and code, with a recommended model per department.' },
     { label: 'Retrieval', text: 'a FastAPI RAG service on PostgreSQL + pgvector, with a reranking step so the model sees the most relevant passages first.' },
     { label: 'Agents', text: 'tool-calling agents with conversation memory that go beyond answering and produce PowerPoint and Word deliverables.' },
     { label: 'Model routing', text: 'each request goes to OpenAI or Claude based on cost, latency and quality.' },
@@ -28,13 +29,25 @@ const caseStudy = {
   },
   demo: {
     icon: 'play',
-    placeholder: 'Demo coming soon: question → cited answer → generated slide deck',
+    placeholder: 'Demo: Policy mode answering a question with its source',
     video: {
       mp4: 'work/atr-gpt/demo.mp4',
       webm: 'work/atr-gpt/demo.webm',
       poster: 'work/atr-gpt/cover.webp',
-      label: 'Demo: an employee asks a policy question, gets a cited answer, then asks the agent to turn it into a slide deck (mock data)',
+      label: 'Demo: in Policy mode an employee asks in Arabic about attendance hours and gets an answer that cites the policy document and section',
     },
+    caption: 'Policy mode: an Arabic question about working hours, answered from the attendance policy with the source document and section cited.',
+    gallery: [
+      {
+        video: {
+          mp4: 'work/atr-gpt/assistant.mp4',
+          webm: 'work/atr-gpt/assistant.webm',
+          poster: 'work/atr-gpt/assistant-poster.webp',
+          label: 'Demo: in General Business assistant mode an employee asks ATR GPT to write a vacation-request email to their manager',
+        },
+        caption: "Assistant mode (General Business): the department's recommended model drafts a vacation-request email.",
+      },
+    ],
   },
   results: [
     { value: '900+', label: 'employees using it across 20 departments' },
@@ -47,7 +60,7 @@ const caseStudy = {
     { label: 'Evaluation in CI', text: 'turn the RAG evaluation set into a regression gate that runs on every prompt or retriever change.' },
     { label: 'Feedback loop', text: 'feed thumbs-up/down signals into reranker tuning and the eval set.' },
   ],
-  note: 'Enterprise project. Screens and demos use mock or blurred data; no internal documents or employee information are shown.',
+  note: "Enterprise project. The demos are recordings of the internal system, shared with George's approval; confidential details beyond what they show are not published.",
   prev: null,
   next: { href: '/case-study-text-to-sql', title: 'Text-to-SQL → Sheet Chat' },
 };

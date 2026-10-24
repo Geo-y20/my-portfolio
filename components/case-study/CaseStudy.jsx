@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import MediaSlot from '@/components/MediaSlot';
-import { getMediaObject, mediaUrl } from '@/lib/media';
+import { getMediaObject, hasMedia, mediaUrl } from '@/lib/media';
 import { renderDiagram } from '@/components/diagrams';
 
 // Case-study template (server component). Mirrors the static site's markup so
@@ -80,7 +80,15 @@ export default function CaseStudy({ cs }) {
             image={demo.image}
           />
           {demo.caption ? <p className="cs-demo-caption">{demo.caption}</p> : null}
-          {(demo.gallery || []).filter((g) => getMediaObject(g.key)).map((g) => {
+          {(demo.gallery || []).filter((g) => (g.video ? hasMedia(g.video.mp4) : getMediaObject(g.key))).map((g) => {
+            if (g.video) {
+              return (
+                <figure className="cs-figure" key={g.video.mp4}>
+                  <MediaSlot variant="cs" icon="play" video={g.video} />
+                  {g.caption ? <figcaption>{g.caption}</figcaption> : null}
+                </figure>
+              );
+            }
             const obj = getMediaObject(g.key);
             return (
               <figure className="cs-figure" key={g.key}>
