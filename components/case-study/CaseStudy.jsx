@@ -47,6 +47,14 @@ function LabelledList({ items }) {
 
 export default function CaseStudy({ cs }) {
   const { demo } = cs;
+  // The Demo section only renders once real media exists in storage; an empty
+  // "coming soon" placeholder reads as unfinished work. Later sections renumber.
+  const hasDemo = Boolean(
+    (demo?.video && hasMedia(demo.video.mp4)) ||
+    (demo?.image && getMediaObject(demo.image.key)) ||
+    (demo?.gallery || []).some((g) => (g.video ? hasMedia(g.video.mp4) : getMediaObject(g.key)))
+  );
+  const n = (i) => String(hasDemo || i < 3 ? i : i - 1).padStart(2, '0');
   return (
     <div className="container">
       <article className="cs">
@@ -71,7 +79,8 @@ export default function CaseStudy({ cs }) {
           <Diagram diagram={cs.diagram} />
         </Section>
 
-        <Section id="demo" num="03" title="Demo">
+        {hasDemo ? (
+        <Section id="demo" num={n(3)} title="Demo">
           <MediaSlot
             variant="cs"
             icon={demo.icon || 'play'}
@@ -99,8 +108,9 @@ export default function CaseStudy({ cs }) {
             );
           })}
         </Section>
+        ) : null}
 
-        <Section id="results" num="04" title="Results">
+        <Section id="results" num={n(4)} title="Results">
           <ul className="results">
             {cs.results.map((r) => (
               <li className="result" key={r.label}>
@@ -111,7 +121,7 @@ export default function CaseStudy({ cs }) {
           </ul>
         </Section>
 
-        <Section id="next" num="05" title="What I'd improve next">
+        <Section id="next" num={n(5)} title="What I'd improve next">
           <LabelledList items={cs.improvements} />
         </Section>
 

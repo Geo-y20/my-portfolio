@@ -85,7 +85,7 @@ export default function HomePage() {
               <p className="hero__lede">{profile.lede}</p>
               <div className="hero__ctas">
                 <a className="btn btn--primary" href="#work">View my work <ArrowDown /></a>
-                <a className="btn btn--ghost" href={profile.resumeUrl} target="_blank" rel="noopener">Download résumé <Download /></a>
+                <a className="btn btn--ghost" href={profile.resumeUrl} download="George_Youhana_Resume.pdf">Download résumé <Download /></a>
               </div>
             </div>
             <HeroTrace />

@@ -124,7 +124,7 @@ export const moreProduction = [
     kicker: 'Data & ML · EVA Group',
     tags: ['data'],
     outcome: 'Ridge + LightGBM per brand/customer/channel with per-SKU selection: <strong>−15%</strong> wMAPE vs. baseline.',
-    note: 'Any figures shown for this project are randomized for demonstration, not real company data.',
+    note: 'The −15% wMAPE is the real production result; only the data shown in screenshots and demos is randomized.',
     stack: ['LightGBM', 'scikit-learn', 'Python'],
     icon: 'chart',
     diagram: 'architecture/forecast-view-architecture.svg',
@@ -234,7 +234,7 @@ export const research = [
     stack: ['BART', 'Transformers'],
     icon: 'doc',
     image: { key: 'projects/research-paper-title-generation-bart.webp', alt: 'Title generator app generating a paper title from an abstract' },
-    link: github('https://github.com/geo-y20/research-paper-title-generation-using-bart'),
+    link: github('https://github.com/Geo-y20/research-paper-title-generation-using-bart'),
   },
   {
     title: 'Diabetes heart monitor',
@@ -244,49 +244,54 @@ export const research = [
     stack: ['scikit-learn', 'Arduino'],
     icon: 'chart',
     image: { key: 'projects/diabetes-heart-monitor-system.webp', alt: 'Diabetes heart monitor dashboard' },
-    link: github('https://github.com/geo-y20/Diabetes-Prediction-Capstone'),
+    link: github('https://github.com/Geo-y20/Diabetes-Prediction-Capstone'),
   },
+];
+
+// Early learning projects: shown collapsed at the bottom of the archive so
+// they don't dilute the production and research work above.
+export const learning = [
   {
     title: 'Loan approval automation',
-    kicker: 'Personal · ML',
+    kicker: 'Learning · ML',
     tags: ['data'],
     outcome: 'Eligibility-prediction model backed by MongoDB, deployed as a Streamlit app.',
     stack: ['MongoDB', 'Streamlit'],
     icon: 'db',
     image: { key: 'projects/loan-approval-automation-mongodb-pymongo.webp', alt: 'Loan approval Streamlit app' },
-    link: github('https://github.com/geo-y20/loan-approval-mongodb'),
+    link: github('https://github.com/Geo-y20/Loan-Approval-Automation-Using-MongoDB-and-PyMongo'),
   },
   {
     title: 'Fashion recommendation system',
-    kicker: 'Personal · ML',
+    kicker: 'Learning · ML',
     tags: ['data'],
     outcome: 'Personalized fashion recommendations served through a Streamlit web app.',
     stack: ['Machine learning', 'Streamlit'],
     icon: 'chart',
     image: { key: 'projects/fashion-recommendation-system.webp', alt: 'Fashion recommendation app' },
-    link: github('https://github.com/geo-y20/fashion-recommendation-system'),
+    link: github('https://github.com/Geo-y20/fashion-recommendation-system'),
   },
   {
     title: 'Coursera course recommender',
-    kicker: 'Personal · Data',
+    kicker: 'Learning · Data',
     tags: ['data'],
     outcome: 'Course suggestions from ratings, difficulty and enrollment data.',
     stack: ['pandas', 'Machine learning'],
     icon: 'db',
-    link: github('https://github.com/Geo-y20/Coursera-Managment-System.git'),
+    link: github('https://github.com/Geo-y20/Coursera-Managment-System'),
   },
   {
     title: 'Microsoft stock price prediction',
-    kicker: 'Personal · Forecasting',
+    kicker: 'Learning · Forecasting',
     tags: ['data'],
     outcome: 'ML model over 2013–2021 MSFT price history using technical-analysis features.',
     stack: ['Time series', 'scikit-learn'],
     icon: 'chart',
-    link: github('https://github.com/geo-y20/-microsoft-stock-price-prediction-/tree/main'),
+    link: github('https://github.com/Geo-y20/-microsoft-stock-price-prediction-/tree/main'),
   },
   {
     title: 'Uber rides analysis',
-    kicker: 'Personal · Data',
+    kicker: 'Learning · Data',
     tags: ['data'],
     outcome: 'Interactive dashboard turning raw ride data into business-ready charts.',
     stack: ['pandas', 'Dashboards'],
@@ -300,6 +305,8 @@ export const archiveGroups = [
   { id: 'g-featured', title: 'Featured case studies', projects: featured.map((p) => ({ ...p, ...p.archive })) },
   { id: 'g-more', title: 'More production work', projects: moreProduction },
   { id: 'g-research', title: 'Research & personal projects', projects: research },
+  { id: 'g-learning', title: 'Early learning projects', projects: learning, collapsed: true },
 ];
 
 export const projectCount = featured.length + moreProduction.length + research.length;
+export const learningCount = learning.length;

@@ -14,11 +14,9 @@ const STEPS = [
   { k: 'meter', v: <>tokens <span className="trace__dim">·</span> cost <span className="trace__ok">✓</span></> },
 ];
 
-const STATS = [
-  { v: '900+', l: 'employees' },
-  { v: '20', l: 'departments' },
-  { v: '5,000', l: 'queries / mo' },
-];
+// Footer shows the stack, not usage numbers: those already sit in the hero
+// metrics strip right below, and repeating them read as padding.
+const STACK = 'FastAPI · PostgreSQL + pgvector · reranker · OpenAI | Claude';
 
 export default function HeroTrace() {
   return (
@@ -41,11 +39,7 @@ export default function HeroTrace() {
           </dl>
           <span className="trace__caret" aria-hidden="true" style={{ '--i': STEPS.length + 1 }} />
         </div>
-        <ul className="trace__stats" aria-label="ATR GPT usage">
-          {STATS.map((s) => (
-            <li key={s.l}><b>{s.v}</b><span>{s.l}</span></li>
-          ))}
-        </ul>
+        <p className="trace__stack"><span className="trace__dim">stack</span> {STACK}</p>
       </div>
       <figcaption className="trace__caption">Illustrative trace of ATR GPT&apos;s request path, not a live log.</figcaption>
     </figure>

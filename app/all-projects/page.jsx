@@ -2,7 +2,7 @@ import Link from 'next/link';
 import ProjectCard from '@/components/ProjectCard';
 import FilterableProjects, { FilterBar, FilterEmpty, FilterGrid, FilterGroup } from '@/components/FilterableProjects';
 import { pageMetadata } from '@/lib/metadata';
-import { archiveGroups, filters, projectCount } from '@/content/projects';
+import { archiveGroups, filters, learningCount, projectCount } from '@/content/projects';
 
 export const metadata = pageMetadata({
   title: 'All Projects',
@@ -19,9 +19,9 @@ export default function AllProjectsPage() {
       <div className="container">
         <header className="page-hero">
           <Link className="back-link" href="/#work"><span aria-hidden="true">←</span> Home</Link>
-          <p className="eyebrow"><b>Archive</b> / {`${projectCount} projects`}</p>
+          <p className="eyebrow"><b>Archive</b> / {`${projectCount} projects + ${learningCount} early learning`}</p>
           <h1>All projects</h1>
-          <p>Production systems first, then research and personal projects. Filter by the track you care about.</p>
+          <p>Production systems first, then research. Early learning projects are collapsed at the bottom. Filter by the track you care about.</p>
         </header>
       </div>
 
@@ -29,13 +29,13 @@ export default function AllProjectsPage() {
         <FilterBar />
         {/* MEDIA: any screenshot added here must use mock or blurred company data. */}
         {archiveGroups.map((group) => (
-          <FilterGroup key={group.id} id={group.id} title={group.title} tags={group.projects.map((p) => p.tags)}>
+          <FilterGroup key={group.id} id={group.id} title={group.title} collapsed={group.collapsed} tags={group.projects.map((p) => p.tags)}>
             <FilterGrid className="grid-cards">
               {group.projects.map((p) => <ProjectCard key={p.title} project={p} />)}
             </FilterGrid>
           </FilterGroup>
         ))}
-        <FilterEmpty>No projects in this track yet.</FilterEmpty>
+        <FilterEmpty />
         <div className="archive-end" aria-hidden="true" />
       </FilterableProjects>
     </>

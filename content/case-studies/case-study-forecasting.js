@@ -40,7 +40,7 @@ const caseStudy = {
       poster: 'work/forecasting/cover.webp',
       label: 'Demo: the forecasting dashboard showing forecasts, accuracy and an LLM explanation of what drove the change (randomized figures)',
     },
-    caption: 'All figures shown in this demo are randomized for demonstration, not real company data.',
+    caption: 'The data in this demo is randomized for demonstration; the ~15% wMAPE improvement is the real production result.',
   },
   results: [
     { value: '~15%', label: 'lower wMAPE than the previous forecasting baseline' },
@@ -52,7 +52,7 @@ const caseStudy = {
     { label: 'Experiment tracking', text: 'log every run, model choice and wMAPE in MLflow so accuracy changes can be traced to data or model changes.' },
     { label: 'Drift alerts', text: 'flag SKUs whose error jumps between runs so planners review them before the numbers are used.' },
   ],
-  note: 'Enterprise project. Real sales and demand data is confidential; any figures shown on this page are randomized for demonstration.',
+  note: 'Enterprise project. The ~15% wMAPE improvement is real; the sales and demand data shown in screenshots and demos is randomized because the real data is confidential.',
   prev: { href: '/case-study-text-digitalization', title: 'Text Digitalization: bilingual product content & regulatory layouts' },
   next: { href: '/all-projects', title: 'All projects' },
 };

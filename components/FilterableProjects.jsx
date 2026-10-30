@@ -74,9 +74,22 @@ export function FilterGrid({ className, children }) {
   return <div className={`${className}${active === 'all' ? '' : ' is-filtered'}`}>{children}</div>;
 }
 
-export function FilterGroup({ id, title, tags, children }) {
+export function FilterGroup({ id, title, tags, collapsed = false, children }) {
   const { active } = useContext(FilterContext);
   const visible = tags.some((t) => matches(active, t));
+  if (collapsed) {
+    // Closed by default; the cards stay in the HTML for crawlers.
+    return (
+      <section data-filter-group="" aria-labelledby={id} hidden={!visible}>
+        <details className="archive-collapsed">
+          <summary>
+            <h2 className="group-title" id={id}>{title} <span className="archive-collapsed__count">({tags.length})</span></h2>
+          </summary>
+          {children}
+        </details>
+      </section>
+    );
+  }
   return (
     <section data-filter-group="" aria-labelledby={id} hidden={!visible}>
       <h2 className="group-title" id={id}>{title}</h2>
@@ -85,9 +98,14 @@ export function FilterGroup({ id, title, tags, children }) {
   );
 }
 
-export function FilterEmpty({ children }) {
+export function FilterEmpty() {
   const { shown } = useContext(FilterContext);
-  return <p className={`filter-empty${shown === 0 ? ' is-visible' : ''}`}>{children}</p>;
+  // Rendered only when a filter really matches nothing, so the message never
+  // appears in the page text (scrapers, ATS tools) while "All" is selected.
+  if (shown !== 0) return null;
+  // The text lives here (not passed from the server as children) so it isn't
+  // serialized into the page's data payload either.
+  return <p className="filter-empty is-visible" role="status">No projects in this track yet.</p>;
 }
 
 export function FilterMoreLink({ base = '/all-projects', className, children }) {

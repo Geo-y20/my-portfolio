@@ -14,9 +14,11 @@ export const profile = {
   headlineTags: 'LLMs · RAG · Vision · Speech',
   lede: 'I ship production AI systems (agents, RAG, Text-to-SQL, OCR, vision and speech) that real business teams use every day.',
   photo: { key: 'profile-560.webp', alt: 'Portrait of George Youhana', width: 280, height: 280 },
-  // Google Drive file (shared "anyone with the link"). Replace the file in Drive
-  // (Manage versions → Upload new version) and the site picks it up — no deploy needed.
-  resumeUrl: 'https://drive.google.com/file/d/1hbmWxxOp7TUfGuKGt1RUKUaKHNJq-kIk/view',
+  // The CV lives in Google Drive (shared "anyone with the link"); app/resume.pdf
+  // serves it from this site's domain. Replace the file in Drive (Manage
+  // versions → Upload new version) and /resume.pdf updates within an hour.
+  resumeDriveId: '1hbmWxxOp7TUfGuKGt1RUKUaKHNJq-kIk',
+  resumeUrl: '/resume.pdf',
   location: 'Cairo, Egypt',
   email: 'georgeyouhana2@gmail.com',
 };
